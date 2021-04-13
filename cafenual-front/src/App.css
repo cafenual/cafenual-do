@@ -1,0 +1,41 @@
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #fff;
+    padding-top:60px;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  
+  #content {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  *,
+  *:after,
+  *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; /* input 박스 width:100% 했을 때 튀어나가는거 없애기 */
+    margin: 0;
+    padding: 0;
+  }
+  
+  a:link,
+  a:visited,
+  a:active,
+  a:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  
