@@ -24,16 +24,17 @@ const Login = () => {
   return (
     <div id="Login">
       <div className="login-form">
-        <h1>
-          cafenual
-        </h1>
+        <div className="login-form-tit">
+          Login
+        </div>
         <form action="" onSubmit={onSubmit}>
           <input
             type="text"
             name="userNum"
-            placeholder="사원번호"
+            placeholder="아이디"
             value={userNum}
             onChange={onChange}
+            className="login-input"
           />
           <input
             type="password"
@@ -41,9 +42,27 @@ const Login = () => {
             placeholder="비밀번호"
             value={password}
             onChange={onChange}
+            className="login-input"
           />
-          <button type="submit">로그인</button>
+          <div className="login-manage">
+            <div className="save-id">
+              <input type="checkbox" className="checkbox" />
+              <span>아이디 저장</span>
+            </div>
+            <div className="find-accounts">
+              <a href="">아이디 찾기</a>
+              <span>|</span>
+              <a href="">비밀번호 찾기</a>
+            </div>
+            
+          </div>
+          <button type="submit" className="login-btn">로그인</button>
         </form>
+        <div className="join-link">
+          <span>아직 회원이 아니신가요 ??</span>
+          <span className="join-link-btn"><a href="">회원가입</a></span>
+        </div>
+
       </div>
     </div>
   );

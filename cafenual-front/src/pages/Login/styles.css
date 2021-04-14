@@ -3,18 +3,69 @@
     margin: 0 auto;
 }
 
-.login-form h1{
+.login-form .login-form-tit{
     text-align: center;
     padding-top:150px;
     padding-bottom:40px;
+    font-size:35px;
+    color:#ff5e5e;
 }
-.login-form input{
+.login-form .login-input{
     width:100%;
     height:45px;
     margin-bottom:8px;
 }
 
+.login-form .login-input{
+    padding:5px
+}
+
 .login-form button{
     width:100%;
     height:40px;
+}
+
+.login-form .login-manage{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.login-form .login-manage .save-id{
+    display:flex;
+    align-items: center;
+    height:100%;
+    font-size:13px;
+}
+
+.login-form .login-manage .checkbox{
+    width: 16px;
+    height: 14px;
+    margin-right: 2px;
+}
+
+.login-manage .find-accounts{
+    font-size:13px;
+}
+
+.login-manage .find-accounts span{
+    padding: 0 4px;
+}
+
+.login-form .login-btn{
+    margin: 5px 0;
+    background-color:#fa8080;
+    border:none;
+    color:#fff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.join-link{
+    font-size: 13px;
+}
+
+.join-link .join-link-btn a{
+    color: #fa2323;
 }
