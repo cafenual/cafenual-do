@@ -1,3 +1,8 @@
+#Login{
+    width:1050px;
+    margin: 0 auto;
+}
+
 .login-form{
     width:340px;
     margin: 0 auto;
@@ -5,10 +10,10 @@
 
 .login-form .login-form-tit{
     text-align: center;
-    padding-top:150px;
+    padding-top:180px;
     padding-bottom:40px;
     font-size:35px;
-    color:#ff5e5e;
+    color:#333;
 }
 .login-form .login-input{
     width:100%;
@@ -55,7 +60,7 @@
 
 .login-form .login-btn{
     margin: 5px 0;
-    background-color:#fa8080;
+    background-color:#333;
     border:none;
     color:#fff;
     font-size: 15px;
@@ -67,5 +72,6 @@
 }
 
 .join-link .join-link-btn a{
-    color: #fa2323;
+    color: #333;
+    text-decoration: underline;
 }
