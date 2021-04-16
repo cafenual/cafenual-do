@@ -31,7 +31,7 @@ const Login = () => {
           <input
             type="text"
             name="userNum"
-            placeholder="아이디"
+            placeholder="사원 아이디"
             value={userNum}
             onChange={onChange}
             className="login-input"

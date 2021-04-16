@@ -1,24 +1,28 @@
 #Login{
-    width:1050px;
+    max-width:1050px;
     margin: 0 auto;
+
 }
 
 .login-form{
-    width:340px;
+    min-width: 340px;
+    max-width: 600px;
     margin: 0 auto;
+    padding:20px;
 }
 
 .login-form .login-form-tit{
     text-align: center;
-    padding-top:180px;
+    padding-top:150px;
     padding-bottom:40px;
     font-size:35px;
     color:#333;
+    margin-bottom: 10px;
 }
 .login-form .login-input{
     width:100%;
     height:45px;
-    margin-bottom:8px;
+    margin: 5px 0;
 }
 
 .login-form .login-input{
