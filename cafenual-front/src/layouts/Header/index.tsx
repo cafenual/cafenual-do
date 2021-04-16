@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import Menu from "layouts/Menu";
+import { Link } from "react-router-dom"
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -10,7 +11,7 @@ const Header = () => {
   const onToggle = () => {
     setMenu(!menu);
     function slideMenu() {
-      return setTimeout(() => setSlide(!slide), 100)
+      return setTimeout(() => setSlide(!slide), 100);
     }
     slideMenu();
   };
@@ -19,7 +20,9 @@ const Header = () => {
     <div id="Header">
       <div className="header-nav">
         <div className="header-logo">
-          <h1>cafenual</h1>
+          <Link to="/">
+            <h1>cafenual</h1>
+          </Link>
         </div>
         <div className="header-search">
           <div className="search-input">
@@ -38,7 +41,7 @@ const Header = () => {
           <div className={menu === false ? "" : "menu-on"}>
             {" "}
             {/* menu-on */}
-            <Menu menu={menu} onToggle={onToggle} slide={slide}/>
+            <Menu menu={menu} onToggle={onToggle} slide={slide} />
           </div>
         </div>
       </div>

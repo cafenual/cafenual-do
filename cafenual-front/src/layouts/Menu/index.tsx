@@ -7,6 +7,7 @@ import {
   AiOutlineDown,
 } from "react-icons/ai";
 
+
 interface MenuTabProps {
   menu: boolean;
   onToggle: any;
@@ -54,7 +55,7 @@ const Menu  : React.FunctionComponent<MenuTabProps> = ({ menu, onToggle, slide }
                 <a href="">- 쪽지함</a>
               </li>
               <li>
-                <a href="">- 체크</a>
+                <a href="/login">- 로그인</a>
               </li>
             </ul>
           </div>

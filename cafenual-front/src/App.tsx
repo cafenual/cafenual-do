@@ -9,8 +9,8 @@ import "./App.css"
 function App() {
   return (
     <div id="container">
-    <Header />
     <BrowserRouter>
+    <Header />
       <Switch>
         <Route path="/" exact component={Main} />
         <Route path="/login" component={Login} />
