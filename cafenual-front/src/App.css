@@ -46,3 +46,8 @@ a:hover {
 input:focus {
   outline: none;
 }
+
+#main {
+  max-width: 1050px;
+  margin: 0 auto;
+}

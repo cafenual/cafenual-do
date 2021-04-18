@@ -49,7 +49,7 @@ const Menu  : React.FunctionComponent<MenuTabProps> = ({ menu, onToggle, slide }
                 <a href="">- 개인정보수정</a>
               </li>
               <li>
-                <a href="">- 출근·퇴근</a>
+                <a href="/commute">- 출근·퇴근</a>
               </li>
               <li>
                 <a href="">- 쪽지함</a>

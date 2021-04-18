@@ -1,21 +1,24 @@
-import Header from 'layouts/Header';
-import Login from 'pages/Login';
-import Main from 'pages/Main';
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import "./App.css"
-
+import Header from "layouts/Header";
+import Commute from "pages/Commute";
+import Login from "pages/Login";
+import Main from "pages/Main";
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
     <div id="container">
-    <BrowserRouter>
-    <Header />
-      <Switch>
-        <Route path="/" exact component={Main} />
-        <Route path="/login" component={Login} />
-      </Switch>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Header />
+        <div id="main">
+          <Switch>
+            <Route path="/" exact component={Main} />
+            <Route path="/login" component={Login} />
+            <Route path="/commute" component={Commute} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

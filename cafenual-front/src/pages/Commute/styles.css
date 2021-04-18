@@ -1,0 +1,21 @@
+.commute-page{
+    min-width: 340px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.commute-user{
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    font-size: 25px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.commute-user .commute-user-name{
+    color:#333;
+    font-size: 35px;
+    font-weight: 700;
+}
