@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./styles.css";
 
-const Join = () => {
+const Join = (props: any) => {
   const [joinForm, setJoinForm] = useState({
     userId: "",
     userPw: "",
@@ -21,7 +22,19 @@ const Join = () => {
 
   const onSubmit = (e: any) => {
     e.preventDefault();
+
+    let body = {
+      id: userId,
+      pw: userPw,
+
+    }
+
+    axios.post("/api/users/join", body).then((response) => {
+      console.log(response);
+    });
   };
+
+ 
 
   return (
     <div id="Join">
