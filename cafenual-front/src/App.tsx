@@ -1,5 +1,6 @@
 import Header from "layouts/Header";
 import Commute from "pages/Commute";
+import Join from "pages/Join";
 import Login from "pages/Login";
 import Main from "pages/Main";
 import React from "react";
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" exact component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/commute" component={Commute} />
+            <Route path="/join" component={Join} />
           </Switch>
         </div>
       </BrowserRouter>

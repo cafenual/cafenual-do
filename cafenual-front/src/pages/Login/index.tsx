@@ -60,7 +60,7 @@ const Login = () => {
         </form>
         <div className="join-link">
           <span>아직 회원이 아니신가요 ??</span>
-          <span className="join-link-btn"><a href="">회원가입</a></span>
+          <span className="join-link-btn"><a href="/join">회원가입</a></span>
         </div>
 
       </div>
