@@ -7,19 +7,22 @@ import {
   AiOutlineDown,
 } from "react-icons/ai";
 
-
 interface MenuTabProps {
   menu: boolean;
   onToggle: any;
-  slide : boolean;
+  slide: boolean;
 }
 
-const Menu  : React.FunctionComponent<MenuTabProps> = ({ menu, onToggle, slide }) => {
+const Menu: React.FunctionComponent<MenuTabProps> = ({
+  menu,
+  onToggle,
+  slide,
+}) => {
   return (
     <div className="menu">
       <div className="menu-active"></div>
 
-      <div className={ slide === false ? "menu-side" : `menu-side on`}>
+      <div className={slide === false ? "menu-side" : `menu-side on`}>
         <div className="side-tit">
           <h1>
             <span className="tit-logo">
@@ -52,7 +55,7 @@ const Menu  : React.FunctionComponent<MenuTabProps> = ({ menu, onToggle, slide }
                 <a href="/commute">- 출근·퇴근</a>
               </li>
               <li>
-                <a href="">- 쪽지함</a>
+                <a href="/messenger">- 쪽지함</a>
               </li>
               <li>
                 <a href="/login">- 로그인</a>

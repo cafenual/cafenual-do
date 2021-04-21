@@ -1,0 +1,27 @@
+.messenger-page {
+  min-width: 320px;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.messenger-page-menu ul {
+  display: flex;
+  margin: 0 auto;
+  width: 594px;
+  border: 1px solid black;
+  padding: 30px 20px;
+}
+
+.messenger-page-menu ul li {
+  margin: 0 46px;
+}
+
+.messenger-page-menu ul li:hover {
+  cursor: pointer;
+  background-color: rgb(240, 240, 240);
+}
+
+.messenger-page-menu ul div {
+  text-align: center;
+}

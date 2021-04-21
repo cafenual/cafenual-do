@@ -3,6 +3,7 @@ import Commute from "pages/Commute";
 import Join from "pages/Join";
 import Login from "pages/Login";
 import Main from "pages/Main";
+import Messenger from "pages/Messenger";
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
@@ -18,6 +19,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/commute" component={Commute} />
             <Route path="/join" component={Join} />
+            <Route path="/messenger" component={Messenger} />
           </Switch>
         </div>
       </BrowserRouter>

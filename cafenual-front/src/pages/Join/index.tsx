@@ -19,29 +19,34 @@ const Join = (props: any) => {
       [e.target.name]: e.target.value,
     });
   };
+  
+
+
+  const [test, setTest] = useState("아이디"); // 시험용으로 만들어봄 DB에서 값을 쓸때 어떻게 쓰는지 궁금해서
 
   const onSubmit = (e: any) => {
     e.preventDefault();
 
     let body = {
-      id: userId,
-      pw: userPw,
+      email: userId,
+      password: userPw,
+      name: userName,
+    };
 
-    }
-
+    
     axios.post("/api/users/join", body).then((response) => {
-      console.log(response);
+      let a = JSON.parse(response.config.data);
+      console.log(a.email);
+      setTest(a.email);
     });
   };
-
- 
 
   return (
     <div id="Join">
       <div className="join-form">
         <div className="join-form-tit">Join</div>
         <form action="" onSubmit={onSubmit}>
-          <label>아이디</label>
+          <label>{test}</label>
           <input
             type="text"
             placeholder="아이디를 입력해주세요"

@@ -7,6 +7,11 @@ import bodyParser from "body-parser";
 const app = express();
 const PORT = 4000;
 
+app.use(bodyParser.urlencoded({ extended: true }));
+// application/json 이라는걸 클라이언트에서 받아와서 분석하기 위해 넣어준것
+app.use(bodyParser.json());
+
+
 mongoose
   .connect(config.mongoURI, {
     useNewUrlParser: true,
