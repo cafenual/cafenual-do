@@ -14,28 +14,36 @@ const Messenger = () => {
         <div className="messenger-page-menu">
           <ul>
             <li>
-              <div className="ico">
-                <AiOutlineTeam size="34" />
-              </div>
-              <div>친구목록</div>
+              <a href="/messenger">
+                <div className="ico">
+                  <AiOutlineTeam size="34" />
+                </div>
+                친구목록
+              </a>
             </li>
             <li>
-              <div className="ico">
-                <AiOutlineMail size="34" />
-              </div>
-              <div>쪽지함</div>
+              <a href="/messenger/message">
+                <div className="ico">
+                  <AiOutlineMail size="34" />
+                </div>
+                쪽지함
+              </a>
             </li>
             <li>
-              <div className="ico">
-                <AiOutlineMessage size="34" />
-              </div>
-              <div>대화</div>
+              <a>
+                <div className="ico">
+                  <AiOutlineMessage size="34" />
+                </div>
+                대화
+              </a>
             </li>
             <li>
-              <div className="ico">
-                <AiOutlineSetting size="34" />
-              </div>
-              <div>설정</div>
+              <a>
+                <div className="ico">
+                  <AiOutlineSetting size="34" />
+                </div>
+                설정
+              </a>
             </li>
           </ul>
         </div>

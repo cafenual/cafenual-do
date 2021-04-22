@@ -1,3 +1,5 @@
+import MessengerFriendsList from "components/Messenger/FriendsList";
+import MessengerMessage from "components/Messenger/Message";
 import Header from "layouts/Header";
 import Commute from "pages/Commute";
 import Join from "pages/Join";
@@ -19,7 +21,8 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/commute" component={Commute} />
             <Route path="/join" component={Join} />
-            <Route path="/messenger" component={Messenger} />
+            <Route path="/messenger" exact component={MessengerFriendsList} />
+            <Route path="/messenger/message" component={MessengerMessage} />
           </Switch>
         </div>
       </BrowserRouter>

@@ -1,0 +1,34 @@
+.friends-list-page{
+    width: 600px;
+    margin: 0 auto;
+}
+
+
+
+.friends-info{
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background: #f4f4f4;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.friends-info .box{
+    display:flex;
+    align-items: center;
+}
+
+.friends-info div{
+    padding:0 30px;
+}
+
+
+.messenger-info span{
+    display:block;
+}
+
+.messenger-position{
+    font-size: 12px;
+    text-align: center;
+}
