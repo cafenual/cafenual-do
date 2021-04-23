@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles.css";
 
@@ -19,8 +19,6 @@ const Join = (props: any) => {
       [e.target.name]: e.target.value,
     });
   };
-  
-
 
   const [test, setTest] = useState("아이디"); // 시험용으로 만들어봄 DB에서 값을 쓸때 어떻게 쓰는지 궁금해서
 
@@ -33,13 +31,22 @@ const Join = (props: any) => {
       name: userName,
     };
 
-    
     axios.post("/api/users/join", body).then((response) => {
       let a = JSON.parse(response.config.data);
-      console.log(a.email);
+      console.log(a);
       setTest(a.email);
     });
   };
+
+  useEffect(() => {  // 몽고디비에서 데이터 부르는거 테스트용 성공!
+    let test1 = {
+      role: 0,
+    };
+
+    axios.post("/api/test/test1", test1).then((response) => {
+      console.log(response.data);
+    });
+  }, []);
 
   return (
     <div id="Join">
