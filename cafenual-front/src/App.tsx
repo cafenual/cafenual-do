@@ -5,8 +5,7 @@ import Commute from "pages/Commute";
 import Join from "pages/Join";
 import Login from "pages/Login";
 import Main from "pages/Main";
-import Messenger from "pages/Messenger";
-import React from "react";
+import MenuUpload from "pages/MenuUpload";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 
@@ -23,6 +22,7 @@ function App() {
             <Route path="/join" component={Join} />
             <Route path="/messenger" exact component={MessengerFriendsList} />
             <Route path="/messenger/message" component={MessengerMessage} />
+            <Route path="/menu" exact component={MenuUpload} />
           </Switch>
         </div>
       </BrowserRouter>

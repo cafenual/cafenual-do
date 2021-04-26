@@ -60,6 +60,9 @@ const Menu: React.FunctionComponent<MenuTabProps> = ({
               <li>
                 <a href="/login">- 로그인</a>
               </li>
+              <li>
+                <a href="/menu">- 메뉴 등록</a>
+              </li>
             </ul>
           </div>
         </div>
