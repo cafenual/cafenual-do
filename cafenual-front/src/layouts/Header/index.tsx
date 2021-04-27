@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./styles.css";
 import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import Menu from "layouts/Menu";
-import { Link } from "react-router-dom"
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -20,9 +19,9 @@ const Header = () => {
     <div id="Header">
       <div className="header-nav">
         <div className="header-logo">
-          <Link to="/">
+          <a href="/">
             <h1>cafenual</h1>
-          </Link>
+          </a>
         </div>
         <div className="header-search">
           <div className="search-input">

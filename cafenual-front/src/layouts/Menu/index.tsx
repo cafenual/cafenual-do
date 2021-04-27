@@ -55,13 +55,16 @@ const Menu: React.FunctionComponent<MenuTabProps> = ({
                 <a href="/commute">- 출근·퇴근</a>
               </li>
               <li>
-                <a href="/messenger">- 쪽지함</a>
+                <a href="">- 쪽지함</a>
               </li>
               <li>
                 <a href="/login">- 로그인</a>
               </li>
               <li>
-                <a href="/menu">- 메뉴 등록</a>
+                <a href="/menu/upload">- 메뉴 업로드</a>
+              </li>
+              <li>
+                <a href="/menu/list">- 메뉴 보기</a>
               </li>
             </ul>
           </div>
