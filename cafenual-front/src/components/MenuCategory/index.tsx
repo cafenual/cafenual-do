@@ -4,7 +4,7 @@ import "./styles.css";
 
 const categories = [
   {
-    name: "",
+    name: "all",
     text: "전체보기",
   },
   {

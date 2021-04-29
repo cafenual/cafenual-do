@@ -1,11 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
 
+const MenuCategory = [
+  { value: "coffee", label: "coffee" },
+  { value: "latte", label: "latte" },
+  { value: "juice", label: "juice" },
+  { value: "tea", label: "tea" },
+];
+
 const MenuUpload = () => {
   const [menu, setMenu] = useState({
     menuName: "",
     menuRecipe: "",
-    menuCategory: "",
+    menuCategory: "coffee",
   });
 
   // const [test, setTest] = useState([]);
@@ -64,13 +71,13 @@ const MenuUpload = () => {
           placeholder="레시피"
           onChange={onChange}
         />
-        <input
-          name="menuCategory"
-          value={menuCategory}
-          type="text"
-          placeholder="카테고리"
-          onChange={onChange}
-        />
+        <select name="menuCategory" value={menuCategory} onChange={onChange}>
+          {MenuCategory.map((item, index) => (
+            <option key={index} value={item.value}>
+              {item.label}
+            </option>
+          ))}
+        </select>
         <button type="submit">등록하기</button>
       </form>
     </div>

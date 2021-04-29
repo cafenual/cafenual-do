@@ -1,3 +1,4 @@
+import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import Commute from "pages/Commute";
 import Join from "pages/Join";
@@ -23,6 +24,7 @@ function App() {
             <Route path="/menu/upload" exact component={MenuUpload} />
           </Switch>
         </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );

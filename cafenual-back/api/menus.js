@@ -17,11 +17,11 @@ router.post("/upload", (req, res) => {
   });
 });
 
-// router.post("/getMenu", (req, res) => { //디비 불러오기 연습용
-//   Menu.find().exec((err, menu) => {
-//     if (err) return res.status(400).send(err);
-//     return res.status(200).json({ success: true, menu });
-//   });
-// });
+router.post("/getMenu", (req, res) => {
+  Menu.find().exec((err, menu) => {
+    if (err) return res.status(400).send(err);
+    return res.status(200).json({ success: true, menu });
+  });
+});
 
 module.exports = router;
