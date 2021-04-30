@@ -49,5 +49,13 @@ userSchema.pre("save", function (next) {
   }
 });
 
+userSchema.methods.comparePassword = function (plainPassword, cb) {
+  //plainPassword이 입력받은 이메일 값인데 디비에 hash로 저장된 비밀번호호랑 같은지 체크를 해야함
+  bcrypt.compare(plainPassword, this.password, function (err, isMatch) {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
+};
+
 const User = mongoose.model("User", userSchema);
 export default User;

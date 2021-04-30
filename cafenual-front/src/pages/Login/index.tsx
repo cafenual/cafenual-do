@@ -1,9 +1,10 @@
+import axios from "axios";
 import React, { useState } from "react";
 import "./styles.css";
 
-const Login = () => {
+const Login = (props: any) => {
   const [form, setForm] = useState({
-    userNum: "",
+    email: "",
     password: "",
   });
 
@@ -15,24 +16,36 @@ const Login = () => {
     setForm(nextForm);
   };
 
-  const { userNum, password } = form;
+  const { email, password } = form;
 
   const onSubmit = (e: any) => {
     e.preventDefault();
+
+    let body = {
+      email,
+      password,
+    };
+
+    axios.post("/api/users/login", body).then((response) => {
+      console.log(response.data);
+      if (response.data.loginSuccess) {
+        props.history.push("/");
+      } else {
+        alert("로그인에 실패 했습니다. 다시 시도 해주세요!");
+      }
+    });
   };
 
   return (
     <div id="Login">
       <div className="login-form">
-        <div className="login-form-tit">
-          Login
-        </div>
+        <div className="login-form-tit">Login</div>
         <form action="" onSubmit={onSubmit}>
           <input
             type="text"
-            name="userNum"
+            name="email"
             placeholder="사원 아이디"
-            value={userNum}
+            value={email}
             onChange={onChange}
             className="login-input"
           />
@@ -54,15 +67,17 @@ const Login = () => {
               <span>|</span>
               <a href="">비밀번호 찾기</a>
             </div>
-            
           </div>
-          <button type="submit" className="login-btn">로그인</button>
+          <button type="submit" className="login-btn">
+            로그인
+          </button>
         </form>
         <div className="join-link">
           <span>아직 회원이 아니신가요 ??</span>
-          <span className="join-link-btn"><a href="/join">회원가입</a></span>
+          <span className="join-link-btn">
+            <a href="/join">회원가입</a>
+          </span>
         </div>
-
       </div>
     </div>
   );

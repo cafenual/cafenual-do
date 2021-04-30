@@ -9,6 +9,8 @@ interface MenuListProps {
 const MenuList: React.FunctionComponent<MenuListProps> = ({ category }) => {
   const [menus, setMenus] = useState([]);
 
+ 
+
   useEffect(() => {
     axios.post("/api/menus/getMenu").then((response: any) => {
       console.log(response.data.menu);
