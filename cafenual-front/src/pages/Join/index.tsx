@@ -4,14 +4,13 @@ import "./styles.css";
 
 const Join = (props: any) => {
   const [joinForm, setJoinForm] = useState({
-    userId: "",
     userPw: "",
     userPwCheck: "",
     userName: "",
     userEmail: "",
   });
 
-  const { userId, userPw, userPwCheck, userName, userEmail } = joinForm;
+  const { userPw, userPwCheck, userName, userEmail } = joinForm;
 
   const onChange = (e: any) => {
     setJoinForm({
@@ -20,47 +19,39 @@ const Join = (props: any) => {
     });
   };
 
-  const [test, setTest] = useState("아이디"); // 시험용으로 만들어봄 DB에서 값을 쓸때 어떻게 쓰는지 궁금해서
-
   const onSubmit = (e: any) => {
     e.preventDefault();
 
     let body = {
-      email: userId,
+      email: userEmail,
       password: userPw,
       name: userName,
     };
 
     axios.post("/api/users/join", body).then((response) => {
-      let a = JSON.parse(response.config.data);
-      console.log(a);
-      setTest(a.email);
+      console.log(response.data);
+      if (response.data.success) {
+        props.history.push("/login");
+      } else {
+        alert("회원가입에 실패했습니다. 다시 시도해 주세요");
+      }
     });
   };
-
-  useEffect(() => {  // 몽고디비에서 데이터 부르는거 테스트용 성공!
-    let test1 = {
-      role: 0,
-    };
-
-    axios.post("/api/test/test1", test1).then((response) => {
-      console.log(response.data);
-    });
-  }, []);
 
   return (
     <div id="Join">
       <div className="join-form">
         <div className="join-form-tit">Join</div>
         <form action="" onSubmit={onSubmit}>
-          <label>{test}</label>
+          <label>이메일</label>
           <input
-            type="text"
-            placeholder="아이디를 입력해주세요"
-            value={userId}
-            name="userId"
+            type="email"
+            placeholder="이메일을 입력해주세요"
+            value={userEmail}
+            name="userEmail"
             onChange={onChange}
           />
+
           <label>비밀번호</label>
           <input
             type="password"
@@ -85,14 +76,7 @@ const Join = (props: any) => {
             name="userName"
             onChange={onChange}
           />
-          <label>이메일</label>
-          <input
-            type="email"
-            placeholder="이메일을 입력해주세요"
-            value={userEmail}
-            name="userEmail"
-            onChange={onChange}
-          />
+
           <button type="submit" className="join-btn">
             회원가입
           </button>
