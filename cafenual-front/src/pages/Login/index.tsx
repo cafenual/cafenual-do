@@ -1,14 +1,21 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { RouteComponentProps } from "react-router";
 import "./styles.css";
 
-const Login = (props: any) => {
+interface PathParamsProps {
+  history: RouteComponentProps["history"];
+  location: RouteComponentProps["location"];
+  match: RouteComponentProps["match"];
+}
+
+const Login = (props: PathParamsProps) => {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const nextForm = {
       ...form,
       [e.target.name]: e.target.value,
@@ -18,7 +25,7 @@ const Login = (props: any) => {
 
   const { email, password } = form;
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     let body = {

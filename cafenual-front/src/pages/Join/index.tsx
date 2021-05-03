@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./styles.css";
+import { RouteComponentProps } from "react-router";
 
-const Join = (props: any) => {
+interface PathParamsProps {
+  history: RouteComponentProps["history"];
+  location: RouteComponentProps["location"];
+  match: RouteComponentProps["match"];
+}
+
+const Join = (props: PathParamsProps) => {
   const [joinForm, setJoinForm] = useState({
     userPw: "",
     userPwCheck: "",
@@ -12,14 +19,14 @@ const Join = (props: any) => {
 
   const { userPw, userPwCheck, userName, userEmail } = joinForm;
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setJoinForm({
       ...joinForm,
       [e.target.name]: e.target.value,
     });
   };
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     let body = {
