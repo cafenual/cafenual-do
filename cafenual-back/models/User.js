@@ -17,11 +17,10 @@ const userSchema = mongoose.Schema({
     minlength: 5,
   },
   role: {
-    // 일반 유저, 관리자를 나누기 위한 객체  0: 일반유저 1: 관리자 계정
+    // 일반 유저, 관리자를 나누기 위한 객체  0: 일반유저 1: 매니저 계정 2: 관리자 계정
     type: Number,
     default: 0,
   },
-
   token: {
     // 유효성 관리
     type: String,
