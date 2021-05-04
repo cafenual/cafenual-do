@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 
@@ -6,20 +6,25 @@ interface MenuListProps {
   category: string;
 }
 
+interface MenuInfo {
+  _id: string;
+  menuName: string;
+  menuRecipe: string;
+  menuCategory: string;
+}
+
 const MenuList: React.FunctionComponent<MenuListProps> = ({ category }) => {
   const [menus, setMenus] = useState([]);
 
- 
-
   useEffect(() => {
-    axios.post("/api/menus/getMenu").then((response: any) => {
+    axios.get("/api/menus/getMenu").then((response: AxiosResponse) => {
       console.log(response.data.menu);
       setMenus(response.data.menu);
     });
   }, []);
 
   const MenuCategoryList = menus.filter(
-    (menu: any) => menu.menuCategory === category
+    (menu: MenuInfo) => menu.menuCategory === category
   );
 
   return (
@@ -28,7 +33,7 @@ const MenuList: React.FunctionComponent<MenuListProps> = ({ category }) => {
         <div className="inner-items">
           <ul className="list">
             {category === "all"
-              ? menus.map((menu: any, index) => (
+              ? menus.map((menu: MenuInfo, index) => (
                   <li key={index}>
                     <a href="">
                       <div className="menu-img"></div>
@@ -36,7 +41,7 @@ const MenuList: React.FunctionComponent<MenuListProps> = ({ category }) => {
                     </a>
                   </li>
                 ))
-              : MenuCategoryList.map((menu: any, index) => (
+              : MenuCategoryList.map((menu: MenuInfo, index) => (
                   <li key={index}>
                     <a href="">
                       <div className="menu-img"></div>

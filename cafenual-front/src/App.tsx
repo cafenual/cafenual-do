@@ -24,7 +24,7 @@ function App() {
             <Route path="/menu/upload" exact component={MenuUpload} />
           </Switch>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </div>
   );

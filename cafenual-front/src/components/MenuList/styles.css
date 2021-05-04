@@ -8,13 +8,12 @@
 .inner-items .list{
     overflow: hidden;
     width: 1008px;
-    height:1008px;
 }
 
 .inner-items .list li{
     float: left;
     width: 322px;
-    height: 415px;
+    height: 430px;
     padding: 25px 28px 0 0;
 }
 
