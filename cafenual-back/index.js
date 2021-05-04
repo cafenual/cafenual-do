@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import config from "./config/key";
+import cookieParser from "cookie-parser";
 
 import usersRouter from "./routers/usersRouter";
 import menusRouter from "./routers/menusRouter";
@@ -10,6 +11,7 @@ const PORT = 4000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 mongoose
   .connect(config.mongoURI, {

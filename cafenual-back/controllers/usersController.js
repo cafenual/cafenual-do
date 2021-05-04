@@ -1,4 +1,5 @@
 import User from "../models/User";
+import cookieParser from "cookie-parser";
 
 // 회원가입
 export const join = (req, res) => {
@@ -35,11 +36,27 @@ export const login = (req, res) => {
       }
 
       // 비밀번호가 맞다면 토큰 생성하기
-      // 토큰 생성은 나중에 할 거기 떄문에 우선은 return true로 설정하자
-      return res.status(200).json({
-        loginSuccess: true,
-        userId: user._id,
+      user.generateToken((err, user) => {
+        if (err) return res.status(400).send(err);
+
+        // 토큰을 저장한다. 어디에? 쿠키에
+        res.cookie("x_auth", user.token).status(200).json({
+          loginSuccess: true,
+          userId: user._id,
+        });
       });
     });
+  });
+};
+
+// 권한
+export const auth = (req, res) => {
+  // 여기까지 미들웨어를 통과해 왔다는 얘기는 Authentication이 True 라는 말.
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
   });
 };

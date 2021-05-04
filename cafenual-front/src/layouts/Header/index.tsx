@@ -17,31 +17,22 @@ const Header = () => {
 
   return (
     <div id="Header">
-      <div className="header-nav">
+      <div className="header-menu">
         <div className="header-logo">
           <a href="/">
             <h1>cafenual</h1>
           </a>
         </div>
-        <div className="header-search">
-          <div className="search-input">
-            <input type="text" />
-          </div>
 
-          <div className="search-click">
-            <AiOutlineSearch size="24" />
-          </div>
-        </div>
-
-        <div className="header-menu">
-          <div className="menu-ico" onClick={() => onToggle()}>
-            <AiOutlineMenu size="24" />
-          </div>
-          <div className={menu === false ? "" : "menu-on"}>
-            {" "}
-            {/* menu-on */}
-            <Menu menu={menu} onToggle={onToggle} slide={slide} />
-          </div>
+        <div className="header-nav">
+          <ul>
+            <li>
+              <a href="/login">로그인</a>
+            </li>
+            <li>
+              <a href="/join">회원가입</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
