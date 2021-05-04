@@ -22,3 +22,15 @@ export const getMenu = (req, res) => {
     });
   });
 };
+
+// 메뉴 상세정보 불러오기
+export const getMenuDetail = (req, res) => {
+  console.log(req.body);
+  Menu.findOne({ _id: req.body.menuId }, (err, menu) => {
+    if (err) return res.status(400).send(err);
+    return res.status(200).json({
+      success: true,
+      menu,
+    });
+  });
+};

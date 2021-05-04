@@ -35,7 +35,7 @@ const MenuList: React.FunctionComponent<MenuListProps> = ({ category }) => {
             {category === "all"
               ? menus.map((menu: MenuInfo, index) => (
                   <li key={index}>
-                    <a href="">
+                    <a href={`/menu/detail/${menu._id}`}>
                       <div className="menu-img"></div>
                       <div className="menu-name">{menu.menuName}</div>
                     </a>
@@ -43,7 +43,7 @@ const MenuList: React.FunctionComponent<MenuListProps> = ({ category }) => {
                 ))
               : MenuCategoryList.map((menu: MenuInfo, index) => (
                   <li key={index}>
-                    <a href="">
+                    <a href={`/menu/detail/${menu._id}`}>
                       <div className="menu-img"></div>
                       <div className="menu-name">{menu.menuName}</div>
                     </a>

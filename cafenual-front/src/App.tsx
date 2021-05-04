@@ -4,6 +4,7 @@ import Commute from "pages/Commute";
 import Join from "pages/Join";
 import Login from "pages/Login";
 import Main from "pages/Main";
+import MenuDetail from "pages/MenuDetail";
 import MenuUpload from "pages/MenuUpload";
 import MenuView from "pages/MenuView";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -22,9 +23,10 @@ function App() {
             <Route path="/join" component={Join} />
             <Route path="/menu/list/:category?" exact component={MenuView} />
             <Route path="/menu/upload" exact component={MenuUpload} />
+            <Route path="/menu/detail/:id?" exact component={MenuDetail} />
           </Switch>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );
