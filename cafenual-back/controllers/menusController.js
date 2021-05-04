@@ -1,12 +1,7 @@
-import express from "express";
 import Menu from "../models/Menu";
 
-const router = express.Router();
-
-//메뉴 업로드
-
-router.post("/upload", (req, res) => {
-  console.log(req.body);
+// 메뉴 업로드
+export const upload = (req, res) => {
   const menu = new Menu(req.body);
   console.log(menu);
   menu.save((err, menuInfo) => {
@@ -15,13 +10,15 @@ router.post("/upload", (req, res) => {
       success: true,
     });
   });
-});
+};
 
-router.post("/getMenu", (req, res) => {
+// 메뉴 불러오기
+export const getMenu = (req, res) => {
   Menu.find().exec((err, menu) => {
     if (err) return res.status(400).send(err);
-    return res.status(200).json({ success: true, menu });
+    return res.status(200).json({
+      success: true,
+      menu,
+    });
   });
-});
-
-module.exports = router;
+};
