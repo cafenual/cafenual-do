@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
-import Menu from "layouts/Menu";
+import axios from "axios";
 
 const Header = () => {
-  const [menu, setMenu] = useState(false);
-  const [slide, setSlide] = useState(false);
-
-  const onToggle = () => {
-    setMenu(!menu);
-    function slideMenu() {
-      return setTimeout(() => setSlide(!slide), 100);
-    }
-    slideMenu();
+  const onClick = () => {
+    axios.get("/api/users/logout").then((response) => {
+      console.log(response.data);
+    });
   };
 
   return (
@@ -32,6 +26,7 @@ const Header = () => {
             <li>
               <a href="/join">회원가입</a>
             </li>
+            <button onClick={onClick}>로그아웃</button>
           </ul>
         </div>
       </div>

@@ -54,9 +54,35 @@ export const auth = (req, res) => {
   // 여기까지 미들웨어를 통과해 왔다는 얘기는 Authentication이 True 라는 말.
   res.status(200).json({
     _id: req.user._id,
-    isAdmin: req.user.role === 0 ? false : true,
+    isAdmin: req.user.role === 0 ? false : true, // 0 -> 일반유저     1-> 어드민 계정
     isAuth: true,
     email: req.user.email,
     name: req.user.name,
   });
+};
+
+// 로그아웃
+
+export const logout = (req, res) => {
+  // findOneAndUpdate : 유저를 찾은 뒤 업데이트를 시켜줌
+
+  User.findOneAndUpdate(
+    {
+      _id: req.user._id,
+    },
+    {
+      token: "",
+    },
+    (err, user) => {
+      if (err)
+        return res.json({
+          success: false,
+          err,
+        });
+
+      return res.status(200).send({
+        success: true,
+      });
+    }
+  );
 };
