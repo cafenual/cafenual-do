@@ -12,7 +12,6 @@ interface PathParamsProps {
 }
 
 const Login = (props: PathParamsProps) => {
-
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: "",
@@ -37,7 +36,7 @@ const Login = (props: PathParamsProps) => {
       password,
     };
 
-    // dispatch(loginUser(body))
+    dispatch(loginUser(body))
     // .then(response=>{
     //   if(response.payload.loginSuccess){
     //     props.history.push("/")
