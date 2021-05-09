@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { loginUser } from "_actions/user_action";
 import "./styles.css";
@@ -12,6 +12,7 @@ interface PathParamsProps {
 }
 
 const Login = (props: PathParamsProps) => {
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: "",
@@ -36,7 +37,8 @@ const Login = (props: PathParamsProps) => {
       password,
     };
 
-    dispatch(loginUser(body))
+    dispatch(loginUser(body));
+
     // .then(response=>{
     //   if(response.payload.loginSuccess){
     //     props.history.push("/")
@@ -45,14 +47,14 @@ const Login = (props: PathParamsProps) => {
     //   }
     // })
 
-    axios.post("/api/users/login", body).then((response) => {
-      console.log(response.data);
-      if (response.data.loginSuccess) {
-        props.history.push("/");
-      } else {
-        alert("로그인에 실패 했습니다. 다시 시도 해주세요!");
-      }
-    });
+    // axios.post("/api/users/login", body).then((response) => {
+    //   console.log(response.data);
+    //   if (response.data.loginSuccess) {
+    //     props.history.push("/");
+    //   } else {
+    //     alert("로그인에 실패 했습니다. 다시 시도 해주세요!");
+    //   }
+    // });
   };
 
   return (
