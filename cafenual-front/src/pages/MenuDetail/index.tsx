@@ -10,6 +10,7 @@ interface MenuDetailProps {
 
 const MenuDetail: React.FunctionComponent<MenuDetailProps> = ({ match }) => {
   const menuId = match.params.id;
+  console.log(menuId);
   const [menuName, setMenuName] = useState("");
 
   useEffect(() => {
@@ -20,7 +21,12 @@ const MenuDetail: React.FunctionComponent<MenuDetailProps> = ({ match }) => {
         setMenuName(response.data.menu.menuName);
       });
   }, []);
-  return <div>{menuName}</div>;
+  return (
+    <div>
+      {menuName}
+      <a href={`/menu/modify/${menuId}`}>메뉴 정보수정</a>
+    </div>
+  );
 };
 
 export default MenuDetail;

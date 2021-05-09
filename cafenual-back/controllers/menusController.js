@@ -34,3 +34,29 @@ export const getMenuDetail = (req, res) => {
     });
   });
 };
+
+// 메뉴 수정
+export const menuModify = (req, res) => {
+  console.log("수정할 매뉴 : " + req.body);
+  Menu.findOneAndUpdate(
+    { _id: req.body.menuId },
+    {
+      menuName: req.body.menuName,
+      menuRecipe: req.body.menuRecipe,
+      menuCategory: req.body.menuCategory,
+    },
+    (err, menu) => {
+      if (err) return res.status(400).json({ success: false });
+      return res.status(200).json({ success: true, menu });
+    }
+  );
+};
+
+// 메뉴 삭제
+export const menuDelete = (req, res) => {
+  console.log("삭제할 메뉴 : " + req.body);
+  Menu.findOneAndDelete({ _id: req.body.menuId }, (err, menu) => {
+    if (err) return res.status(400).json({ success: false });
+    return res.status(200).json({ success: true });
+  });
+};
