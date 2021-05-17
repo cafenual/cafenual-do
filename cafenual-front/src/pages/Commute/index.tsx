@@ -65,46 +65,29 @@ const Commute = () => {
 
   return (
     <div id="Commute">
-      <div className="commute-page">
-        <div className="commute-date">
-          <span>
-            {year}-{month}-{date} {week[day]}
-          </span>
-        </div>
-
-        <div className="commute-user">
-          <span className="commute-user-name">이도현님 </span>
-          <span>{commuteMessage}</span>
-        </div>
-
-        <div className="commute-btn">
-          <button
-            style={
-              attendanceState === 0
-                ? { background: "#444263" }
-                : { background: "#89898d" }
-            }
-            className="attendance btn"
-            onClick={attendance}
-          >
-            출근
-          </button>
-          <button
-            style={
-              leaveState === 0
-                ? { background: "#444263" }
-                : { background: "#89898d" }
-            }
-            className="leave btn"
-            onClick={leave}
-          >
-            퇴근
-          </button>
-        </div>
-
-        <div className="commute-result">
-          <span>좋은 하루 되세요 ! </span>
-        </div>
+      <div className="commute-btn">
+        <button
+          style={
+            attendanceState === 0
+              ? { background: "#444263" }
+              : { background: "#89898d" }
+          }
+          className="attendance btn"
+          onClick={attendance}
+        >
+          출근
+        </button>
+        <button
+          style={
+            leaveState === 0
+              ? { background: "#444263" }
+              : { background: "#89898d" }
+          }
+          className="leave btn"
+          onClick={leave}
+        >
+          퇴근
+        </button>
       </div>
     </div>
   );

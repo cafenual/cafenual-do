@@ -1,19 +1,84 @@
-#StaffDashBoard .top-block{
-    display: flex;
+#StaffDashBoard .top-block {
+  display: flex;
+  padding-bottom: 70px;
 }
 
-#StaffDashBoard .schedule{
-    display: flex;
+#StaffDashBoard .top-block .schedule {
+  display: flex;
 }
 
-.left-box{
-    width:400px;
+.top-block .left-box {
+  width: 400px;
 }
 
-.dashboard-box{
-    width: 350px;
-    height: 350px;
-    background-color: #fff;
-    border-radius: 20px;
-    margin-right: 46px;
+.tit {
+  padding-bottom: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.dashboard-box {
+  width: 350px;
+  height: 350px;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-right: 50px;
+  box-shadow: 0 13px 27px -30px rgba(50, 50, 93, 0.25),
+    0 8px 16px -13px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+.schedule .dashboard-box {
+  margin: 0 25px;
+}
+
+.top-block .right-box .tit {
+  text-align: center;
+}
+
+.bottom-block {
+  display: flex;
+}
+
+.commute-box {
+  width: 400px;
+}
+
+.commute-btn {
+  width: 350px;
+  height: 85px;
+  font-size: 25px;
+  border-radius: 14px;
+  background: rgb(18, 113, 175);
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: bold;
+  margin-right: 50px;
+}
+
+.bottom-block .dashboard-box {
+  margin-left: 25px;
+  height: 192px;
+  width: 750px;
+  margin-right: 25px;
+}
+
+.work-time {
+  width: 250px;
+  height: 615px;
+  background-color: #fff;
+  position: absolute;
+  top: 90px;
+  right: 130px;
+  border-radius: 15px;
+  box-shadow: 0 13px 27px -30px rgb(50 50 93 / 25%),
+    0 8px 16px -13px rgb(0 0 0 / 30%), 0 -6px 16px -6px rgb(0 0 0 / 3%);
+}
+
+@media screen and (max-width: 1900px) {
+  body .work-time {
+    display: none;
+  }
 }

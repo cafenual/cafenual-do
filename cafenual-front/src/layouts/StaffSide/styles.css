@@ -31,9 +31,10 @@
   background: rgb(234 240 244);
 }
 
-.nav ul .active a{
+.active svg, .active span{
   color: rgb(18, 113, 175);
 }
+
 
 
 .nav li a svg {

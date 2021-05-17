@@ -24,7 +24,18 @@ const StaffDashBoard = () => {
           </div>
         </div>
       </div>
-      <div className="bottom-block"></div>
+      <div className="bottom-block">
+        <div className="commute-box">
+          <button className="commute-btn">출근 하기</button>
+          <button className="commute-btn">퇴근 하기</button>
+        </div>
+
+        <div className="notice-box">
+          <div className="dashboard-box">공지사항</div>
+        </div>
+      </div>
+
+      <div className="work-time">일한시간</div>
     </div>
   );
 };

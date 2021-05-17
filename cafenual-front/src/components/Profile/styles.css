@@ -1,0 +1,41 @@
+#Profile {
+  padding: 20px;
+}
+
+.dashboard-box-tit {
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard-box-tit span,
+svg {
+  color: rgb(127, 127, 127);
+}
+
+.dashboard-box-tit a {
+  display: flex;
+  align-items: center;
+}
+
+.profile-img {
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-info {
+  padding: 10px 45px;
+}
+
+.profile-info .info {
+  margin-bottom: 10px;
+}
+
+.info-option {
+  width: 120px;
+  display: inline-block;
+  text-align: center;
+  color: #767676;
+}
+
+.info-des {
+  font-size:18px;
+}
