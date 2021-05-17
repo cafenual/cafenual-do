@@ -1,0 +1,41 @@
+#StaffSide {
+  width: 250px;
+  height: 900px;
+  position: fixed;
+  left: 0;
+  border-right: 1px solid #d8d5d5;
+  background-color: #fff;
+}
+
+
+
+.nav-title {
+  padding: 10px 20px;
+  color: #b2b0b0;
+}
+
+#StaffSide .nav li {
+  margin: 4px 17px;
+  padding: 10px 45px;
+  border-radius: 10px;
+}
+
+.nav li a {
+  color: rgb(84, 110, 122);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.active{
+  background: rgb(234 240 244);
+}
+
+.nav ul .active a{
+  color: rgb(18, 113, 175);
+}
+
+
+.nav li a svg {
+  margin-right: 5px;
+}

@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Sniglet&display=swap");
 
-
 body {
   font-family: "Noto Sans KR", sans-serif;
-  background-color: #fff;
+  background-color: rgb(245, 246, 247);
+  padding: 77px 0 0 250px;
 }
 
 #container {
@@ -50,6 +50,16 @@ input:focus {
 }
 
 #main {
-  max-width: 1050px;
-  margin: 0 auto;
+  padding: 20px 25px;
+  min-width: 1900px;
+
+}
+
+h1{
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }

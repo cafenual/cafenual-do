@@ -6,9 +6,10 @@ export const loginUser = (body) => {
     .post("/api/users/login", body)
     .then((response) => response.data);
 
-
   return {
     type: LOGIN_USER,
     payload: request,
   };
 };
+
+export const goToHome = () => {};

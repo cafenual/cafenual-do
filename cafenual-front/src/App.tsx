@@ -1,9 +1,9 @@
-import Footer from "layouts/Footer";
 import Header from "layouts/Header";
+import StaffSide from "layouts/StaffSide";
 import Commute from "pages/Commute";
 import Join from "pages/Join";
 import Login from "pages/Login";
-import Main from "pages/Main";
+import StaffDashBoard from "pages/StaffDashBoard";
 import MenuDetail from "pages/MenuDetail";
 import MenuModify from "pages/MenuModify";
 import MenuUpload from "pages/MenuUpload";
@@ -17,9 +17,10 @@ function App() {
     <div id="container">
       <BrowserRouter>
         <Header />
+        <StaffSide />
         <div id="main">
           <Switch>
-            <Route path="/" exact component={Main} />
+            <Route path="/" exact component={StaffDashBoard} />
             <Route path="/login" component={Login} />
             <Route path="/commute" component={Commute} />
             <Route path="/join" component={Join} />

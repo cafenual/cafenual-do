@@ -1,0 +1,19 @@
+#StaffDashBoard .top-block{
+    display: flex;
+}
+
+#StaffDashBoard .schedule{
+    display: flex;
+}
+
+.left-box{
+    width:400px;
+}
+
+.dashboard-box{
+    width: 350px;
+    height: 350px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-right: 46px;
+}
