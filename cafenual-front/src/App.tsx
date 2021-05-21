@@ -20,7 +20,7 @@ function App() {
         <StaffSide />
         <div id="main">
           <Switch>
-            <Route path="/" exact component={StaffDashBoard} />
+            <Route path="/staff" exact component={StaffDashBoard} />
             <Route path="/login" component={Login} />
             <Route path="/commute" component={Commute} />
             <Route path="/join" component={Join} />

@@ -3,6 +3,7 @@ import "./styles.css";
 import axios from "axios";
 import { BiFoodMenu, BiBell, BiCalendarEdit } from "react-icons/bi";
 import { BsGrid, BsPieChartFill } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const onClick = () => {
@@ -11,11 +12,16 @@ const Header = () => {
     });
   };
 
+  const activeStyle = {
+    backgroundColor: "rgb(234 240 244)",
+    color: "rgb(18, 113, 175)",
+  };
+
   return (
     <div id="Header">
       <div className="header-menu">
         <div className="header-logo">
-          <a href="/">
+          <a href="/staff">
             <BsPieChartFill size="30" />
             <span className="h1">cafenual</span>
           </a>
@@ -24,39 +30,39 @@ const Header = () => {
         <div className="header-nav">
           <div className="left-nav nav">
             <ul>
-              <li className="active">
-                <a>
+              <li>
+                <NavLink to={"/staff"} activeStyle={activeStyle}>
                   <BsGrid />
                   <span>대시보드</span>
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a>
+                <NavLink to={"/menu/list"} exact activeStyle={activeStyle}>
                   <BiFoodMenu />
                   <span>메뉴레시피</span>
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a>
+                <NavLink to={"/notice"} exact activeStyle={activeStyle}>
                   <BiBell />
                   <span>공지사항</span>
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a>
+                <NavLink to={"/dsad"} exact activeStyle={activeStyle}>
                   <BiCalendarEdit />
                   <span>인수인계</span>
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
           <div className="right-nav">
             <ul>
               <li>
-                <a>로그인</a>
+                <a href="/login">로그인</a>
               </li>
               <li>
-                <a>회원가입</a>
+                <a href="/join">회원가입</a>
               </li>
               <li>
                 <a>로그아웃</a>

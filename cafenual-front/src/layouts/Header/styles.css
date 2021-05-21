@@ -96,13 +96,15 @@
 
 .header-nav .left-nav li {
   float: left;
-  padding: 10px 20px;
   font-size: 16px;
   border-radius: 10px;
 }
 
 .header-nav .left-nav li a {
   color: #333;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-left: 10px;
 }
 
 .header-nav .right-nav li {
