@@ -1,23 +1,21 @@
 import Header from "layouts/Header";
-import StaffSide from "layouts/StaffSide";
 import Commute from "pages/Commute";
 import Join from "pages/Join";
 import Login from "pages/Login";
-import StaffDashBoard from "pages/StaffDashBoard";
-import MenuDetail from "pages/MenuDetail";
-import MenuModify from "pages/MenuModify";
-import MenuUpload from "pages/MenuUpload";
-import MenuView from "pages/MenuView";
-import Notice from "pages/Notice";
+import StaffDashBoard from "pages/Staff/StaffDashBoard";
+import MenuDetail from "pages/MenuRecipe/MenuDetail";
+import MenuModify from "pages/MenuRecipe/MenuModify";
+import MenuUpload from "pages/MenuRecipe/MenuUpload";
+import MenuView from "pages/MenuRecipe/MenuView";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
+import NoticeList from "pages/Notice/NoticeList";
 
 function App() {
   return (
     <div id="container">
       <BrowserRouter>
         <Header />
-        <StaffSide />
         <div id="main">
           <Switch>
             <Route path="/staff" exact component={StaffDashBoard} />
@@ -27,11 +25,10 @@ function App() {
             <Route path="/menu/list/:category?" exact component={MenuView} />
             <Route path="/menu/upload" exact component={MenuUpload} />
             <Route path="/menu/detail/:id?" exact component={MenuDetail} />
-            <Route path="/notice" exact component={Notice} />
             <Route path="/menu/modify/:id?" exact component={MenuModify} />
+            <Route path="/notice" exact component={NoticeList} />
           </Switch>
         </div>
-        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );

@@ -1,17 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.css";
-import axios from "axios";
+
 import { BiFoodMenu, BiBell, BiCalendarEdit } from "react-icons/bi";
 import { BsGrid, BsPieChartFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
+import RightNav from "./RightNav";
 
 const Header = () => {
-  const onClick = () => {
-    axios.get("/api/users/logout").then((response) => {
-      console.log(response.data);
-    });
-  };
-
   const activeStyle = {
     backgroundColor: "rgb(234 240 244)",
     color: "rgb(18, 113, 175)",
@@ -56,37 +51,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div className="right-nav">
-            <ul>
-              <li>
-                <a href="/login">로그인</a>
-              </li>
-              <li>
-                <a href="/join">회원가입</a>
-              </li>
-              <li>
-                <a>로그아웃</a>
-              </li>
-            </ul>
-          </div>
-          {/* <ul>
-            <li>
-              <a href="/menu/upload">메뉴 업로드</a>
-            </li>
-            <li>
-              <a href="/menu/list">메뉴보기</a>
-            </li>
-            <li>
-              <a href="/notice">공지사항</a>
-            </li>
-            <li>
-              <a href="/login">로그인</a>
-            </li>
-            <li>
-              <a href="/join">회원가입</a>
-            </li>
-            <button onClick={onClick}>로그아웃</button>
-          </ul> */}
+          <RightNav />
         </div>
       </div>
     </div>

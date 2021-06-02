@@ -1,6 +1,7 @@
-import MenuCategory from "components/MenuCategory";
-import MenuList from "components/MenuList";
+import MenuCategory from "components/MenuRecipe/MenuCategory";
+import MenuList from "components/MenuRecipe/MenuList";
 import React from "react";
+import "./styles.css";
 
 interface MenuViewProps {
   match: any;

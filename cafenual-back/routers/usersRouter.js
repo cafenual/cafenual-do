@@ -9,6 +9,6 @@ const router = express.Router();
 router.post("/join", join); // 회원가입
 router.post("/login", login); // 로그인
 router.get("/auth", authMiddleware, auth); // 권한
-router.get("/logout", authMiddleware, logout);
+router.post("/logout", logout);
 
 export default router;

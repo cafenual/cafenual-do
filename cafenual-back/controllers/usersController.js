@@ -65,10 +65,10 @@ export const auth = (req, res) => {
 
 export const logout = (req, res) => {
   // findOneAndUpdate : 유저를 찾은 뒤 업데이트를 시켜줌
-
+  console.log(req.body);
   User.findOneAndUpdate(
     {
-      _id: req.user._id,
+      _id: req.body._id,
     },
     {
       token: "",
