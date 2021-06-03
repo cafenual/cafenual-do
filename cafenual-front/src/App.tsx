@@ -10,6 +10,7 @@ import MenuView from "pages/MenuRecipe/MenuView";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import NoticeList from "pages/Notice/NoticeList";
+import Transition from "pages/Transition";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/menu/detail/:id?" exact component={MenuDetail} />
             <Route path="/menu/modify/:id?" exact component={MenuModify} />
             <Route path="/notice" exact component={NoticeList} />
+            <Route path="/transition" exact component={Transition} />
           </Switch>
         </div>
       </BrowserRouter>

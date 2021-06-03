@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles.scss";
 import { AiOutlineSearch } from "react-icons/ai";
-import Pagination from "components/Notice/Pagination";
+import Pagination from "components/Pagination";
 import { paginate } from "utils/Paginate";
 
 const NoticeList = () => {

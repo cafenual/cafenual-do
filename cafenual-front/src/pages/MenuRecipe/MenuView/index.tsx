@@ -1,5 +1,5 @@
-import MenuCategory from "components/MenuRecipe/MenuCategory";
-import MenuList from "components/MenuRecipe/MenuList";
+import MenuCategory from "components/MenuRecipeCategory";
+import MenuList from "components/MenuRecipeList";
 import React from "react";
 import "./styles.css";
 

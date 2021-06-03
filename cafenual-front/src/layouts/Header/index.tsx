@@ -1,7 +1,12 @@
 import React from "react";
 import "./styles.css";
 
-import { BiFoodMenu, BiBell, BiCalendarEdit } from "react-icons/bi";
+import {
+  BiFoodMenu,
+  BiBell,
+  BiCalendarEdit,
+  BiCoffeeTogo,
+} from "react-icons/bi";
 import { BsGrid, BsPieChartFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import RightNav from "./RightNav";
@@ -33,7 +38,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink to={"/menu/list"} exact activeStyle={activeStyle}>
-                  <BiFoodMenu />
+                  <BiCoffeeTogo />
                   <span>메뉴레시피</span>
                 </NavLink>
               </li>
@@ -44,9 +49,15 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/dsad"} exact activeStyle={activeStyle}>
+                <NavLink to={"/transition"} exact activeStyle={activeStyle}>
                   <BiCalendarEdit />
                   <span>인수인계</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"/workmanual"} exact activeStyle={activeStyle}>
+                  <BiFoodMenu />
+                  <span>업무매뉴얼</span>
                 </NavLink>
               </li>
             </ul>

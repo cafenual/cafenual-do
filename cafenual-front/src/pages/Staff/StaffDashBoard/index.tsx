@@ -1,4 +1,4 @@
-import Profile from "components/Staff/Profile";
+import Profile from "components/StaffDashBoardProfile";
 import StaffSide from "layouts/StaffSide";
 import React from "react";
 import "./styles.css";

@@ -1,62 +1,9 @@
-/* #Header {
-  margin: 0 auto;
-  min-width: 320px;
-  position: relative;
-  padding: 30px;
-  border-bottom: 1px solid #ebebeb;
-}
-
-
-.header-menu {
-  position: relative;
-  display: flex;
-  align-items: center;
-  max-width: 1050px;
-  justify-content: space-between;
-  margin: 0 auto;
-}
-
-.header-logo h1 {
-  padding-right: 20px;
-  font-family: "Patrick Hand", cursive;
-  font-family: "Sniglet", cursive;
-  font-size: 30px;
-}
-
-.header-nav ul li{
-  float:left;
-}
-
-.header-nav ul li a{
-  padding:8px;
-}
-
-
-
-
-
-@media screen and (max-width: 600px) {
-    body #Header{
-        padding:15px;
-    }
-
-    body .login-form .login-form-tit{
-        padding-top:30px; 
-    }
-
-  
-
-    body .header-logo h1{
-        font-size:20px;
-    }
-
-  } */
-
 #Header {
   border-bottom: 1px solid #d8d5d5;
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 100;
   width: 100%;
   background-color: #fff;
   min-width: 1100px;

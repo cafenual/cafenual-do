@@ -11,12 +11,17 @@ body {
   padding-left: 250px;
 }
 
-.center-layout {
+.page-layout {
+  margin: 0 auto;
 }
 
 #container {
   position: relative;
   overflow: hidden;
+}
+
+#main {
+  padding: 35px 70px;
 }
 
 ul {
@@ -56,10 +61,6 @@ input:focus {
   outline: none;
 }
 
-#main {
-  padding: 35px 70px;
-}
-
 h1 {
   margin: 0;
   padding: 0;
@@ -67,4 +68,10 @@ h1 {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+}
+
+button {
+  border: 0 none;
+  background-color: transparent;
+  cursor: pointer;
 }
