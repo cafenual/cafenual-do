@@ -55,7 +55,7 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/workmanual"} exact activeStyle={activeStyle}>
+                <NavLink to={"/workmanual/"} activeStyle={activeStyle}>
                   <BiFoodMenu />
                   <span>업무매뉴얼</span>
                 </NavLink>

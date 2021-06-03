@@ -11,6 +11,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import NoticeList from "pages/Notice/NoticeList";
 import Transition from "pages/Transition";
+import WorkManual from "pages/WorkManual";
+import NoticeUpload from "pages/Notice/NoticeUpload";
+import NoticeDetail from "pages/Notice/NoticeDetail";
+import NoticeEdit from "pages/Notice/NoticeEdit";
 
 function App() {
   return (
@@ -27,8 +31,12 @@ function App() {
             <Route path="/menu/upload" exact component={MenuUpload} />
             <Route path="/menu/detail/:id?" exact component={MenuDetail} />
             <Route path="/menu/modify/:id?" exact component={MenuModify} />
-            <Route path="/notice" exact component={NoticeList} />
             <Route path="/transition" exact component={Transition} />
+            <Route path="/workmanual/:category?" component={WorkManual} />
+            <Route path="/notice" exact component={NoticeList} />
+            <Route path="/notice/upload" exact component={NoticeUpload} />
+            <Route path="/notice/edit/:id?" component={NoticeEdit} />
+            <Route path="/notice/:id?" component={NoticeDetail} />
           </Switch>
         </div>
       </BrowserRouter>

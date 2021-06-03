@@ -25,11 +25,7 @@ const Pagination = ({
   const pages = _.range(1, pageCount + 1); // 마지막 페이지에 보여줄 컨텐츠를 위해 +1을 해줌 https://lodash.com/docs/#range 참고
   return (
     <div className="inner-paging">
-      <a
-        href={"javascript:void(0)"}
-        onClick={() => onPageChange(1)}
-        className="paging-btn paging-fst"
-      >
+      <a onClick={() => onPageChange(1)} className="paging-btn paging-fst">
         <AiOutlineDoubleLeft size="14" />
       </a>
       <a
