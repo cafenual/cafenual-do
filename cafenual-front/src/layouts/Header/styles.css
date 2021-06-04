@@ -12,7 +12,8 @@
 .header-menu {
   display: flex;
   align-items: center;
-  padding: 15px 20px;
+  padding: 5px 20px;
+  height:70px;
 }
 
 .header-logo {
@@ -49,7 +50,7 @@
 
 .header-nav .left-nav li a {
   color: #333;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-radius: 10px;
   margin-left: 10px;
 }

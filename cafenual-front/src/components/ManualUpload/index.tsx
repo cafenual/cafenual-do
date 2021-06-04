@@ -1,5 +1,5 @@
 import React from "react";
-import CKEditor from "@ckeditor/ckeditor5-react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import "./styles.scss";
 

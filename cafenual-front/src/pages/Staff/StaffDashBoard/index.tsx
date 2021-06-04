@@ -1,12 +1,14 @@
 import Profile from "components/StaffDashBoardProfile";
-import StaffSide from "layouts/StaffSide";
+import AdminSideNav from "layouts/SideNav/AdminSideNav";
+import StaffSideNav from "layouts/SideNav/StaffSideNav";
 import React from "react";
 import "./styles.css";
 
 const StaffDashBoard = () => {
   return (
     <>
-      <StaffSide />
+      {/* <AdminSideNav /> */}
+      <StaffSideNav />
       <div id="StaffDashBoard" className="side-layout">
         <div className="top-block">
           <div className="left-box">

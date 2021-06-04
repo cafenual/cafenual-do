@@ -15,6 +15,10 @@ import WorkManual from "pages/WorkManual";
 import NoticeUpload from "pages/Notice/NoticeUpload";
 import NoticeDetail from "pages/Notice/NoticeDetail";
 import NoticeEdit from "pages/Notice/NoticeEdit";
+import StaffAccountInfo from "pages/Staff/StaffAccountInfo";
+import StaffPayroll from "pages/Staff/StaffPayroll";
+import StaffScheduler from "pages/Staff/StaffScheduler";
+import StaffWorkingTime from "pages/Staff/StaffWorkingTime";
 
 function App() {
   return (
@@ -24,6 +28,18 @@ function App() {
         <div id="main">
           <Switch>
             <Route path="/staff" exact component={StaffDashBoard} />
+            <Route
+              path="/staff/accountinfo"
+              exact
+              component={StaffAccountInfo}
+            />
+            <Route path="/staff/payroll" exact component={StaffPayroll} />
+            <Route path="/staff/scheduler" exact component={StaffScheduler} />
+            <Route
+              path="/staff/workingtime"
+              exact
+              component={StaffWorkingTime}
+            />
             <Route path="/login" component={Login} />
             <Route path="/commute" component={Commute} />
             <Route path="/join" component={Join} />

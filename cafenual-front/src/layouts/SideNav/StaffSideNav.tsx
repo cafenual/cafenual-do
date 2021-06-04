@@ -1,10 +1,15 @@
 import React from "react";
 import "./styles.css";
-import { AiFillHome, AiFillClockCircle } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiFillClockCircle,
+  AiFillDollarCircle,
+} from "react-icons/ai";
 import { BsFillPersonLinesFill, BsCalendarFill } from "react-icons/bs";
+import { BiDollar } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 
-const StaffSide = () => {
+const StaffSideNav = () => {
   const activeStyle = {
     backgroundColor: "rgb(234 240 244)",
     color: "rgb(18, 113, 175)",
@@ -32,21 +37,27 @@ const StaffSide = () => {
         </div>
         <ul>
           <li>
-            <NavLink to={"/staff/asdasd"} exact activeStyle={activeStyle}>
+            <NavLink to={"/staff/accountinfo"} exact activeStyle={activeStyle}>
               <BsFillPersonLinesFill />
               <span>계정정보</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to={"/staff/asdasdasd"} exact activeStyle={activeStyle}>
+            <NavLink to={"/staff/scheduler"} exact activeStyle={activeStyle}>
               <BsCalendarFill />
               <span>스케줄러</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to={"/staff/asdasdasdasdasd"} exact activeStyle={activeStyle}>
+            <NavLink to={"/staff/workingtime"} exact activeStyle={activeStyle}>
               <AiFillClockCircle />
               <span>일한시간</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/staff/payroll"} exact activeStyle={activeStyle}>
+              <BiDollar />
+              <span>급여내역</span>
             </NavLink>
           </li>
         </ul>
@@ -55,4 +66,4 @@ const StaffSide = () => {
   );
 };
 
-export default StaffSide;
+export default StaffSideNav;

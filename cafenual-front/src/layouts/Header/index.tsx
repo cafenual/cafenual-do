@@ -6,6 +6,7 @@ import {
   BiBell,
   BiCalendarEdit,
   BiCoffeeTogo,
+  BiMessageDots,
 } from "react-icons/bi";
 import { BsGrid, BsPieChartFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
@@ -58,6 +59,12 @@ const Header = () => {
                 <NavLink to={"/workmanual/"} activeStyle={activeStyle}>
                   <BiFoodMenu />
                   <span>업무매뉴얼</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"/message"} activeStyle={activeStyle}>
+                  <BiMessageDots />
+                  <span>쪽지함</span>
                 </NavLink>
               </li>
             </ul>

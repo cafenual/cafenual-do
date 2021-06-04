@@ -13,6 +13,7 @@ const WorkManual = ({ match }: any) => {
 
   const ToggleButton = () => {
     setUploadState(!uploadState);
+    console.log("dd");
   };
 
   return (
