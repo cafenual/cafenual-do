@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+import "./styles.scss";
 
 import {
   BiFoodMenu,
@@ -10,12 +10,11 @@ import {
 } from "react-icons/bi";
 import { BsGrid, BsPieChartFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
-import RightNav from "./RightNav";
 
 const Header = () => {
   const activeStyle = {
-    backgroundColor: "rgb(234 240 244)",
-    color: "rgb(18, 113, 175)",
+    backgroundColor: "rgb(236, 239, 241)",
+    color: "#000",
   };
 
   return (
@@ -50,18 +49,6 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/transition"} exact activeStyle={activeStyle}>
-                  <BiCalendarEdit />
-                  <span>인수인계</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={"/workmanual/"} activeStyle={activeStyle}>
-                  <BiFoodMenu />
-                  <span>업무매뉴얼</span>
-                </NavLink>
-              </li>
-              <li>
                 <NavLink to={"/message"} activeStyle={activeStyle}>
                   <BiMessageDots />
                   <span>쪽지함</span>
@@ -69,7 +56,13 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <RightNav />
+          <div className="right-nav">
+            <ul>
+              <li>
+                <button>로그아웃</button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

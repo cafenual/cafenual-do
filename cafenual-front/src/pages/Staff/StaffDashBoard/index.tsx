@@ -1,4 +1,6 @@
 import Profile from "components/StaffDashBoardProfile";
+import Footer from "layouts/Footer";
+import Header from "layouts/Header";
 import AdminSideNav from "layouts/SideNav/AdminSideNav";
 import StaffSideNav from "layouts/SideNav/StaffSideNav";
 import React from "react";
@@ -7,7 +9,7 @@ import "./styles.css";
 const StaffDashBoard = () => {
   return (
     <>
-      {/* <AdminSideNav /> */}
+      <Header />
       <StaffSideNav />
       <div id="StaffDashBoard" className="side-layout">
         <div className="top-block">
@@ -39,9 +41,9 @@ const StaffDashBoard = () => {
             <div className="dashboard-box">공지사항</div>
           </div>
         </div>
-
-        <div className="work-time">일한시간</div>
       </div>
+
+      <Footer />
     </>
   );
 };

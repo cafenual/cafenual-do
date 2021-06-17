@@ -1,4 +1,3 @@
-import Header from "layouts/Header";
 import Commute from "pages/Commute";
 import Join from "pages/Join";
 import Login from "pages/Login";
@@ -8,7 +7,7 @@ import MenuModify from "pages/MenuRecipe/MenuModify";
 import MenuUpload from "pages/MenuRecipe/MenuUpload";
 import MenuView from "pages/MenuRecipe/MenuView";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import NoticeList from "pages/Notice/NoticeList";
 import Transition from "pages/Transition";
 import WorkManual from "pages/WorkManual";
@@ -24,7 +23,6 @@ function App() {
   return (
     <div id="container">
       <BrowserRouter>
-        <Header />
         <div id="main">
           <Switch>
             <Route path="/staff" exact component={StaffDashBoard} />

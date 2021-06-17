@@ -48,7 +48,7 @@
   height: 85px;
   font-size: 25px;
   border-radius: 14px;
-  background: rgb(18, 113, 175);
+  background: #000;
   color: #fff;
   border: none;
   outline: none;
@@ -63,22 +63,4 @@
   height: 192px;
   width: 750px;
   margin-right: 25px;
-}
-
-.work-time {
-  width: 250px;
-  height: 615px;
-  background-color: #fff;
-  position: absolute;
-  top: 90px;
-  right: 130px;
-  border-radius: 15px;
-  box-shadow: 0 13px 27px -30px rgb(50 50 93 / 25%),
-    0 8px 16px -13px rgb(0 0 0 / 30%), 0 -6px 16px -6px rgb(0 0 0 / 3%);
-}
-
-@media screen and (max-width: 1900px) {
-  body .work-time {
-    display: none;
-  }
 }
