@@ -1,5 +1,7 @@
 #Profile {
   padding: 20px;
+  width: 100%;
+  height: 100%;
 }
 
 .dashboard-box-tit {
@@ -16,26 +18,45 @@ svg {
   align-items: center;
 }
 
+.profile-box {
+  width: 100%;
+  height: 100%;
+}
+
 .profile-img {
   text-align: center;
   padding: 20px;
 }
 
 .profile-info {
-  padding: 10px 45px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+}
+
+.profile-info-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .profile-info .info {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .info-option {
-  width: 120px;
+  margin-right: 10px;
   display: inline-block;
   text-align: center;
   color: #767676;
+  width: 32%;
+  font-size: 16px;
 }
 
 .info-des {
-  font-size:18px;
+  font-size: 20px;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { AiFillClockCircle, AiFillHome } from "react-icons/ai";
 import { BsCalendarFill, BsFillPersonLinesFill } from "react-icons/bs";
+import { BiDollar } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import "./styles.scss";
 
@@ -31,8 +32,8 @@ const Footer = () => {
         </li>
         <li>
           <NavLink to={"/staff/workingtime"} exact activeStyle={activeStyle}>
-            <AiFillClockCircle size="22" />
-            <span>일한시간</span>
+            <BiDollar size="22" />
+            <span>급여내역</span>
           </NavLink>
         </li>
       </ul>

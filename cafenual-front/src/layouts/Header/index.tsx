@@ -11,6 +11,7 @@ import {
 import { BsGrid, BsPieChartFill } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
   const activeStyle = {
@@ -18,17 +19,27 @@ const Header = () => {
     color: "#000",
   };
 
+  const [headerMenuState, setHeaderMenuState] = useState(false);
+
+  const HeaderMenuToggle = () => {
+    setHeaderMenuState(!headerMenuState);
+  };
+
   return (
     <div id="Header">
-      <div className="header-menu">
+      <div
+        className={
+          headerMenuState === true ? "header-menu menu-active" : "header-menu"
+        }
+      >
         <div className="header-logo">
           <a href="/staff">
             <BsPieChartFill size="30" />
             <span className="h1">cafenual</span>
           </a>
-          <div className="mobile-btn">
+          <button onClick={HeaderMenuToggle} className="mobile-btn">
             <AiOutlineMenu size="30" />
-          </div>
+          </button>
         </div>
 
         <div className="header-nav">
@@ -53,9 +64,9 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="list">
-                <NavLink to={"/message"} activeStyle={activeStyle}>
+                <NavLink to={"/memo"} activeStyle={activeStyle}>
                   <BiMessageDots />
-                  <span>쪽지함</span>
+                  <span>메모</span>
                 </NavLink>
               </li>
             </ul>
@@ -71,6 +82,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <div className={headerMenuState === true ? "header-bgc" : ""}></div>
     </div>
   );
 };

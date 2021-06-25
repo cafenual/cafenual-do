@@ -8,8 +8,9 @@ body {
 }
 
 .side-layout {
-  padding: 20px 0px 20px 307px;
+  padding: 20px 20px 20px 307px;
   height: 100vh;
+  background: #f8fafc;
 }
 
 .page-layout {
@@ -76,11 +77,19 @@ button {
   cursor: pointer;
 }
 
+@media screen and (max-width: 1440px) {
+  body {
+    padding: 50px 0 0 0;
+    .side-layout {
+      padding: 20px 20px 20px 150px;
+    }
+  }
+}
 
 @media screen and (max-width: 768px) {
-  body{
-    .side-layout{
-      padding-left:10px;
+  body {
+    .side-layout {
+      padding-left: 10px;
     }
   }
 }

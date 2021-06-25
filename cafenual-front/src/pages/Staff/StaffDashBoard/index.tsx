@@ -1,10 +1,10 @@
-import Profile from "components/StaffDashBoardProfile";
+import Profile from "components/DashBoard/Profile";
 import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import AdminSideNav from "layouts/SideNav/AdminSideNav";
 import StaffSideNav from "layouts/SideNav/StaffSideNav";
 import React from "react";
-import "./styles.css";
+import "./styles.scss";
 
 const StaffDashBoard = () => {
   return (
@@ -12,34 +12,19 @@ const StaffDashBoard = () => {
       <Header />
       <StaffSideNav />
       <div id="StaffDashBoard" className="side-layout">
+        <div className="tit">
+          <span>DashBoard</span>
+        </div>
         <div className="top-block">
-          <div className="left-box">
-            <div className="tit">
-              <span>DashBoard</span>
-            </div>
-            <div className="dashboard-box">
-              <Profile />
-            </div>
+          <div className="dashboard-box profile">
+            <Profile />
           </div>
-          <div className="right-box">
-            <div className="tit">
-              <span>2021-05-17</span>
-            </div>
-            <div className="schedule">
-              <div className="dashboard-box">전체스케줄</div>
-              <div className="dashboard-box">개인스케줄</div>
-            </div>
-          </div>
+          <div className="dashboard-box schedule">스케줄</div>
+          <div className="dashboard-box payroll">급여내역</div>
         </div>
         <div className="bottom-block">
-          <div className="commute-box">
-            <button className="commute-btn">출근 하기</button>
-            <button className="commute-btn">퇴근 하기</button>
-          </div>
-
-          <div className="notice-box">
-            <div className="dashboard-box">공지사항</div>
-          </div>
+          <div className="dashboard-box">공지사항</div>
+          <div className="dashboard-box">메모사항</div>
         </div>
       </div>
 

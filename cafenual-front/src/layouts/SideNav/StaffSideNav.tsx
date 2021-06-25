@@ -42,8 +42,8 @@ const StaffSideNav = () => {
           </li>
           <li>
             <NavLink to={"/staff/workingtime"} exact activeStyle={activeStyle}>
-              <AiFillClockCircle />
-              <span>일한시간</span>
+              <BiDollar  />
+              <span>급여내역</span>
             </NavLink>
           </li>
         </ul>

@@ -4,6 +4,8 @@ import "./styles.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import Pagination from "components/Pagination";
 import { paginate } from "utils/Paginate";
+import Header from "layouts/Header";
+import Footer from "layouts/Footer";
 
 const NoticeList = () => {
   const [getNotices, setGetNotices] = useState([]);
@@ -41,71 +43,78 @@ const NoticeList = () => {
   };
 
   return (
-    <div id="Notice" className="page-layout">
-      <div className="tit">
-        <h4 className="tit-corp">공지사항</h4>
-        <div className="upload">
-          <a href="/notice/upload">작성</a>
+    <>
+      <Header />
+      <div id="Notice" className="page-layout">
+        <div className="tit">
+          <h4 className="tit-corp">공지사항</h4>
+          <div className="upload">
+            <a href="/notice/upload">작성</a>
+          </div>
         </div>
-      </div>
-      <div className="cont">
-        <div className="search-comm">
-          <form action="">
-            <fieldset>
-              <input
-                type="text"
-                className="search-input"
-                placeholder="검색어를 입력해주세요"
-              />
-              <button type="submit" className="search-btn">
-                <AiOutlineSearch size="23" />
-              </button>
-            </fieldset>
-          </form>
-        </div>
+        <div className="cont">
+          <div className="search-comm">
+            <form action="">
+              <fieldset>
+                <input
+                  type="text"
+                  className="search-input"
+                  placeholder="검색어를 입력해주세요"
+                />
+                <button type="submit" className="search-btn">
+                  <AiOutlineSearch size="23" />
+                </button>
+              </fieldset>
+            </form>
+          </div>
 
-        <div className="table-comm">
-          <table className="table">
-            <colgroup>
-              <col className="left" />
-              <col className="right" />
-            </colgroup>
-            <thead>
-              <tr>
-                <th scope="col">내용</th>
-                <th scope="col">등록일</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pagedNotices.map((notice, index) => (
-                <tr key={index}>
-                  <td className="td-left">
-                    <div className="inner-cont">
-                      <span className="inner-text">
-                        <a href={`/notice/${notice.id}`} className="link-text">
-                          {notice.title}
-                        </a>
-                      </span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="inner-cont inner-date">2021-05-19</div>
-                  </td>
+          <div className="table-comm">
+            <table className="table">
+              <colgroup>
+                <col className="left" />
+                <col className="right" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">내용</th>
+                  <th scope="col">등록일</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {pagedNotices.map((notice, index) => (
+                  <tr key={index}>
+                    <td className="td-left">
+                      <div className="inner-cont">
+                        <span className="inner-text">
+                          <a
+                            href={`/notice/${notice.id}`}
+                            className="link-text"
+                          >
+                            {notice.title}
+                          </a>
+                        </span>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inner-cont inner-date">2021-05-19</div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-        <div className="paging-comm">
-          <Pagination
-            currentPage={currentPage}
-            onPageChange={handlePageChange}
-            pageCount={pageCount}
-          />
+          <div className="paging-comm">
+            <Pagination
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+              pageCount={pageCount}
+            />
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

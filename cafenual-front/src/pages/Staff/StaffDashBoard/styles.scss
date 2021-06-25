@@ -1,0 +1,42 @@
+#StaffDashBoard {
+  .tit {
+    padding: 10px;
+  }
+  .top-block,
+  .bottom-block {
+    display: flex;
+    justify-content: space-between;
+    height: 40%;
+    .dashboard-box {
+      box-shadow: rgba(67, 67, 67, 0.03%) 0px 1rem 1rem;
+      width: 30%;
+      background: #fff;
+      border-radius: 20px;
+    }
+  }
+
+  .top-block {
+    margin-bottom: 20px;
+  }
+
+  .bottom-block {
+    .dashboard-box {
+      width: 48%;
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  body {
+    #StaffDashBoard {
+      .top-block {
+        .profile {
+          display: none;
+        }
+        .dashboard-box {
+          width: 48%;
+        }
+      }
+    }
+  }
+}
