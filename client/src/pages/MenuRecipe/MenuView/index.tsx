@@ -1,5 +1,7 @@
 import MenuCategory from "components/MenuRecipeCategory";
 import MenuList from "components/MenuRecipeList";
+import Header from "layouts/Header";
+import StaffSideNav from "layouts/SideNav/StaffSideNav";
 import React from "react";
 import "./styles.css";
 
@@ -12,10 +14,14 @@ const MenuView: React.FunctionComponent<MenuViewProps> = ({ match }) => {
   console.log(match);
 
   return (
-    <div id="menu-page">
-      <MenuCategory />
-      <MenuList category={category} />
-    </div>
+    <>
+      <Header />
+      <StaffSideNav />
+      <div id="menu-page">
+        <MenuCategory />
+        <MenuList category={category} />
+      </div>
+    </>
   );
 };
 
