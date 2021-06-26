@@ -1,11 +1,27 @@
 import express, { Request, Response, NextFunction } from "express";
+import mongoose from "mongoose";
+import userRouter from "./routers/userRouter";
+import "dotenv/config";
 
 const app = express();
+const PORT = process.env.PORT;
 
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res.send("hello");
-});
+app.use("/api/v1/user", userRouter);
 
-app.listen(4000, () => {
-  console.log("start : http://localhost:4000");
+
+
+// DB 실행
+mongoose
+  .connect(process.env.DBURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("MongoDB Connected.... "))
+  .catch((err) => console.log(err));
+
+// 서버 실행
+app.listen(PORT, () => {
+  console.log(`connect ✅ http://localhost:${PORT}`);
 });
