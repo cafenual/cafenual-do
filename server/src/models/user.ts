@@ -1,16 +1,33 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 import validator from "validator";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
-export interface IUser extends Document {
+const saltRounds: number = 10;
+
+export interface IUser {
   email: string;
   password: string;
   name: string;
   phoneNumber: string;
   address: string;
   addressDetail: string;
+  wage: number;
+  status: string;
+  token: string;
 }
 
-const UserSchema: Schema = new Schema(
+export interface IUserMethod extends IUser, Document {
+  setPassword: (password: string) => Promise<void>;
+  generateToken: () => Promise<string>;
+  serialize: () => Promise<JSON>;
+}
+
+export interface IUserStatics extends Model<IUserMethod> {
+  findByEmail: (email: string) => Promise<IUserMethod>;
+}
+
+const UserSchema: Schema<IUserMethod> = new Schema(
   {
     email: {
       type: String,
@@ -18,59 +35,98 @@ const UserSchema: Schema = new Schema(
       unique: true,
       lowercase: true,
       trim: true,
-      validate(value) {
+      validate(value: string) {
         if (!validator.isEmail(value)) {
-          throw new Error("Email is not Exist");
+          throw new Error("Email is invalid");
         }
       },
     },
-
     name: {
       type: String,
       required: true,
       trim: true,
     },
-
     password: {
       type: String,
       required: true,
       trim: true,
       minLength: 6,
-      validate(value) {
+      validate(value: string) {
         if (value.toLowerCase().includes("password")) {
           throw new Error("Password can not contain a word password");
         }
       },
     },
-
     phoneNumber: {
       type: String,
       required: true,
       trim: true,
     },
-
     wage: {
       type: Number,
       trim: true,
       default: 0,
     },
-
     status: {
       type: String,
       enum: ["재직자", "퇴직자"],
       default: "재직자",
     },
 
-    tokens: [
-      {
-        token: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
+    token: {
+      type: String,
+    },
+
+    address: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    addressDetail: {
+      type: String,
+      required: true,
+      trim: true,
+    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model<IUser>("User", UserSchema);
+// 이메일이 디비에 있는지 확인
+UserSchema.statics.findByEmail = function (email: string) {
+  return this.findOne({ email });
+};
+
+// 비밀번호 hash
+UserSchema.methods.setPassword = async function (password: string) {
+  const hash = await bcrypt.hash(password, saltRounds);
+  this.password = hash;
+};
+
+// 토큰 발급하기
+UserSchema.methods.generateToken = async function () {
+  const token = jwt.sign(
+    {
+      _id: this._id,
+      email: this.email,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "7d", // 7일 동안 유효함
+    }
+  );
+  this.token = token;
+
+  await this.save();
+  return token;
+};
+
+// 응답할 데이터에서 password 필드 제거
+UserSchema.methods.serialize = function () {
+  const data = this.toJSON();
+  delete data.password;
+  return data;
+};
+
+const User = mongoose.model<IUserMethod, IUserStatics>("User", UserSchema);
+
+export default User;

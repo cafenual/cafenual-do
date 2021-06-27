@@ -6,9 +6,10 @@ import "dotenv/config";
 const app = express();
 const PORT = process.env.PORT;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true}))
+
 app.use("/api/v1/user", userRouter);
-
-
 
 // DB 실행
 mongoose
@@ -18,7 +19,7 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: false,
   })
-  .then(() => console.log("MongoDB Connected.... "))
+  .then(() => console.log("connect ✅ MongoDB Connected.... "))
   .catch((err) => console.log(err));
 
 // 서버 실행
