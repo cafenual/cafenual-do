@@ -15,12 +15,14 @@ export interface IUser {
   wage: number;
   status: string;
   token: string;
+  role: string;
 }
 
 export interface IUserMethod extends IUser, Document {
   setPassword: (password: string) => Promise<void>;
   generateToken: () => Promise<string>;
   serialize: () => Promise<JSON>;
+  checkPassword: (password: string) => Promise<boolean>;
 }
 
 export interface IUserStatics extends Model<IUserMethod> {
@@ -73,6 +75,11 @@ const UserSchema: Schema<IUserMethod> = new Schema(
       default: "재직자",
     },
 
+    role: {
+      type: String,
+      enum: ["admin", "staff", "parttime"],
+      default: "parttime",
+    },
     token: {
       type: String,
     },
@@ -94,6 +101,12 @@ const UserSchema: Schema<IUserMethod> = new Schema(
 // 이메일이 디비에 있는지 확인
 UserSchema.statics.findByEmail = function (email: string) {
   return this.findOne({ email });
+};
+
+// 입력받은 비밀번호, 디비에 저장된 비밀번호 비교
+UserSchema.methods.checkPassword = async function (password: string) {
+  const result = await bcrypt.compare(password, this.password);
+  return result; // true or false
 };
 
 // 비밀번호 hash
