@@ -33,15 +33,18 @@ const Join = (props: PathParamsProps) => {
       email: userEmail,
       password: userPw,
       name: userName,
+      phoneNumber: "01011112222",
+      address: "시흥",
+      addressDetail: "배곧",
     };
 
-    axios.post("/api/users/join", body).then((response) => {
+    axios.post("/api/v1/user/register", body).then((response) => {
       console.log(response.data);
-      if (response.data.success) {
-        props.history.push("/login");
-      } else {
-        alert("회원가입에 실패했습니다. 다시 시도해 주세요");
-      }
+      // if (response.data.success) {
+      //   props.history.push("/login");
+      // } else {
+      //   alert("회원가입에 실패했습니다. 다시 시도해 주세요");
+      // }
     });
   };
 

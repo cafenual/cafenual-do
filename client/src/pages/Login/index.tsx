@@ -36,15 +36,15 @@ const Login = (props: PathParamsProps) => {
       password,
     };
 
-    axios.post("/api/users/login", body).then((response) => {
+    axios.post("/api/v1/user/login", body).then((response) => {
       console.log(response.data);
-      if (response.data.loginSuccess) {
-        props.dispatchUser(response.data.userId);
-        props.history.push("/");
-        window.localStorage.setItem("userId", response.data.userId);
-      } else {
-        alert("로그인에 실패 했습니다. 다시 시도 해주세요!");
-      }
+      // if (response.data.loginSuccess) {
+      //   props.dispatchUser(response.data.userId);
+      //   props.history.push("/");
+      //   window.localStorage.setItem("userId", response.data.userId);
+      // } else {
+      //   alert("로그인에 실패 했습니다. 다시 시도 해주세요!");
+      // }
     });
   };
 

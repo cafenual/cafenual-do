@@ -121,11 +121,9 @@ UserSchema.methods.generateToken = async function () {
     {
       _id: this._id,
       email: this.email,
+      name: this.name,
     },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: "7d", // 7일 동안 유효함
-    }
+    process.env.JWT_SECRET
   );
   this.token = token;
 

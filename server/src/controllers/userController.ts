@@ -26,16 +26,10 @@ export const register = async (req: Request, res: Response) => {
     // 응답할 데이터에서 password 필드 제거
     const data = user.serialize();
 
-    res
-      .cookie("access_token", token, {
-        maxAge: 1000 * 60 * 60 * 24 * 7,
-        httpOnly: true,
-      })
-      .status(200)
-      .json({
-        success: true,
-        user: data,
-      });
+    res.cookie("x_auth", token).status(200).json({
+      success: true,
+      user: data,
+    });
   } catch (e) {
     res.status(500).json({
       error: e,
@@ -74,19 +68,14 @@ export const login = async (req: Request, res: Response) => {
       });
     }
 
-    const token = user.generateToken();
+    const token = await user.generateToken();
+
     const data = user.serialize();
 
-    res
-      .cookie("access_token", token, {
-        maxAge: 1000 * 60 * 60 * 24 * 7,
-        httpOnly: true,
-      })
-      .status(200)
-      .json({
-        success: true,
-        user: data,
-      });
+    res.cookie("x_auth", token).status(200).json({
+      success: true,
+      user: data,
+    });
   } catch (e) {
     res.status(500).json({
       error: e,

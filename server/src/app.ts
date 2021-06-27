@@ -2,12 +2,17 @@ import express, { Request, Response, NextFunction } from "express";
 import mongoose from "mongoose";
 import userRouter from "./routers/userRouter";
 import "dotenv/config";
+import userAuth from "./lib/userAuth";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true}))
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.use(userAuth);
 
 app.use("/api/v1/user", userRouter);
 
