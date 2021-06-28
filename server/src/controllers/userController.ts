@@ -82,3 +82,12 @@ export const login = async (req: Request, res: Response) => {
     });
   }
 };
+
+
+// 로그아웃
+export const logout = async (req: Request, res: Response) => {
+  res.cookie("access_token", "").status(204).json({
+    success: true,
+    message: "Success Log out !"
+  })
+}

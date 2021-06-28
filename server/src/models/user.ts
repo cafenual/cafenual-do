@@ -47,6 +47,7 @@ const UserSchema: Schema<IUserMethod> = new Schema(
       type: String,
       required: true,
       trim: true,
+      
     },
     password: {
       type: String,
