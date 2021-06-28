@@ -29,8 +29,8 @@ const Profile = () => {
               <span className="info-des">{user.name}</span>
             </div>
             <div className="profile-age info">
-              <span className="info-option">휴대폰번호</span>
-              <span className="info-des">{user.phoneNumber}</span>
+              <span className="info-option">직책</span>
+              <span className="info-des">{user.role}</span>
             </div>
             <div className="profile-id info">
               <span className="info-option">이메일</span>

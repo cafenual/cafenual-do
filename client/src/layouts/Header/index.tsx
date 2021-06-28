@@ -38,7 +38,6 @@ const Header = () => {
       _id: "",
       email: "",
       name: "",
-      phoneNumber: "",
       role: "",
       status: "",
       token: "",

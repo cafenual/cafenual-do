@@ -8,8 +8,8 @@
   display: flex;
   justify-content: space-between;
 }
-.dashboard-box-tit span,
-svg {
+#Profile .dashboard-box-tit span,
+#Profile svg {
   color: rgb(127, 127, 127);
 }
 

@@ -1,0 +1,110 @@
+.accounts-form {
+  width: 400px;
+  margin: 0 auto;
+
+  .accounts-ico {
+    color: #4a3cea;
+    margin-bottom: 20px;
+  }
+
+  .accounts-form-tit {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 10px 0;
+  }
+
+  .accounts-des {
+    font-size: 14px;
+    color: #545976;
+    padding: 5px 0;
+  }
+
+  .accounts-social {
+    margin: 30px 0 20px;
+    .google-btn {
+      button {
+        display: flex;
+        align-items: center;
+        border: 1px solid #bcbbbb;
+        width: 100%;
+        border-radius: 20px;
+        padding: 10px;
+        font-weight: 700;
+        justify-content: center;
+        svg {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .accounts-message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: center;
+    .message-before,
+    .message-after {
+      width: 125px;
+      border: 1px solid #ccc9c9;
+      height: 0px;
+    }
+    .message {
+      font-size: 12px;
+      padding: 10px;
+      color: #999;
+    }
+  }
+
+  form {
+    label {
+      margin: 10px 0;
+      display: block;
+      span {
+        color: #4a3cea;
+      }
+    }
+    input {
+      border: 1px solid #bcbbbb;
+      width: 100%;
+      border-radius: 20px;
+      padding: 15px;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      border: 1px solid #bcbbbb;
+      width: 100%;
+      border-radius: 20px;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 30px;
+      font-weight: 700;
+      background-color: #4a3cea;
+      color: #fff;
+      justify-content: center;
+    }
+  }
+
+  .accounts-link {
+    margin: 15px 0;
+    font-size: 14px;
+    color: #2c2c2c;
+    a {
+      color: #4a3cea;
+      font-weight: 600;
+      margin-left: 5px;
+    }
+  }
+}
+
+.cafenual {
+  display: block;
+  padding-top: 16px;
+  font-style: normal;
+  font-size: 13px;
+  color: #949296;
+  line-height: 22px;
+  letter-spacing: 0;
+  margin-bottom: 50px;
+}

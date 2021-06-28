@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./styles.css";
+import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import user, { SetUser } from "modules/users";
 import { useEffect } from "react";
 import { reduxStoreState } from "modules";
 import { useHistory } from "react-router-dom";
+import { BsLightningFill } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 
 const Join = () => {
   const history = useHistory();
@@ -16,10 +18,9 @@ const Join = () => {
     passwordCheck: "",
     name: "",
     email: "",
-    phoneNumber: "",
   });
 
-  const { password, passwordCheck, name, email, phoneNumber } = joinForm;
+  const { password, passwordCheck, name, email } = joinForm;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
@@ -36,7 +37,6 @@ const Join = () => {
       email,
       password,
       name,
-      phoneNumber,
     };
 
     axios.post("/api/v1/user/register", body).then((response) => {
@@ -49,7 +49,7 @@ const Join = () => {
   useEffect(() => {
     if (user.email) {
       console.log("유저가 있습니다.");
-      history.push("/dashboard");
+      history.push("/");
       try {
         sessionStorage.setItem("user", JSON.stringify(user));
       } catch (e) {
@@ -62,10 +62,35 @@ const Join = () => {
 
   return (
     <div id="Join">
-      <div className="join-form">
-        <div className="join-form-tit">Join</div>
+      <div className="accounts-form">
+        <div className="accounts-ico">
+          <BsLightningFill size="30" />
+        </div>
+        <div className="accounts-form-tit">회원가입</div>
+        <div className="accounts-des">
+          카페 알바들을 위한 서비스를 이용해보세요!
+        </div>
+
+        <div className="accounts-social">
+          <div className="google-btn">
+            <button>
+              <FcGoogle size="24" />
+              Sign up with Google
+            </button>
+          </div>
+        </div>
+
+        <div className="accounts-message">
+          <div className="message-before"></div>
+          <span className="message">or Sign up with Email</span>
+          <div className="message-after"></div>
+        </div>
+
         <form action="" onSubmit={onSubmit}>
-          <label>이메일</label>
+          <label>
+            이메일
+            <span>*</span>
+          </label>
           <input
             type="email"
             placeholder="이메일을 입력해주세요"
@@ -74,7 +99,9 @@ const Join = () => {
             onChange={onChange}
           />
 
-          <label>비밀번호</label>
+          <label>
+            비밀번호<span>*</span>
+          </label>
           <input
             type="password"
             placeholder="비밀번호를 입력해주세요"
@@ -82,7 +109,9 @@ const Join = () => {
             name="password"
             onChange={onChange}
           />
-          <label>비밀번호 확인</label>
+          <label>
+            비밀번호 확인<span>*</span>
+          </label>
           <input
             type="password"
             placeholder="비밀번호를 다시 입력해주세요"
@@ -90,7 +119,9 @@ const Join = () => {
             name="passwordCheck"
             onChange={onChange}
           />
-          <label>이름</label>
+          <label>
+            이름<span>*</span>
+          </label>
           <input
             type="text"
             placeholder="이름을 입력해주세요"
@@ -98,19 +129,18 @@ const Join = () => {
             name="name"
             onChange={onChange}
           />
-          <label>휴대폰 번호</label>
-          <input
-            type="number"
-            placeholder="휴대폰 번호를 입력해주세요"
-            value={phoneNumber}
-            name="phoneNumber"
-            onChange={onChange}
-          />
 
-          <button type="submit" className="join-btn">
+          <button type="submit" className="accounts-btn">
             회원가입
           </button>
         </form>
+
+        <div className="accounts-link">
+          <span className="link-des">이미 회원이신가요??</span>
+          <a href="">로그인</a>
+        </div>
+
+        <div className="cafenual">©2021 cafenual</div>
       </div>
     </div>
   );

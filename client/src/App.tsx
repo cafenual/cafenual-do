@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
         <div id="main">
           <Switch>
-            <Route path="/dashboard" exact component={DashBoard} />
+            <Route path="/" exact component={DashBoard} />
             <Route path="/login" component={Login} />
             <Route path="/join" component={Join} />
             <Route path="/menu/list/:category?" exact component={MenuView} />

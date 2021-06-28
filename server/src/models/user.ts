@@ -9,7 +9,6 @@ export interface IUser {
   email: string;
   password: string;
   name: string;
-  phoneNumber: string;
   wage: number;
   status: string;
   token: string;
@@ -57,11 +56,6 @@ const UserSchema: Schema<IUserMethod> = new Schema(
           throw new Error("Password can not contain a word password");
         }
       },
-    },
-    phoneNumber: {
-      type: String,
-      required: true,
-      trim: true,
     },
     wage: {
       type: Number,
