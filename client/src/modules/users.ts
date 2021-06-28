@@ -39,6 +39,7 @@ const user = createSlice({
             state.wage = wage
             state._id = _id
         },
+
     }
 })
 

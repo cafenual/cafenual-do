@@ -1,17 +1,16 @@
 import Profile from "components/DashBoard/Profile";
 import Footer from "layouts/Footer";
 import Header from "layouts/Header";
-import AdminSideNav from "layouts/SideNav/AdminSideNav";
 import StaffSideNav from "layouts/SideNav/StaffSideNav";
 import React from "react";
 import "./styles.scss";
 
-const StaffDashBoard = () => {
+const DashBoard = () => {
   return (
     <>
       <Header />
       <StaffSideNav />
-      <div id="StaffDashBoard" className="side-layout">
+      <div id="DashBoard" className="side-layout">
         <div className="tit">
           <span>DashBoard</span>
         </div>
@@ -33,4 +32,4 @@ const StaffDashBoard = () => {
   );
 };
 
-export default StaffDashBoard;
+export default DashBoard;

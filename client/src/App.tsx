@@ -1,6 +1,6 @@
 import Join from "pages/Join";
 import Login from "pages/Login";
-import StaffDashBoard from "pages/Staff/StaffDashBoard";
+import DashBoard from "pages/DashBoard";
 import MenuDetail from "pages/MenuRecipe/MenuDetail";
 import MenuModify from "pages/MenuRecipe/MenuModify";
 import MenuUpload from "pages/MenuRecipe/MenuUpload";
@@ -10,10 +10,8 @@ import NoticeList from "pages/Notice/NoticeList";
 import NoticeUpload from "pages/Notice/NoticeUpload";
 import NoticeDetail from "pages/Notice/NoticeDetail";
 import NoticeEdit from "pages/Notice/NoticeEdit";
-import StaffAccountInfo from "pages/Staff/StaffAccountInfo";
-import StaffPayroll from "pages/Staff/StaffPayroll";
-import StaffScheduler from "pages/Staff/StaffScheduler";
 import "./App.scss";
+
 
 function App() {
   return (
@@ -21,18 +19,7 @@ function App() {
       <BrowserRouter>
         <div id="main">
           <Switch>
-            <Route path="/parttime" exact component={StaffDashBoard} />
-            <Route
-              path="/parttime/accountinfo"
-              exact
-              component={StaffAccountInfo}
-            />
-            <Route path="/parttime/payroll" exact component={StaffPayroll} />
-            <Route
-              path="/parttime/scheduler"
-              exact
-              component={StaffScheduler}
-            />
+            <Route path="/dashboard" exact component={DashBoard} />
             <Route path="/login" component={Login} />
             <Route path="/join" component={Join} />
             <Route path="/menu/list/:category?" exact component={MenuView} />

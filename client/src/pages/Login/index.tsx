@@ -1,8 +1,16 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { reduxStoreState } from "modules";
+import { SetUser } from "modules/users";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./styles.css";
 
 const Login = () => {
+  const history = useHistory();
+  const user = useSelector((state: reduxStoreState) => state.user);
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -26,10 +34,34 @@ const Login = () => {
       password,
     };
 
-    axios.post("/api/v1/user/login", body).then((response) => {
-      console.log(response.data);
-    });
+    axios
+      .post("/api/v1/user/login", body)
+      .then((response) => {
+        console.log(response);
+        let userBody = response.data.user;
+        dispatch(SetUser(userBody));
+      })
+      .catch(function (error) {
+        // status 코드가 200이 아닌경우 처리
+        if (error) {
+          alert("로그인에 실패하였습니다.");
+        }
+      });
   };
+
+  useEffect(() => {
+    if (user.email) {
+      console.log("유저가 있습니다.");
+      history.push("/dashboard");
+      try {
+        sessionStorage.setItem("user", JSON.stringify(user));
+      } catch (e) {
+        console.log("로컬 스토리지 저장에 실패했습니다");
+      }
+    } else {
+      console.log("유저가 없습니다.");
+    }
+  }, [user, history]);
 
   return (
     <div id="Login">

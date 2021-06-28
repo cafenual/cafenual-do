@@ -10,10 +10,18 @@ import {
 } from "react-icons/bi";
 import { BsGrid, BsPieChartFill } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useState } from "react";
+import user, { SetUser, userState } from "modules/users";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { reduxStoreState } from "modules";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector((state: reduxStoreState) => state.user);
   const activeStyle = {
     backgroundColor: "rgb(236, 239, 241)",
     color: "#000",
@@ -24,6 +32,44 @@ const Header = () => {
   const HeaderMenuToggle = () => {
     setHeaderMenuState(!headerMenuState);
   };
+
+  const logoutHandler = () => {
+    let UserBody: userState = {
+      _id: "",
+      email: "",
+      name: "",
+      phoneNumber: "",
+      role: "",
+      status: "",
+      token: "",
+      wage: 0,
+    };
+
+    axios
+      .post("/api/v1/user/logout")
+      .then((response) => {
+        console.log(response);
+        if (response.data.success) {
+          sessionStorage.removeItem("user"); // sessionStorage에서 user를 제거
+          dispatch(SetUser(UserBody));
+        }
+      })
+      .catch(function (error) {
+        // status 코드가 200이 아닌경우
+        if (error) {
+          alert("로그아웃에 실패했습니다.");
+        }
+      });
+  };
+
+  useEffect(() => {
+    if (user.email) {
+      console.log("로그인 한 상태 입니다.");
+    } else {
+      console.log("로그 아웃 상태입니다.");
+      history.push("/login");
+    }
+  }, [user, history]);
 
   return (
     <div id="Header">
@@ -75,7 +121,7 @@ const Header = () => {
             <ul>
               <li className="list">
                 <div className="logout">
-                  <button>로그아웃</button>
+                  <button onClick={logoutHandler}>로그아웃</button>
                 </div>
               </li>
             </ul>

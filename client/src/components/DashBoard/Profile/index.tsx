@@ -1,8 +1,12 @@
 import React from "react";
 import "./styles.css";
 import { BsChevronRight, BsPerson } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { reduxStoreState } from "modules";
 
 const Profile = () => {
+  const user = useSelector((state: reduxStoreState) => state.user);
+
   return (
     <div id="Profile">
       <div className="dashboard-box-tit">
@@ -22,19 +26,19 @@ const Profile = () => {
           <div className="profile-info-box">
             <div className="profile-name info">
               <span className="info-option">이름</span>
-              <span className="info-des">이도현</span>
+              <span className="info-des">{user.name}</span>
             </div>
             <div className="profile-age info">
-              <span className="info-option">나이</span>
-              <span className="info-des">24</span>
+              <span className="info-option">휴대폰번호</span>
+              <span className="info-des">{user.phoneNumber}</span>
             </div>
             <div className="profile-id info">
-              <span className="info-option">아이디</span>
-              <span className="info-des">ksmfou98</span>
+              <span className="info-option">이메일</span>
+              <span className="info-des">{user.email}</span>
             </div>
             <div className="profile-wage info">
               <span className="info-option">시급</span>
-              <span className="info-des">8000원</span>
+              <span className="info-des">{user.wage} 원</span>
             </div>
           </div>
         </div>

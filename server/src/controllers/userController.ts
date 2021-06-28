@@ -21,7 +21,7 @@ export const register = async (req: Request, res: Response) => {
     await user.setPassword(password); // 비밀번호 설정
     await user.save(); // 데이터베이스에 저장
 
-    const token = user.generateToken(); // 토큰 생성
+    const token = await user.generateToken(); // 토큰 생성
 
     // 응답할 데이터에서 password 필드 제거
     const data = user.serialize();
@@ -86,7 +86,7 @@ export const login = async (req: Request, res: Response) => {
 
 // 로그아웃
 export const logout = async (req: Request, res: Response) => {
-  res.cookie("access_token", "").status(204).json({
+  res.cookie("x_auth", "").status(200).json({
     success: true,
     message: "Success Log out !"
   })

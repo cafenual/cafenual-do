@@ -49,12 +49,7 @@ const Join = () => {
   useEffect(() => {
     if (user.email) {
       console.log("유저가 있습니다.");
-      if (user.role === "parttime") {
-        history.push("/parttime");
-      } else {
-        history.push("/staff");
-      }
-
+      history.push("/dashboard");
       try {
         sessionStorage.setItem("user", JSON.stringify(user));
       } catch (e) {
