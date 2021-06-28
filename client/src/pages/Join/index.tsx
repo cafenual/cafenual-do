@@ -1,25 +1,28 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./styles.css";
-import { RouteComponentProps } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import user, { SetUser } from "modules/users";
+import { useEffect } from "react";
+import { reduxStoreState } from "modules";
+import { useHistory } from "react-router-dom";
 
-interface PathParamsProps {
-  history: RouteComponentProps["history"];
-  location: RouteComponentProps["location"];
-  match: RouteComponentProps["match"];
-}
-
-const Join = (props: PathParamsProps) => {
+const Join = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const user = useSelector((state: reduxStoreState) => state.user);
   const [joinForm, setJoinForm] = useState({
-    userPw: "",
-    userPwCheck: "",
-    userName: "",
-    userEmail: "",
+    password: "",
+    passwordCheck: "",
+    name: "",
+    email: "",
+    phoneNumber: "",
   });
 
-  const { userPw, userPwCheck, userName, userEmail } = joinForm;
+  const { password, passwordCheck, name, email, phoneNumber } = joinForm;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
     setJoinForm({
       ...joinForm,
       [e.target.name]: e.target.value,
@@ -30,23 +33,37 @@ const Join = (props: PathParamsProps) => {
     e.preventDefault();
 
     let body = {
-      email: userEmail,
-      password: userPw,
-      name: userName,
-      phoneNumber: "01011112222",
-      address: "시흥",
-      addressDetail: "배곧",
+      email,
+      password,
+      name,
+      phoneNumber,
     };
 
     axios.post("/api/v1/user/register", body).then((response) => {
       console.log(response.data);
-      // if (response.data.success) {
-      //   props.history.push("/login");
-      // } else {
-      //   alert("회원가입에 실패했습니다. 다시 시도해 주세요");
-      // }
+      let userBody = response.data.user;
+      dispatch(SetUser(userBody));
     });
   };
+
+  useEffect(() => {
+    if (user.email) {
+      console.log("유저가 있습니다.");
+      if (user.role === "parttime") {
+        history.push("/parttime");
+      } else {
+        history.push("/staff");
+      }
+
+      try {
+        sessionStorage.setItem("user", JSON.stringify(user));
+      } catch (e) {
+        console.log("로컬 스토리지 저장에 실패했습니다");
+      }
+    } else {
+      console.log("유저가 업습니다.");
+    }
+  }, [user, history]);
 
   return (
     <div id="Join">
@@ -57,8 +74,8 @@ const Join = (props: PathParamsProps) => {
           <input
             type="email"
             placeholder="이메일을 입력해주세요"
-            value={userEmail}
-            name="userEmail"
+            value={email}
+            name="email"
             onChange={onChange}
           />
 
@@ -66,24 +83,32 @@ const Join = (props: PathParamsProps) => {
           <input
             type="password"
             placeholder="비밀번호를 입력해주세요"
-            value={userPw}
-            name="userPw"
+            value={password}
+            name="password"
             onChange={onChange}
           />
           <label>비밀번호 확인</label>
           <input
             type="password"
             placeholder="비밀번호를 다시 입력해주세요"
-            value={userPwCheck}
-            name="userPwCheck"
+            value={passwordCheck}
+            name="passwordCheck"
             onChange={onChange}
           />
           <label>이름</label>
           <input
             type="text"
             placeholder="이름을 입력해주세요"
-            value={userName}
-            name="userName"
+            value={name}
+            name="name"
+            onChange={onChange}
+          />
+          <label>휴대폰 번호</label>
+          <input
+            type="number"
+            placeholder="휴대폰 번호를 입력해주세요"
+            value={phoneNumber}
+            name="phoneNumber"
             onChange={onChange}
           />
 

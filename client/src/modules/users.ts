@@ -1,24 +1,47 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
-interface userState  {
-    userId: number,
+export interface userState  {
+    email: string;
+    name: string;
+    phoneNumber: string;
+    role: string;
+    status: string;
+    token: string;
+    wage : number;
+    _id : string
+}
 
+const initialState: userState = {
+    email : "",
+    name: "",
+    phoneNumber: "",
+    role: "",
+    status: "",
+    token: "",
+    wage: 0,
+    _id: "",
 }
 
 const user = createSlice({
     // createSlice는  액션생성함수 , 리듀서를 둘다 만들어줌
     name: "userReducer",
-    initialState: [],
+    initialState,
     reducers: {
-        loginUser: (state: userState[], action) => {
-            state.push({
-                userId: action.payload,
-              });
-        }
+        SetUser: (state:userState, action: PayloadAction<userState>) =>{
+            const { email, name, phoneNumber, role, status, token, wage, _id } = action.payload
+            state.email = email
+            state.name = name
+            state.phoneNumber = phoneNumber
+            state.role = role
+            state.status = status
+            state.token = token
+            state.wage = wage
+            state._id = _id
+        },
     }
 })
 
-export const { loginUser } = user.actions;
+export const { SetUser } = user.actions;
 
 export default user;

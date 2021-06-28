@@ -1,18 +1,8 @@
 import axios from "axios";
-import { loginUser } from "modules/users";
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { RouteComponentProps } from "react-router";
 import "./styles.css";
 
-interface PathParamsProps {
-  history: RouteComponentProps["history"];
-  location: RouteComponentProps["location"];
-  match: RouteComponentProps["match"];
-  dispatchUser: any;
-}
-
-const Login = (props: PathParamsProps) => {
+const Login = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -38,13 +28,6 @@ const Login = (props: PathParamsProps) => {
 
     axios.post("/api/v1/user/login", body).then((response) => {
       console.log(response.data);
-      // if (response.data.loginSuccess) {
-      //   props.dispatchUser(response.data.userId);
-      //   props.history.push("/");
-      //   window.localStorage.setItem("userId", response.data.userId);
-      // } else {
-      //   alert("로그인에 실패 했습니다. 다시 시도 해주세요!");
-      // }
     });
   };
 
@@ -95,18 +78,4 @@ const Login = (props: PathParamsProps) => {
   );
 };
 
-function mapStateToProps(state: any) {
-  console.log(state);
-  // redux state로 부터 state를 component의 props으로 전달해줌
-  // store의 값을 여기 state로 가져올 수 있음
-  return { users: state.user };
-}
-
-function mapDispatchToProps(dispatch: any, ownProps: any) {
-  console.log(ownProps);
-  return {
-    dispatchUser: (userId: any) => dispatch(loginUser(userId)),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;

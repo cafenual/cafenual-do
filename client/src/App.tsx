@@ -21,14 +21,18 @@ function App() {
       <BrowserRouter>
         <div id="main">
           <Switch>
-            <Route path="/staff" exact component={StaffDashBoard} />
+            <Route path="/parttime" exact component={StaffDashBoard} />
             <Route
-              path="/staff/accountinfo"
+              path="/parttime/accountinfo"
               exact
               component={StaffAccountInfo}
             />
-            <Route path="/staff/payroll" exact component={StaffPayroll} />
-            <Route path="/staff/scheduler" exact component={StaffScheduler} />
+            <Route path="/parttime/payroll" exact component={StaffPayroll} />
+            <Route
+              path="/parttime/scheduler"
+              exact
+              component={StaffScheduler}
+            />
             <Route path="/login" component={Login} />
             <Route path="/join" component={Join} />
             <Route path="/menu/list/:category?" exact component={MenuView} />

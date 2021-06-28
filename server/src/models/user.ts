@@ -10,8 +10,6 @@ export interface IUser {
   password: string;
   name: string;
   phoneNumber: string;
-  address: string;
-  addressDetail: string;
   wage: number;
   status: string;
   token: string;
@@ -85,16 +83,7 @@ const UserSchema: Schema<IUserMethod> = new Schema(
       type: String,
     },
 
-    address: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    addressDetail: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+   
   },
   { timestamps: true }
 );
