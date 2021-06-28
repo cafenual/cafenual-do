@@ -1,3 +1,9 @@
+#Join {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
 .accounts-form {
   width: 400px;
   margin: 0 auto;
@@ -107,4 +113,5 @@
   line-height: 22px;
   letter-spacing: 0;
   margin-bottom: 50px;
+  text-align: center;
 }

@@ -44,7 +44,6 @@ const UserSchema: Schema<IUserMethod> = new Schema(
       type: String,
       required: true,
       trim: true,
-      
     },
     password: {
       type: String,
@@ -70,14 +69,12 @@ const UserSchema: Schema<IUserMethod> = new Schema(
 
     role: {
       type: String,
-      enum: ["admin", "staff", "parttime"],
+      enum: ["admin", "parttime"],
       default: "parttime",
     },
     token: {
       type: String,
     },
-
-   
   },
   { timestamps: true }
 );

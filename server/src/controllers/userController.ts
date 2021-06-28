@@ -83,11 +83,10 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-
 // 로그아웃
 export const logout = async (req: Request, res: Response) => {
   res.cookie("x_auth", "").status(200).json({
     success: true,
-    message: "Success Log out !"
-  })
-}
+    message: "Success Log out !",
+  });
+};

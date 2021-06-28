@@ -1,7 +1,7 @@
 import Profile from "components/DashBoard/Profile";
 import Footer from "layouts/Footer";
 import Header from "layouts/Header";
-import StaffSideNav from "layouts/SideNav/StaffSideNav";
+import StaffSideNav from "layouts/Aside";
 import React from "react";
 import "./styles.scss";
 
