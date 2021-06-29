@@ -1,0 +1,18 @@
+#ManageNav {
+  background-color: #f4f5fe;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: 250px;
+  width: 230px;
+  padding: 30px;
+  .nav-tit {
+    font-size: 20px;
+    color: rgb(55, 71, 79);
+    padding: 10px 0;
+  }
+  .nav-tit-des {
+    color: rgb(153, 156, 158);
+    font-size: 14px;
+  }
+}

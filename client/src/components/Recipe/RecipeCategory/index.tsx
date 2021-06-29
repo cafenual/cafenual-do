@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./styles.scss";
 
 const RecipeCategory = () => {
@@ -27,12 +27,10 @@ const RecipeCategory = () => {
             <NavLink to="">Latte</NavLink>
           </li>
         </ul>
-      
 
         <div className="recipe-manage">
-          <a href="">레시피 관리</a>
+          <Link to={"/recipe/manage"}>레시피 관리</Link>
         </div>
-      
       </div>
     </div>
   );

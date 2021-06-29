@@ -43,7 +43,7 @@ const Aside = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/recipe"} exact activeStyle={activeStyle}>
+              <NavLink to={"/recipe"} activeStyle={activeStyle}>
                 <BiCoffeeTogo />
                 <span>메뉴레시피</span>
               </NavLink>
