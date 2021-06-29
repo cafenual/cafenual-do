@@ -1,0 +1,22 @@
+#CategoryManage {
+  padding-left: 550px;
+  .manage-tit {
+    font-weight: 500;
+    color: rgb(55, 71, 79);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .category-list-table {
+    .search-box {
+      overflow: hidden;
+      padding: 20px 40px;
+      input {
+        float: right;
+        padding: 10px;
+        border: 1px solid #d3cece;
+        width: 250px;
+        border-radius: 7px;
+      }
+    }
+  }
+}

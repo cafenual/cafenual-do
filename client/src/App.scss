@@ -7,7 +7,7 @@ body {
 }
 
 .side-layout {
-  min-height: 100vh;
+  height: 100vh;
   padding: 20px 60px 0 300px;
 }
 
@@ -46,6 +46,10 @@ table {
   box-sizing: border-box; /* input 박스 width:100% 했을 때 튀어나가는거 없애기 */
   margin: 0;
   padding: 0;
+}
+
+*::placeholder {
+  color: rgb(175, 174, 174);
 }
 
 a:link,

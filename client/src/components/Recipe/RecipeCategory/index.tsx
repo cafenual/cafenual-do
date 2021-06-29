@@ -29,7 +29,7 @@ const RecipeCategory = () => {
         </ul>
 
         <div className="recipe-manage">
-          <Link to={"/recipe/manage"}>레시피 관리</Link>
+          <Link to={"/recipe/manage/category"}>레시피 관리</Link>
         </div>
       </div>
     </div>
