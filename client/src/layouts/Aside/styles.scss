@@ -23,6 +23,7 @@
 
     .apps-list {
       flex: 1 1 0%;
+      width: 170px;
     }
 
     .develop-info {
@@ -42,26 +43,22 @@
 
 .nav-title {
   padding: 10px;
-  color: #b2b0b0;
+  color: rgb(84, 110, 122);
 }
 
 #Aside .nav li {
-  margin: 4px 17px;
+  margin: 4px 0;
   border-radius: 10px;
 }
 
 .nav li a {
-  color: rgb(84, 110, 122);
+  color: #7e7c7c;
   font-size: 17px;
   display: flex;
-  padding: 10px 0;
+  padding: 10px;
   border-radius: 10px;
+  justify-content: center;
   align-items: center;
-}
-
-.active svg,
-.active span {
-  color: #000;
 }
 
 .nav li a svg {

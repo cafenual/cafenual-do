@@ -60,7 +60,7 @@ const Header = () => {
       <div className="header-inner">
         <div></div>
         <div className="header-calender">
-          <span>calender</span>
+          <span>2021-06-29</span>
         </div>
         <button onClick={logoutHandler}>로그아웃</button>
       </div>

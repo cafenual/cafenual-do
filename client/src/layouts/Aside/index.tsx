@@ -18,8 +18,9 @@ const Aside = () => {
   const user = useSelector((state: reduxStoreState) => state.user);
 
   const activeStyle = {
-    backgroundColor: "rgb(236, 239, 241)",
-    color: "#000",
+    backgroundColor: "rgb(243 243 250)",
+    color: "rgb(91 78 246)",
+    FontWeight: "700",
   };
 
   return (
@@ -36,23 +37,19 @@ const Aside = () => {
           </div>
           <ul>
             <li>
-              <NavLink to={"/staff"} exact activeStyle={activeStyle}>
+              <NavLink to={"/"} exact activeStyle={activeStyle}>
                 <BsGrid />
                 <span>대시보드</span>
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to={"/staff/accountinfo"}
-                exact
-                activeStyle={activeStyle}
-              >
+              <NavLink to={"/recipe"} exact activeStyle={activeStyle}>
                 <BiCoffeeTogo />
                 <span>메뉴레시피</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/staff/scheduler"} exact activeStyle={activeStyle}>
+              <NavLink to={"/notice"} exact activeStyle={activeStyle}>
                 <BiBell />
                 <span>공지사항</span>
               </NavLink>

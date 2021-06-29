@@ -6,6 +6,7 @@ import Pagination from "components/Pagination";
 import { paginate } from "utils/Paginate";
 import Header from "layouts/Header";
 import Footer from "layouts/Footer";
+import Aside from "layouts/Aside";
 
 const NoticeList = () => {
   const [getNotices, setGetNotices] = useState([]);
@@ -45,6 +46,7 @@ const NoticeList = () => {
   return (
     <>
       <Header />
+      <Aside />
       <div id="Notice" className="page-layout">
         <div className="tit">
           <h4 className="tit-corp">공지사항</h4>

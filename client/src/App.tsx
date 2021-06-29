@@ -8,6 +8,7 @@ import NoticeUpload from "pages/Notice/NoticeUpload";
 import NoticeDetail from "pages/Notice/NoticeDetail";
 import NoticeEdit from "pages/Notice/NoticeEdit";
 import "./App.scss";
+import Recipe from "pages/Recipe";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/notice/upload" exact component={NoticeUpload} />
             <Route path="/notice/edit/:id?" component={NoticeEdit} />
             <Route path="/notice/:id?" component={NoticeDetail} />
+            <Route path="/recipe" exact component={Recipe} />
           </Switch>
         </div>
       </BrowserRouter>

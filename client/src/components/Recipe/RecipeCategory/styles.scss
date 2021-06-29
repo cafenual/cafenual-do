@@ -1,0 +1,28 @@
+#RecipeCategory {
+  width: 90%;
+  margin: 15px auto;
+  .inner-category {
+    display: flex;
+    align-items: center;
+
+    ul {
+      display: flex;
+      width: 85%;
+      li {
+        padding: 10px 20px;
+        a {
+          color: #999;
+        }
+      }
+    }
+
+    .recipe-manage {
+      a {
+        border: 1px solid rgb(91, 78, 246);
+        padding: 10px;
+        border-radius: 13px;
+        color: rgb(91, 78, 246);
+      }
+    }
+  }
+}
