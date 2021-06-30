@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import store from "modules";
 import { SetUser } from "modules/users";
+import { BrowserRouter } from "react-router-dom";
 
 function loadUser() {
   try {
@@ -21,7 +22,9 @@ loadUser();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

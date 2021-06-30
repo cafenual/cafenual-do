@@ -10,7 +10,7 @@ const RecipeManage = () => {
       <Header />
       <Aside />
       <ManageNav />
-      <div id="RecipeManage" className="side-layout"></div>
+      <div id="RecipeManage" className="side-layout manage-layout"></div>
     </>
   );
 };

@@ -10,7 +10,7 @@ const Recipe = () => {
     <>
       <Header />
       <Aside />
-      <div id="Recipe" className="side-layout">
+      <div id="Recipe" className="side-layout ">
         <RecipeCategory />
         <RecipeList />
       </div>
