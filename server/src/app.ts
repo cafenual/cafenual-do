@@ -1,9 +1,10 @@
-import express, { Request, Response, NextFunction } from "express";
-import mongoose from "mongoose";
-import userRouter from "./routers/userRouter";
-import "dotenv/config";
-import userAuth from "./lib/userAuth";
 import cookieParser from "cookie-parser";
+import "dotenv/config";
+import express from "express";
+import mongoose from "mongoose";
+import userAuth from "./lib/userAuth";
+import recipeRouter from "./routers/recipeRouter";
+import userRouter from "./routers/userRouter";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -12,9 +13,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// middleware
 app.use(userAuth);
 
+// router
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/recipe", recipeRouter);
 
 // DB 실행
 mongoose

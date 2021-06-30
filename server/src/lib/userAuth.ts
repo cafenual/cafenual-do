@@ -3,7 +3,7 @@ var jwt = require("jsonwebtoken"); // import로 하면 decoded의 타입 오류�
 
 const userAuth = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.cookies.x_auth;
-  console.log(req.cookies);
+
   if (!token) return next(); // 토큰이 없을 때
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -13,7 +13,7 @@ const userAuth = async (req: Request, res: Response, next: NextFunction) => {
       email: decoded._email,
       name: decoded.name,
     };
-    console.log(decoded);
+
 
     return next();
   } catch (e) {
