@@ -21,3 +21,19 @@ export const createCategory = async (req: Request, res: Response) => {
     });
   }
 };
+
+// 카테고리 조회
+export const readCategory = async (req: Request, res: Response) => {
+  try {
+    const categories = await Category.find();
+    res.status(200).json({
+      success: true,
+      categories,
+    });
+  } catch (e) {
+    res.status(400).json({
+      success: false,
+      message: e,
+    });
+  }
+};

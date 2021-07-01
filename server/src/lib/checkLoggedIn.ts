@@ -1,15 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 
 const checkLoggedIn = (req: Request, res: Response, next: NextFunction) => {
-    if (!res.locals.user){
-        // 로그인 했을 경우 userAuth에서 locals.user 저장했음
-        // 로그인이 안됐을 경우
-        return res.status(401).json({
-            success: false,
-            message: "Didn`t log in"
-        })
-    }
-    return next();
+  if (!res.locals.user) {
+    // 로그인 했을 경우 userAuth에서 locals.user 저장했음
+    // 로그인이 안됐을 경우
+    return res.status(401).json({
+      success: false,
+      message: "로그인 하지 않았습니다.",
+    });
+  }
+  return next();
 };
 
 export default checkLoggedIn;
