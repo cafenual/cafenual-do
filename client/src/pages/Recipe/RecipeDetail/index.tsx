@@ -7,9 +7,11 @@ import { AiOutlineDown } from "react-icons/ai";
 
 const RecipeDetail = () => {
   const [commentToggle, setCommentToggle] = useState(false);
-  // 백앤드 객체에 이제 각 코맨트에 checked: true, false를 넣어서 그 check의 값이 true이면 보이고 false이면 안보이게하자
-  // 그리고 저 화살표 버튼 에다가 onclick으로 각객체의 checked를 바꿀수있는 백앤드 api를 넣자
-  // albalog의 인수인계부분 토글 체크박스 느낌으로 말이지.
+  // 첨에 레시피 데이터 모델에 checked:false(새로고침하면 또 안보여야하니깐)를 넣어두고,
+  // 레시피 데이터를 불러와서 useState에 저장을 한다음에
+  // 저 화살표 버튼을 누르면 그 리스트의 id를 받아와서 해당 state의 checked를 프론트에서 map으로 id===id 인 것의 checked를
+  // !checked로 바꿔주면 될듯 , 백앤드에서 바꿔줄 필요없는 이유는 새로고침하면 어차피 다시 false로 초기화
+  // 되어야 하니깐!! ㅋㅋ ㅎㅎ 지렸다.
 
   const CommentToggleHandle = () => {
     setCommentToggle(!commentToggle);
