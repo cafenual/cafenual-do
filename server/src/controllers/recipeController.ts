@@ -4,7 +4,6 @@ import Category from "../models/category";
 // 카테고리 생성
 export const createCategory = async (req: Request, res: Response) => {
   const { name } = req.body;
-  console.log(name);
   const category = await Category.findOne({ name });
 
   if (!category) {
@@ -34,6 +33,38 @@ export const readCategory = async (req: Request, res: Response) => {
     res.status(400).json({
       success: false,
       message: e,
+    });
+  }
+};
+
+// 카테고리 수정
+export const updateCategory = async (req: Request, res: Response) => {
+  const { categoryId, name } = req.body;
+  try {
+    const category = await Category.findByIdAndUpdate(
+      { _id: categoryId },
+      { name }
+    );
+
+    if (!category) {
+      res.status(400).json({
+        success: false,
+        message: "해당 카테고리가 존재하지 않습니다",
+      });
+    }
+
+    const UpdatedCategory = await Category.findById({
+      _id: categoryId,
+    });
+
+    res.status(200).json({
+      success: true,
+      UpdatedCategory,
+    });
+  } catch (e) {
+    res.status(400).json({
+      success: false,
+      message: "카테고리 업데이트에 실패했습니다.",
     });
   }
 };
