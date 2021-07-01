@@ -11,6 +11,7 @@ import "./App.scss";
 import Recipe from "pages/Recipe";
 import RecipeManage from "pages/Recipe/RecipeManage";
 import CategoryManage from "pages/Recipe/CategoryManage";
+import RecipeDetail from "pages/Recipe/RecipeDetail";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/notice/edit/:id?" component={NoticeEdit} />
           <Route path="/notice/:id?" component={NoticeDetail} />
           <Route path="/recipe" exact component={Recipe} />
+          <Route path="/recipe/:id" exact component={RecipeDetail} />
           <Route path="/recipe/manage/recipe" exact component={RecipeManage} />
           <Route
             path="/recipe/manage/category"

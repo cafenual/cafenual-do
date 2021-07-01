@@ -3,18 +3,19 @@ import "./styles.scss";
 import coffee from "static/coffee.jpg";
 import latte from "static/latte.jpg";
 import milk from "static/milk.jpg";
+import { Link } from "react-router-dom";
 
 const RecipeList = () => {
   return (
     <div id="RecipeList">
       <ul>
         <li>
-          <a href="" className="img-link">
+          <Link to="/recipe/1" className="img-link">
             <img src={coffee} alt="" />
-          </a>
-          <a href="" className="menu-name">
+          </Link>
+          <Link to="" className="menu-name">
             <span>아메리카노</span>
-          </a>
+          </Link>
         </li>
 
         <li>
