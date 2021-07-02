@@ -21,4 +21,6 @@ router.patch(
   recipeCtrl.updateCategory
 );
 
+router.delete("/category/:categoryId", checkAdmin, recipeCtrl.deleteCategory);
+
 export default router;

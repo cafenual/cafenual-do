@@ -30,7 +30,7 @@ export const readCategory = async (req: Request, res: Response) => {
       categories,
     });
   } catch (e) {
-    res.status(400).json({
+    res.status(500).json({
       success: false,
       message: e,
     });
@@ -62,9 +62,29 @@ export const updateCategory = async (req: Request, res: Response) => {
       UpdatedCategory,
     });
   } catch (e) {
-    res.status(400).json({
+    res.status(500).json({
       success: false,
       message: "카테고리 업데이트에 실패했습니다.",
+    });
+  }
+};
+
+// 카테고리 삭제
+export const deleteCategory = async (req: Request, res: Response) => {
+  const { categoryId } = req.params;
+
+  try {
+    await Category.findByIdAndDelete({
+      _id: categoryId,
+    });
+
+    res.status(200).json({
+      success: true,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      message: "카테고리 삭제를 실패하였습니다",
     });
   }
 };
