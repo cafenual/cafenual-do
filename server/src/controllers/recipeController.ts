@@ -79,8 +79,11 @@ export const deleteCategory = async (req: Request, res: Response) => {
       _id: categoryId,
     });
 
+    const categories = await Category.find();
+
     res.status(200).json({
       success: true,
+      categories,
     });
   } catch (e) {
     res.status(500).json({

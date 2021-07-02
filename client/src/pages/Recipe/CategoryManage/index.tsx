@@ -44,7 +44,15 @@ const CategoryManage = () => {
     }
   };
 
-  const editCategory = async (id: string) => {};
+  const deleteCategory = async (id: string) => {
+    try {
+      const response = await axios.delete(`/api/v1/recipe/category/${id}`);
+      console.log(response);
+      setCategories(response.data.categories);
+    } catch (e) {
+      alert("카테고리 삭제에 실패했습니다.");
+    }
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -111,7 +119,10 @@ const CategoryManage = () => {
                           </button>
                         </td>
                         <td className="ico">
-                          <button type="button">
+                          <button
+                            type="button"
+                            onClick={() => deleteCategory(category._id)}
+                          >
                             <HiMinusCircle size="26" />
                           </button>
                         </td>
