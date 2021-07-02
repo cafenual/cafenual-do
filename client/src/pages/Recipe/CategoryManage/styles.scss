@@ -1,6 +1,7 @@
 #CategoryManage {
   .manage-tit {
     margin-bottom: 2rem;
+    display: flex;
     span {
       font-weight: 500;
       color: rgb(55, 71, 79);
@@ -78,7 +79,9 @@
             font-size: 17px;
           }
           .ico {
-            color: #5b4ef6;
+            button {
+              color: #5b4ef6;
+            }
           }
         }
       }

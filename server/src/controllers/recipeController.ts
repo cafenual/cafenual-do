@@ -9,9 +9,10 @@ export const createCategory = async (req: Request, res: Response) => {
   if (!category) {
     const newCategory = new Category({ name });
     await newCategory.save();
+    const currentCategory = await Category.find();
     return res.status(201).json({
       success: true,
-      newCategory,
+      currentCategory,
     });
   } else {
     res.status(400).json({
