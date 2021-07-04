@@ -67,7 +67,7 @@ export const updateCategory = async (req: Request, res: Response) => {
   } catch (e) {
     res.status(500).json({
       success: false,
-      message: "카테고리 업데이트에 실패했습니다.",
+      e,
     });
   }
 };
@@ -157,6 +157,41 @@ export const readAllMenu = async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       menu,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};
+
+// 메뉴 수정
+export const updateMenu = async (req: Request, res: Response) => {
+  const { menuId, name, description, categoryId, recipe } = req.body;
+  try {
+    const category = await Category.findOne({ _id: categoryId });
+    if (!category) {
+      return res.status(400).json({
+        success: false,
+        message: "해당 카테고리가 존재하지 않습니다",
+      });
+    }
+
+    const menu = await Menu.findByIdAndUpdate(
+      { _id: menuId },
+      { name, description, recipe, categoryId }
+    );
+
+    if (!menu) {
+      return res.status(400).json({
+        success: false,
+        message: "해당 매뉴가 존재하지 않습니다",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
     });
   } catch (e) {
     res.status(500).json({
