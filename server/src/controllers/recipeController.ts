@@ -66,13 +66,8 @@ export const updateCategory = async (req: Request, res: Response) => {
       });
     }
 
-    const UpdatedCategory = await Category.findById({
-      _id: categoryId,
-    });
-
     res.status(200).json({
       success: true,
-      UpdatedCategory,
     });
   } catch (e) {
     res.status(500).json({
@@ -320,6 +315,37 @@ export const updateComment = async (req: Request, res: Response) => {
     return res.status(200).json({
       success: true,
       UpdatedComment,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};
+
+// 댓글 삭제
+export const deleteComment = async (req: Request, res: Response) => {
+  const { commentId, menuId } = req.params;
+  const { user } = res.locals;
+  try {
+    const comment = await Comment.findOneAndDelete({
+      _id: commentId,
+      menu: menuId,
+      writer: user._id,
+    });
+
+    if (!comment) {
+      return res.status(400).json({
+        success: false,
+        message: "해당 댓글이 존재하지 않습니다.",
+      });
+    }
+
+    const comments = await Comment.find({ menu: menuId });
+    return res.status(200).json({
+      success: true,
+      comments,
     });
   } catch (e) {
     res.status(500).json({

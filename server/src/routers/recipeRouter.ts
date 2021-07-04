@@ -37,4 +37,9 @@ router.delete(
 router.post("/comment/create", checkLoggedIn, recipeCtrl.createComment); //댓글 작성
 router.get("/comment", recipeCtrl.readComment); // 전체 댓글 조회
 router.patch("/comment/update", checkLoggedIn, recipeCtrl.updateComment); // 댓글 수정
+router.delete(
+  "/comment/delete/:menuId/:commentId",
+  checkLoggedIn,
+  recipeCtrl.deleteComment
+); // 댓글 삭제
 export default router;
