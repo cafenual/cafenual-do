@@ -2,24 +2,34 @@ import { Request, Response } from "express";
 import Category from "../models/category";
 import mongoose from "mongoose";
 import Menu from "../models/menu";
+import User from "../models/user";
+import Comment from "../models/comment";
 
 // 카테고리 생성
 export const createCategory = async (req: Request, res: Response) => {
   const { name } = req.body;
-  const category = await Category.findOne({ name });
+  try {
+    const category = await Category.findOne({ name });
 
-  if (!category) {
+    if (category) {
+      return res.status(400).json({
+        success: false,
+        message: "이미 카테고리가 존재합니다",
+      });
+    }
+
     const newCategory = new Category({ name });
     await newCategory.save();
+
     const currentCategory = await Category.find();
     return res.status(201).json({
       success: true,
       currentCategory,
     });
-  } else {
-    res.status(400).json({
+  } catch (e) {
+    res.status(500).json({
       success: false,
-      message: "이미 카테고리가 존재합니다",
+      e,
     });
   }
 };
@@ -222,6 +232,42 @@ export const deleteMenu = async (req: Request, res: Response) => {
     }
     return res.status(200).json({
       success: true,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};
+
+// 댓글 작성
+export const createComment = async (req: Request, res: Response) => {
+  const { content, writerId, menuId } = req.body;
+  try {
+    const writer = await User.findById({ _id: writerId });
+    if (!writer) {
+      return res.status(400).json({
+        success: false,
+        message: "해당 유저가 존재하지 않습니다.",
+      });
+    }
+
+    const menu = await Menu.findById({ _id: menuId });
+    if (!menu) {
+      return res.status(400).json({
+        success: false,
+        message: "해당 매뉴가 존재하지 않습니다",
+      });
+    }
+
+    const newComment = new Comment({ content, writer, menu });
+    await newComment.save();
+
+    const currentComment = await Comment.find().populate("writer"); // 만약 여러개를 알고 싶으면 populate("writer menu") 이런식
+    return res.status(201).json({
+      success: true,
+      currentComment,
     });
   } catch (e) {
     res.status(500).json({

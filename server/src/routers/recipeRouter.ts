@@ -32,4 +32,9 @@ router.delete(
   checkAdmin,
   recipeCtrl.deleteMenu
 ); // 메뉴 삭제
+
+
+
+// 댓글
+router.post("/comment/create", checkLoggedIn, recipeCtrl.createComment); //댓글 작성
 export default router;

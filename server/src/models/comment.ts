@@ -11,7 +11,7 @@ export interface ICommentStatics extends Model<ICommentMethod> {}
 
 const CommentSchema: Schema<ICommentMethod> = new Schema(
   {
-    text: {
+    content: {
       type: String,
       required: true,
     },
