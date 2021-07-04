@@ -276,3 +276,19 @@ export const createComment = async (req: Request, res: Response) => {
     });
   }
 };
+
+// 댓글 조회
+export const readComment = async (req: Request, res: Response) => {
+  try {
+    const comments = await Comment.find().populate("writer");
+    res.status(200).json({
+      success: true,
+      comments,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};

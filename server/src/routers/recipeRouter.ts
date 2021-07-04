@@ -33,8 +33,7 @@ router.delete(
   recipeCtrl.deleteMenu
 ); // 메뉴 삭제
 
-
-
 // 댓글
 router.post("/comment/create", checkLoggedIn, recipeCtrl.createComment); //댓글 작성
+router.get("/comment", recipeCtrl.readComment); // 전체 댓글 조회
 export default router;
