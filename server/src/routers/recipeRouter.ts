@@ -24,5 +24,5 @@ router.delete("/category/:categoryId", checkAdmin, recipeCtrl.deleteCategory);
 // 메뉴
 router.post("/menu/create", checkLoggedIn, checkAdmin, recipeCtrl.createMenu); // 메뉴 등록
 router.get("/menu/:menuid", checkLoggedIn, recipeCtrl.readMenuDetail) // 메뉴 상세보기
-
+router.get("/menu", recipeCtrl.readAllMenu) // 메뉴 전체 보기
 export default router;
