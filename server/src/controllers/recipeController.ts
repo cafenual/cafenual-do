@@ -116,7 +116,7 @@ export const deleteCategory = async (req: Request, res: Response) => {
 export const createMenu = async (req: Request, res: Response) => {
   const { name, description, categoryId, recipe } = req.body;
 
-  const existCategory = await Category.findOne({ _id: categoryId });
+  const existCategory = await Category.findById({ _id: categoryId });
   if (!existCategory) {
     return res.status(400).json({
       success: false,
@@ -144,7 +144,7 @@ export const readMenuDetail = async (req: Request, res: Response) => {
   const { menuId } = req.params;
 
   try {
-    const menu = await Menu.findOne({
+    const menu = await Menu.findById({
       _id: menuId,
     });
 
@@ -187,7 +187,7 @@ export const readAllMenu = async (req: Request, res: Response) => {
 export const updateMenu = async (req: Request, res: Response) => {
   const { menuId, name, description, categoryId, recipe } = req.body;
   try {
-    const category = await Category.findOne({ _id: categoryId });
+    const category = await Category.findById({ _id: categoryId });
     if (!category) {
       return res.status(400).json({
         success: false,
@@ -284,6 +284,42 @@ export const readComment = async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       comments,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};
+
+// 댓글 수정
+export const updateComment = async (req: Request, res: Response) => {
+  const { content, writerId, menuId, commentId } = req.body;
+
+  try {
+    const comment = await Comment.findOneAndUpdate(
+      {
+        _id: commentId,
+        writer: writerId,
+        menu: menuId,
+      },
+      {
+        content,
+      }
+    );
+
+    if (!comment) {
+      return res.status(400).json({
+        success: false,
+        message: "해당하는 댓글이 존재하지 않습니다",
+      });
+    }
+
+    const UpdatedComment = await Comment.find({ menu: menuId });
+    return res.status(200).json({
+      success: true,
+      UpdatedComment,
     });
   } catch (e) {
     res.status(500).json({
