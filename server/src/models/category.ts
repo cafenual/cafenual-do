@@ -14,33 +14,10 @@ const CategorySchema: Schema<ICategoryMethod> = new Schema({
     required: true,
     trim: true,
   },
-  recipes: [
-    {
-      type: new mongoose.Schema({
-        name: {
-          type: String,
-          maxLength: 50,
-          required: true,
-        },
-        content: [
-          {
-            level: {
-              type: String,
-              required: true,
-            },
-            description: {
-              type: String,
-              required: true,
-            },
-          },
-        ],
-      }),
-    },
-  ],
 });
 
 const Category = mongoose.model<ICategoryMethod, ICategoryStatics>(
-  "RecipeCategory",
+  "Category",
   CategorySchema
 );
 

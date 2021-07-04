@@ -156,7 +156,7 @@ const CategoryManage = () => {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td className="name">{category.name}</td>
-                        <td>{category.recipes.length}</td>
+                        <td>0</td>
                         <td className="ico">
                           <button
                             type="button"
