@@ -77,9 +77,16 @@ export const deleteCategory = async (req: Request, res: Response) => {
   const { categoryId } = req.params;
 
   try {
-    await Category.findByIdAndDelete({
+    const category = await Category.findByIdAndDelete({
       _id: categoryId,
     });
+
+    if (!category) {
+      return res.status(400).json({
+        success: false,
+        message: "해당 카테고리가 존재하지 않습니다.",
+      });
+    }
 
     const categories = await Category.find();
 
@@ -90,7 +97,7 @@ export const deleteCategory = async (req: Request, res: Response) => {
   } catch (e) {
     res.status(500).json({
       success: false,
-      message: "카테고리 삭제를 실패하였습니다",
+      e,
     });
   }
 };
@@ -124,11 +131,11 @@ export const createMenu = async (req: Request, res: Response) => {
 
 // 메뉴 상세보기
 export const readMenuDetail = async (req: Request, res: Response) => {
-  const { menuid } = req.params;
+  const { menuId } = req.params;
 
   try {
     const menu = await Menu.findOne({
-      _id: menuid,
+      _id: menuId,
     });
 
     if (!menu) {
@@ -190,6 +197,29 @@ export const updateMenu = async (req: Request, res: Response) => {
       });
     }
 
+    return res.status(200).json({
+      success: true,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};
+
+// 메뉴 삭제
+export const deleteMenu = async (req: Request, res: Response) => {
+  const { menuId } = req.params;
+
+  try {
+    const menu = await Menu.findByIdAndDelete({ _id: menuId });
+    if (!menu) {
+      res.status(400).json({
+        success: false,
+        message: "해당 매뉴가 존재하지 않습니다.",
+      });
+    }
     return res.status(200).json({
       success: true,
     });
