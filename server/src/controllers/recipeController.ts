@@ -253,7 +253,9 @@ export const createComment = async (req: Request, res: Response) => {
     const newComment = new Comment({ content, writer, menu });
     await newComment.save();
 
-    const currentComment = await Comment.find().populate("writer"); // 만약 여러개를 알고 싶으면 populate("writer menu") 이런식
+    const currentComment = await Comment.find({ menu: menuId }).populate(
+      "writer"
+    ); // 만약 여러개를 알고 싶으면 populate("writer menu") 이런식
     return res.status(201).json({
       success: true,
       currentComment,
@@ -268,8 +270,9 @@ export const createComment = async (req: Request, res: Response) => {
 
 // 댓글 조회
 export const readComment = async (req: Request, res: Response) => {
+  const { menuId } = req.params;
   try {
-    const comments = await Comment.find().populate("writer");
+    const comments = await Comment.find({ menu: menuId }).populate("writer");
     res.status(200).json({
       success: true,
       comments,

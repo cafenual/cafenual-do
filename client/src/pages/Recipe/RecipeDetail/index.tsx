@@ -1,9 +1,9 @@
 import Aside from "layouts/Aside";
 import Header from "layouts/Header";
-import React, { useState } from "react";
+import React from "react";
 import "./styles.scss";
 import coffee from "static/coffee.jpg";
-import { AiOutlineDown } from "react-icons/ai";
+import Comment from "components/Comment";
 
 const RecipeDetail = () => {
   return (
@@ -27,7 +27,7 @@ const RecipeDetail = () => {
             </div>
           </div>
 
-          <div className="menu-comment">댓글</div>
+          <Comment />
         </div>
       </div>
     </>
