@@ -159,10 +159,10 @@ export const readMenuDetail = async (req: Request, res: Response) => {
 // 메뉴 전체 보기
 export const readAllMenu = async (req: Request, res: Response) => {
   try {
-    const menu = await Menu.find();
+    const menus = await Menu.find().populate("categoryId");
     res.status(200).json({
       success: true,
-      menu,
+      menus,
     });
   } catch (e) {
     res.status(500).json({
