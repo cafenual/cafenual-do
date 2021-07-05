@@ -60,11 +60,6 @@ const NoticeUpload = () => {
 
                 editor = editor;
               }}
-              //   onError={({ willEditorRestart }) => {
-              //     if (willEditorRestart) {
-              //       this.editor.ui.view.toolbar.element.remove();
-              //     }
-              //   }}
               onChange={(event: any, editor: any) => {
                 const data = editor.getData();
                 // console.log({ event, editor, data });

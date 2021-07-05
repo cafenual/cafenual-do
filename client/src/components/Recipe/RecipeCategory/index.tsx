@@ -9,7 +9,8 @@ import "./styles.scss";
 const RecipeCategory = () => {
   const dispatch = useDispatch();
   const categories = useSelector(
-    (state: reduxStoreState) => state.category.category
+    (state: reduxStoreState) => state.category.categories
+    
   );
   useEffect(() => {
     dispatch(getCategories());

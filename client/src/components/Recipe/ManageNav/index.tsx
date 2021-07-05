@@ -5,6 +5,12 @@ import { AiFillFolderOpen } from "react-icons/ai";
 import { SiCmake } from "react-icons/si";
 
 const ManageNav = () => {
+  const activeStyle = {
+    backgroundColor: "#fff",
+    marginLeft: "15px",
+    boxShadow: "0px 7px 6px rgba(0, 0, 0, 0.08)",
+  };
+
   return (
     <>
       <div id="ManageNav">
@@ -14,7 +20,7 @@ const ManageNav = () => {
         <div className="nav-menu">
           <ul>
             <li>
-              <NavLink to={""}>
+              <NavLink activeStyle={activeStyle} to={`/recipe/manage/category`}>
                 <div className="menu-tit">
                   <AiFillFolderOpen size="20" />
                   <span>Category</span>
@@ -23,7 +29,7 @@ const ManageNav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={""}>
+              <NavLink activeStyle={activeStyle} to={`/recipe/manage/recipe`}>
                 <div className="menu-tit">
                   <SiCmake size="20" />
                   <span>Recipe</span>

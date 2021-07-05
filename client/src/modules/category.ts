@@ -4,14 +4,14 @@ import axios from "axios";
 export interface categoryState {
   _id?: string;
   name?: string;
-  category?: categoryState[];
+  categories?: categoryState[];
   loading?: boolean;
 }
 
 const initialState: categoryState = {
   _id: "",
   name: "",
-  category: [],
+  categories: [],
   loading: false,
 };
 
@@ -35,6 +35,14 @@ const category = createSlice({
       state._id = _id;
       state.name = name;
     },
+
+    SetCategory: (
+      state: categoryState,
+      action: PayloadAction<categoryState>
+    ) => {
+      const { name } = action.payload;
+      state.name = name;
+    },
   },
   extraReducers: {
     // 호출 전
@@ -44,17 +52,17 @@ const category = createSlice({
 
     // 성공
     [getCategories.fulfilled.type]: (state: categoryState, action) => {
-      state.category = action.payload.categories;
+      state.categories = action.payload.categories;
       state.loading = false;
     },
 
     // 실패
     [getCategories.rejected.type]: (state: categoryState, action) => {
-      state.category = [];
+      state.categories = [];
       state.loading = false;
     },
   },
 });
 
-export const { EditCategory } = category.actions;
+export const { EditCategory, SetCategory } = category.actions;
 export default category;

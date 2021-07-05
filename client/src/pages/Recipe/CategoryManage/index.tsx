@@ -8,34 +8,27 @@ import { HiMinusCircle } from "react-icons/hi";
 import { AiOutlineSearch } from "react-icons/ai";
 import axios from "axios";
 import { useEffect } from "react";
-import { recipeCategory } from "types/data";
 import EditCategoryModal from "components/Modal/EditCategoryModal";
 import { useDispatch, useSelector } from "react-redux";
-import { EditCategory } from "modules/category";
+import {
+  categoryState,
+  EditCategory,
+  getCategories,
+  SetCategory,
+} from "modules/category";
 import { reduxStoreState } from "modules";
 
 const CategoryManage = () => {
   const dispatch = useDispatch();
   const category = useSelector((state: reduxStoreState) => state.category);
-  const [categoryForm, setCategoryForm] = useState({
-    addCategoryInput: "",
-  });
-  const { addCategoryInput } = categoryForm;
-
-  const [categories, setCategories] = useState([]);
   const [editModalState, setEditModalState] = useState(false);
 
   const ModalToggle = () => {
     setEditModalState(!editModalState);
   };
 
-  const onChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    const nextForm = {
-      ...categoryForm,
-      [name]: value,
-    };
-    setCategoryForm(nextForm);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(SetCategory({ name: e.target.value }));
   };
 
   // 카테고리 추가
@@ -43,24 +36,22 @@ const CategoryManage = () => {
     e.preventDefault();
 
     let body = {
-      name: addCategoryInput,
+      name: category.name,
     };
     try {
-      const response = await axios.post("/api/v1/recipe/category/create", body);
-      console.log(response);
-      setCategories(response.data.currentCategory);
-      const nextForm = {
-        ...categoryForm,
-        addCategoryInput: "",
-      };
-      setCategoryForm(nextForm);
+      await axios.post("/api/v1/recipe/category/create", body);
+      dispatch(getCategories());
+      dispatch(SetCategory({ name: "" }));
     } catch (e) {
       alert("카테고리 생성에 실패했습니다.");
     }
   };
 
   // 카테고리 수정할 정보 리덕스에 저장
-  const CategoryInfoInRedux = (_id: string, name: string) => {
+  const CategoryInfoInRedux = (
+    _id: string | undefined,
+    name: string | undefined
+  ) => {
     ModalToggle();
     dispatch(EditCategory({ _id, name }));
   };
@@ -81,36 +72,24 @@ const CategoryManage = () => {
       if (response.data.success) {
         window.location.replace(`/recipe/manage/category`);
       }
-      console.log(response);
     } catch (e) {
       alert("카테고리 수정에 실패했습니다.");
     }
   };
 
   // 카테고리 삭제
-  const deleteCategory = async (id: string) => {
+  const deleteCategory = async (id: string | undefined) => {
     try {
-      const response = await axios.delete(`/api/v1/recipe/category/${id}`);
-      console.log(response);
-      setCategories(response.data.categories);
+      await axios.delete(`/api/v1/recipe/category/${id}`);
+      dispatch(getCategories());
     } catch (e) {
       alert("카테고리 삭제에 실패했습니다.");
     }
   };
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get("/api/v1/recipe/category");
-        console.log(response);
-        setCategories(response.data.categories);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    getData();
-  }, []);
+    dispatch(getCategories());
+  }, [dispatch]);
 
   return (
     <>
@@ -126,8 +105,8 @@ const CategoryManage = () => {
               <input
                 type="text"
                 name="addCategoryInput"
-                value={addCategoryInput}
-                onChange={onChangeForm}
+                onChange={onChange}
+                value={category.name}
                 placeholder="카테고리 입력"
               />
               <button type="submit">카테고리 등록</button>
@@ -155,8 +134,8 @@ const CategoryManage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {categories &&
-                    categories.map((category: recipeCategory, index) => (
+                  {category.categories?.map(
+                    (category: categoryState, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td className="name">{category.name}</td>
@@ -180,7 +159,8 @@ const CategoryManage = () => {
                           </button>
                         </td>
                       </tr>
-                    ))}
+                    )
+                  )}
                 </tbody>
                 {editModalState && (
                   <EditCategoryModal

@@ -10,7 +10,7 @@ const RecipeList = () => {
     <div id="RecipeList">
       <ul>
         <li>
-          <Link to="/recipe/1" className="img-link">
+          <Link to="/recipe/menu/1" className="img-link">
             <img src={coffee} alt="" />
           </Link>
           <Link to="" className="menu-name">
