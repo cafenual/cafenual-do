@@ -8,14 +8,14 @@
       overflow: hidden;
       width: 1050px;
       margin: 0 auto;
-      .menu-img {
+      .menu-left {
         float: left;
         img {
           width: 430px;
           height: 552px;
         }
       }
-      .menu-des {
+      .menu-right {
         float: right;
         width: 560px;
         .name {
@@ -24,79 +24,7 @@
         }
         .menu-recipe {
           margin-top: 30px;
-          ul {
-            padding: 10px;
-            li {
-              padding: 10px 0;
-              margin-bottom: 15px;
-              .recipe {
-                font-size: 15px;
-                font-weight: bold;
-                color: #444;
-                margin: 0 0 10px;
-                line-height: 18px;
-                // background: #f8f8f8;
-                padding: 5px 10px;
-                border-bottom: 1px solid #e8e8e8;
-                font-family: sans-serif;
-
-                .level {
-                  padding: 0 20px;
-                }
-                button {
-                  float: right;
-                  color: #acacaf;
-                  svg {
-                    transition: all ease 0.5s;
-                  }
-                }
-                .on {
-                  -webkit-transform: rotate(-180deg);
-                  -ms-transform: rotate(-180deg);
-                  -o-transform: rotate(-180deg);
-                  transform: rotate(-180deg);
-                  color: #5b4ef6;
-                }
-              }
-              .comment-list {
-                .comment {
-                  padding: 0 20px;
-                  font-size: 12px;
-                  color: #888;
-                  margin: 3px 0 3px 10px;
-                  font-family: sans-serif;
-                  .comment-writer {
-                    font-size: 13px;
-                    color: #000;
-                  }
-                  .comment-date {
-                    margin-left: 7px;
-                  }
-                }
-                form {
-                  padding: 0 30px;
-                  margin-top: 10px;
-                  display: flex;
-                  align-items: center;
-                  input {
-                    width: 400px;
-                    padding: 5px;
-
-                    border: 1px solid #cdcdcd;
-                    border-radius: 6px;
-                  }
-                  button {
-                    border: 1px solid #5b4ef6;
-                    padding: 4px;
-                    border-radius: 7px;
-                    color: #5b4ef6;
-                    margin-left: 10px;
-                    width: 50px;
-                  }
-                }
-              }
-            }
-          }
+          
         }
       }
     }

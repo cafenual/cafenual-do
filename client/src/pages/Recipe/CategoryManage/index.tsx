@@ -100,9 +100,13 @@ const CategoryManage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("/api/v1/recipe/category");
-      console.log(response);
-      setCategories(response.data.categories);
+      try {
+        const response = await axios.get("/api/v1/recipe/category");
+        console.log(response);
+        setCategories(response.data.categories);
+      } catch (e) {
+        console.log(e);
+      }
     };
 
     getData();
