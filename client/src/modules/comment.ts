@@ -17,30 +17,13 @@ const initialState: commentState = {
   comments: [],
 };
 
-export const getComments = createAsyncThunk(
-  "comment/getComments",
-  async (menuId: string) => {
-    const response = await axios.get(`/api/v1/recipe/comment/${menuId}`);
-    return response.data;
-  }
-);
-
 const comment = createSlice({
   name: "commentReducer",
   initialState,
   reducers: {
     SetComment: (state: commentState, action: PayloadAction<commentState>) => {
-      const { content, writer, menu } = action.payload;
+      const { content } = action.payload;
       state.content = content;
-      state.writer = writer;
-      state.menu = menu;
-    },
-  },
-
-  extraReducers: {
-    // 성공
-    [getComments.fulfilled.type]: (state: commentState, action) => {
-      state.comments = action.payload.comments;
     },
   },
 });

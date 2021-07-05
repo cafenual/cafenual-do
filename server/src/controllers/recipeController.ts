@@ -253,12 +253,10 @@ export const createComment = async (req: Request, res: Response) => {
     const newComment = new Comment({ content, writer, menu });
     await newComment.save();
 
-    const currentComment = await Comment.find({ menu: menuId }).populate(
-      "writer"
-    ); // 만약 여러개를 알고 싶으면 populate("writer menu") 이런식
+    const comments = await Comment.find({ menu: menuId }).populate("writer"); // 만약 여러개를 알고 싶으면 populate("writer menu") 이런식
     return res.status(201).json({
       success: true,
-      currentComment,
+      comments,
     });
   } catch (e) {
     res.status(500).json({
@@ -308,10 +306,10 @@ export const updateComment = async (req: Request, res: Response) => {
       });
     }
 
-    const UpdatedComment = await Comment.find({ menu: menuId });
+    const comments = await Comment.find({ menu: menuId }).populate("writer");
     return res.status(200).json({
       success: true,
-      UpdatedComment,
+      comments,
     });
   } catch (e) {
     res.status(500).json({
@@ -339,7 +337,7 @@ export const deleteComment = async (req: Request, res: Response) => {
       });
     }
 
-    const comments = await Comment.find({ menu: menuId });
+    const comments = await Comment.find({ menu: menuId }).populate("writer");
     return res.status(200).json({
       success: true,
       comments,
