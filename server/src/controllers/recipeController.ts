@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
 import Category from "../models/category";
-import mongoose from "mongoose";
+import Comment from "../models/comment";
 import Menu from "../models/menu";
 import User from "../models/user";
-import Comment from "../models/comment";
 
 // 카테고리 생성
 export const createCategory = async (req: Request, res: Response) => {
@@ -21,10 +20,8 @@ export const createCategory = async (req: Request, res: Response) => {
     const newCategory = new Category({ name });
     await newCategory.save();
 
-    const currentCategory = await Category.find();
     return res.status(201).json({
       success: true,
-      currentCategory,
     });
   } catch (e) {
     res.status(500).json({
@@ -93,11 +90,8 @@ export const deleteCategory = async (req: Request, res: Response) => {
       });
     }
 
-    const categories = await Category.find();
-
     res.status(200).json({
       success: true,
-      categories,
     });
   } catch (e) {
     res.status(500).json({
