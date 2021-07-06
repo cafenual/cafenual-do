@@ -12,6 +12,7 @@ import Recipe from "pages/Recipe";
 import RecipeManage from "pages/Recipe/RecipeManage";
 import CategoryManage from "pages/Recipe/CategoryManage";
 import RecipeDetail from "pages/Recipe/RecipeDetail";
+import Transition from "pages/Transition";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             exact
             component={CategoryManage}
           />
+          <Route path="/transition" exact component={Transition} />
         </Switch>
       </div>
     </div>

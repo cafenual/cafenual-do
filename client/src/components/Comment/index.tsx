@@ -15,8 +15,8 @@ const Comment = () => {
   const menuId = match.params.menuId;
   const dispatch = useDispatch();
   const comment = useSelector((state: reduxStoreState) => state.comment);
-  const [comments, setComments] = useState([]);
   const user = useSelector((state: reduxStoreState) => state.user);
+  const [comments, setComments] = useState([]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(SetComment({ content: e.target.value }));
