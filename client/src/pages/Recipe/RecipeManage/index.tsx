@@ -67,7 +67,9 @@ const RecipeManage = () => {
           <form onSubmit={onSubmit}>
             <div className="inner-detail">
               <div className="menu-left">
-                <div className="upload-img"></div>
+                <div className="upload-img">
+                  <input type="file" />
+                </div>
                 <div className="upload-des">
                   <input
                     type="text"

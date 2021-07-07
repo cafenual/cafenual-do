@@ -3,6 +3,7 @@ import Category from "../models/category";
 import Comment from "../models/comment";
 import Menu from "../models/menu";
 import User from "../models/user";
+import multer from "multer";
 
 // 카테고리 생성
 export const createCategory = async (req: Request, res: Response) => {
