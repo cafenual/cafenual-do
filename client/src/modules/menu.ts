@@ -7,6 +7,7 @@ export interface menuState {
   description?: string;
   categoryId?: string;
   recipe?: string;
+  image?: string;
   menus?: menuState[];
   loading?: boolean;
 }
@@ -18,6 +19,7 @@ const initialState: menuState = {
   categoryId: "",
   recipe: "",
   menus: [],
+  image: "",
   loading: false,
 };
 

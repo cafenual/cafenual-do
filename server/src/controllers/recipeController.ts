@@ -5,6 +5,30 @@ import Menu from "../models/menu";
 import User from "../models/user";
 import multer from "multer";
 
+// multer-optional
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}_${file.originalname}`);
+  },
+});
+var upload = multer({ storage: storage }).single("menu_img");
+
+// 이미지 업로드
+export const uploadImg = (req: Request, res: Response) => {
+  upload(req, res, (err) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    return res.json({
+      success: true,
+      image: res.req.file.path,
+      fileName: res.req.file.filename,
+    });
+  });
+};
 // 카테고리 생성
 export const createCategory = async (req: Request, res: Response) => {
   const { name } = req.body;
@@ -104,7 +128,7 @@ export const deleteCategory = async (req: Request, res: Response) => {
 
 // 메뉴 등록
 export const createMenu = async (req: Request, res: Response) => {
-  const { name, description, categoryId, recipe } = req.body;
+  const { name, description, categoryId, recipe, image } = req.body;
 
   const existCategory = await Category.findById({ _id: categoryId });
   if (!existCategory) {
@@ -175,7 +199,7 @@ export const readAllMenu = async (req: Request, res: Response) => {
 
 // 메뉴 수정
 export const updateMenu = async (req: Request, res: Response) => {
-  const { menuId, name, description, categoryId, recipe } = req.body;
+  const { menuId, name, description, categoryId, recipe, image } = req.body;
   try {
     const category = await Category.findById({ _id: categoryId });
     if (!category) {
@@ -187,7 +211,7 @@ export const updateMenu = async (req: Request, res: Response) => {
 
     const menu = await Menu.findByIdAndUpdate(
       { _id: menuId },
-      { name, description, recipe, categoryId }
+      { name, description, recipe, categoryId, image }
     );
 
     if (!menu) {

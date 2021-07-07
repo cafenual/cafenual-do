@@ -1,19 +1,20 @@
 import ManageNav from "components/Recipe/ManageNav";
 import Aside from "layouts/Aside";
 import Header from "layouts/Header";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { SetMenu } from "modules/menu";
-import { useEffect } from "react";
 import { reduxStoreState } from "modules";
 import { getCategories } from "modules/category";
 import axios from "axios";
+import { SERVER_URL } from "config";
 
 const RecipeManage = () => {
   const dispatch = useDispatch();
+  const [menuImg, setMenuImg] = useState("");
   const menu = useSelector((state: reduxStoreState) => state.menu);
   const categories = useSelector(
     (state: reduxStoreState) => state.category.categories
@@ -38,6 +39,7 @@ const RecipeManage = () => {
       description,
       categoryId,
       recipe,
+      image: menuImg,
     };
 
     try {
@@ -47,6 +49,27 @@ const RecipeManage = () => {
       }
     } catch (e) {
       alert("매뉴 등록에 실패하였습니다.");
+    }
+  };
+
+  const imgUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    //빈파일이 아닌 경우 함수 진행
+    if (e.target.files !== null) {
+      //FormData 생성
+      const fd = new FormData();
+      //FormData에 key, value 추가하기
+      fd.append("menu_img", e.target.files[0]);
+      // axios 사용해서 백엔드에게 파일 보내기
+      axios
+        .post(`/api/v1/recipe/uploadImg`, fd)
+        .then((response) => {
+          console.log(response.data);
+          setMenuImg(response.data.image);
+        })
+        //에러가 날 경우 처리
+        .catch((error) => {
+          console.log(error.response);
+        });
     }
   };
 
@@ -68,7 +91,8 @@ const RecipeManage = () => {
             <div className="inner-detail">
               <div className="menu-left">
                 <div className="upload-img">
-                  <input type="file" />
+                  <input type="file" onChange={imgUpload} />
+                  <img src={`${SERVER_URL}/${menuImg}`} alt="" />
                 </div>
                 <div className="upload-des">
                   <input

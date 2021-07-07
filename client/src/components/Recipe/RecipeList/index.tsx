@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterMenus, getMenus, menuState } from "modules/menu";
 import { reduxStoreState } from "modules";
+import { SERVER_URL } from "config";
 
 interface MatchParams {
   category: string;
@@ -30,7 +31,7 @@ const RecipeList = () => {
         {menu.menus?.map((menu: menuState, index) => (
           <li key={index}>
             <Link to={`/recipe/menu/${menu._id}`} className="img-link">
-              <img src={coffee} alt="" />
+              <img src={`${SERVER_URL}/${menu.image}`} alt="" />
             </Link>
             <Link to={`/recipe/menu/${menu._id}`} className="menu-name">
               <span>{menu.name}</span>

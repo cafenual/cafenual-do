@@ -5,6 +5,9 @@ import checkLoggedIn from "../lib/checkLoggedIn";
 
 const router = express.Router();
 
+// test
+router.post("/uploadImg", recipeCtrl.uploadImg);
+
 // 카테고리
 router.post(
   "/category/create",
