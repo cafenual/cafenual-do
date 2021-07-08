@@ -11,10 +11,13 @@ import { reduxStoreState } from "modules";
 import { getCategories } from "modules/category";
 import axios from "axios";
 import { SERVER_URL } from "config";
+import { AiOutlineCloudUpload } from "react-icons/ai";
+import UploadImg from "static/img-upload.png";
 
 const RecipeManage = () => {
   const dispatch = useDispatch();
-  const [menuImg, setMenuImg] = useState("");
+  const [menuImg, setMenuImg] = useState(null);
+  const [imgUrl, setImgUrl] = useState("파일 선택");
   const menu = useSelector((state: reduxStoreState) => state.menu);
   const categories = useSelector(
     (state: reduxStoreState) => state.category.categories
@@ -53,6 +56,7 @@ const RecipeManage = () => {
   };
 
   const imgUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImgUrl(e.target.value);
     //빈파일이 아닌 경우 함수 진행
     if (e.target.files !== null) {
       //FormData 생성
@@ -90,11 +94,39 @@ const RecipeManage = () => {
           <form onSubmit={onSubmit}>
             <div className="inner-detail">
               <div className="menu-left">
-                <div className="upload-img">
-                  <input type="file" onChange={imgUpload} />
-                  <img src={`${SERVER_URL}/${menuImg}`} alt="" />
+                <div className="img-upload">
+                  <label htmlFor="img-upload">
+                    <span>{imgUrl}</span>
+                    <AiOutlineCloudUpload size="30" />
+                  </label>
+                  <input type="file" id="img-upload" onChange={imgUpload} />
                 </div>
-                <div className="upload-des">
+                <div className="img-preview">
+                  {!menuImg && <img src={UploadImg} alt="" />}
+                  {menuImg && <img src={`${SERVER_URL}/${menuImg}`} alt="" />}
+                </div>
+              </div>
+              <div className="menu-right">
+                <div className="menu-category">
+                  <select name="categoryId" onChange={onChange}>
+                    <option value="">카테고리 선택</option>
+                    {categories?.map((category, index) => (
+                      <option key={index} value={category._id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="menu-name">
+                  <input
+                    type="text"
+                    name="name"
+                    onChange={onChange}
+                    placeholder="메뉴 이름"
+                  />
+                </div>
+
+                <div className="menu-description">
                   <input
                     type="text"
                     name="description"
@@ -102,24 +134,7 @@ const RecipeManage = () => {
                     placeholder="메뉴 설명"
                   />
                 </div>
-              </div>
-              <div className="menu-right">
-                <input
-                  type="text"
-                  name="name"
-                  onChange={onChange}
-                  placeholder="메뉴 이름"
-                />
-                <select name="categoryId" onChange={onChange}>
-                  <option value="">카테고리 선택</option>
-                  {categories?.map((category, index) => (
-                    <option key={index} value={category._id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
                 <div className="menu-recipe">
-                  <div className="recipe-tit">레시피</div>
                   <div className="write-cont">
                     <CKEditor
                       onReady={(editor: any) => {
@@ -131,6 +146,7 @@ const RecipeManage = () => {
                             editor.ui.getEditableElement()
                           );
                       }}
+                      config={{ placeholder: "레시피를 입력해주세요" }}
                       onChange={(event: any, editor: any) => {
                         const data = editor.getData();
                         let body = {
@@ -146,7 +162,11 @@ const RecipeManage = () => {
                 </div>
               </div>
             </div>
-            <button type="submit">등록</button>
+            <div className="submit-btn">
+              <button className="menu-submit" type="submit">
+                등록
+              </button>
+            </div>
           </form>
         </div>
       </div>

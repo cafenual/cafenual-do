@@ -10,8 +10,9 @@
       margin: 0 auto;
       .menu-left {
         float: left;
+        width:430px;
         img {
-          width: 430px;
+          width: 100%;
           height: 552px;
         }
       }
@@ -23,8 +24,6 @@
           font-size: 24px;
         }
         .menu-recipe {
-          margin-top: 30px;
-          
         }
       }
     }
