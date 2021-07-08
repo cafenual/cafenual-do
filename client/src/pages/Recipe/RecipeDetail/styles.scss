@@ -1,6 +1,6 @@
 #RecipeDetail {
   .page-inner {
-    width: 85%;
+    width: 100%;
     margin: 0 auto;
     padding-top: 100px;
     min-width: 1050px;
@@ -10,7 +10,7 @@
       margin: 0 auto;
       .menu-left {
         float: left;
-        width:430px;
+        width: 430px;
         img {
           width: 100%;
           height: 552px;
@@ -19,11 +19,28 @@
       .menu-right {
         float: right;
         width: 560px;
-        .name {
-          padding-right: 30px;
-          font-size: 24px;
+        .menu-name {
+          span {
+            font-size: 24px;
+          }
         }
+        .menu-description {
+          padding-top: 6px;
+          margin-bottom: 20px;
+          p {
+            display: block;
+            font-size: 14px;
+            color: #999;
+            font-family: auto;
+          }
+        }
+
         .menu-recipe {
+          border-top: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f4f4f4;
+          padding: 10px 0;
+          height: 50vh;
+          overflow-y: scroll;
         }
       }
     }

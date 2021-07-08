@@ -39,6 +39,15 @@ export const filterMenus = createAsyncThunk(
   }
 );
 
+export const getMenuDetail = createAsyncThunk(
+  "menu/getMenuDetail",
+  async (menuId: string) => {
+    const response = await axios.get(`/api/v1/recipe/menu/${menuId}`);
+    console.log(response);
+    return response.data;
+  }
+);
+
 const menu = createSlice({
   name: "menuReducer",
   initialState,
@@ -80,6 +89,27 @@ const menu = createSlice({
     // 실패
     [filterMenus.rejected.type]: (state: menuState, action) => {
       state.menus = [];
+      state.loading = false;
+    },
+
+    // 호출 전
+    [getMenuDetail.pending.type]: (state: menuState, action) => {
+      state.loading = true;
+    },
+
+    // 성공
+    [getMenuDetail.fulfilled.type]: (state: menuState, action) => {
+      const { _id, name, description, image, recipe } = action.payload.menu;
+      state._id = _id;
+      state.name = name;
+      state.description = description;
+      state.image = image;
+      state.recipe = recipe;
+      state.loading = false;
+    },
+
+    // 실패
+    [getMenuDetail.rejected.type]: (state: menuState, action) => {
       state.loading = false;
     },
   },

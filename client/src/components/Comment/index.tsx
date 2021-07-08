@@ -61,7 +61,6 @@ const Comment = () => {
     const getData = async () => {
       try {
         const response = await axios.get(`/api/v1/recipe/comment/${menuId}`);
-        console.log(response);
         if (response.data.success) {
           setComments(response.data.comments);
         }

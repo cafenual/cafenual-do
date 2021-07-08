@@ -1,11 +1,29 @@
 import Aside from "layouts/Aside";
 import Header from "layouts/Header";
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles.scss";
 import coffee from "static/coffee.jpg";
 import Comment from "components/Comment";
+import { getMenuDetail } from "modules/menu";
+import { useRouteMatch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { reduxStoreState } from "modules";
+import { SERVER_URL } from "config";
+
+interface MatchParams {
+  menuId: string;
+}
 
 const RecipeDetail = () => {
+  const match = useRouteMatch<MatchParams>();
+  const menuId = match.params.menuId;
+  const dispatch = useDispatch();
+  const menu = useSelector((state: reduxStoreState) => state.menu);
+
+  useEffect(() => {
+    dispatch(getMenuDetail(menuId));
+  }, [dispatch, menuId]);
+
   return (
     <>
       <Header />
@@ -14,15 +32,21 @@ const RecipeDetail = () => {
         <div className="page-inner">
           <div className="inner-detail">
             <div className="menu-left">
-              <img src={coffee} alt="" />
-              <p>description 자리 입니다</p>
+              <img src={`${SERVER_URL}/${menu.image}`} alt="" />
             </div>
             <div className="menu-right">
-              <div className="name">아메리카노</div>
+              <div className="menu-name">
+                <span>{menu.name}</span>
+              </div>
+
+              <div className="menu-description">
+                <p>{menu.description}</p>
+              </div>
 
               <div className="menu-recipe">
-                <div className="recipe-tit">레시피</div>
-                <div>레시피 내용 들어갈 자리 입니다.</div>
+                {menu.recipe && (
+                  <div dangerouslySetInnerHTML={{ __html: menu.recipe }}></div>
+                )}
               </div>
             </div>
           </div>
