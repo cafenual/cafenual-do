@@ -3,7 +3,7 @@ import axios from "axios";
 import "./styles.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import Pagination from "components/Pagination";
-import { paginate } from "utils/Paginate";
+import { paginate } from "lib/Paginate";
 import Header from "layouts/Header";
 import Footer from "layouts/Footer";
 import Aside from "layouts/Aside";

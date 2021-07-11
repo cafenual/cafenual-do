@@ -7,6 +7,13 @@ import { useRouteMatch } from "react-router-dom";
 import "./styles.scss";
 import TextareaAutosize from "react-textarea-autosize";
 import { MdEdit, MdDelete } from "react-icons/md";
+import {
+  createComment,
+  deleteComment,
+  getComments,
+  updateComment,
+} from "lib/api/comment";
+import { useCallback } from "react";
 
 interface MatchParams {
   menuId: string;
@@ -15,95 +22,86 @@ interface MatchParams {
 const Comment = () => {
   const match = useRouteMatch<MatchParams>();
   const menuId = match.params.menuId;
-  const dispatch = useDispatch();
-  const comment = useSelector((state: reduxStoreState) => state.comment);
   const user = useSelector((state: reduxStoreState) => state.user);
   const [comments, setComments] = useState([]);
+  const [comment, setComment] = useState("");
 
-  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    dispatch(SetComment({ content: e.target.value }));
-  };
+  const onChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setComment(e.target.value);
+  }, []);
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    let body = {
-      content: comment.content,
-      writerId: user._id,
-      menuId,
-    };
-
-    try {
-      const response = await axios.post("/api/v1/recipe/comment/create", body);
-      console.log(response);
-      if (response.data.success) {
-        setComments(response.data.comments);
-        dispatch(SetComment({ content: "" }));
+  // 댓글 추가
+  const onSubmit = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      try {
+        const comments = await createComment(comment, user._id, menuId);
+        setComments(comments);
+        setComment("");
+      } catch (e) {
+        alert("댓글 생성에 실패했습니다");
       }
-    } catch (e) {
-      alert("댓글 생성에 실패했습니다");
-    }
-  };
+    },
+    [comment, user._id, menuId]
+  );
 
-  const deleteComment = async (commentId: string, menuId: string) => {
+  // 댓글 삭제
+  const onDeleteComment = async (commentId: string, menuId: string) => {
     try {
-      const response = await axios.delete(
-        `/api/v1/recipe/comment/delete/${menuId}/${commentId}`
-      );
-      console.log(response.data);
-      if (response.data.success) {
-        setComments(response.data.comments);
-      }
+      const comments = await deleteComment(commentId, menuId);
+      setComments(comments);
     } catch (e) {
       alert("댓글 삭제에 실패했습니다");
     }
   };
 
-  const [editCommentId, setEditCommentId] = useState("");
-  const [editCommentInput, setEditCommentInput] = useState("");
-  const editCommentHandle = (commentId: string, content: string) => {
-    setEditCommentInput(content);
-    setEditCommentId(commentId);
-  };
+  const [updateCommentId, setUpdateCommentId] = useState("");
+  const [updateCommentInput, setUpdateCommentInput] = useState("");
+  // 댓글 수정 활성화
+  const activeUpdateComment = useCallback(
+    (commentId: string, content: string) => {
+      setUpdateCommentInput(content);
+      setUpdateCommentId(commentId);
+    },
+    []
+  );
 
-  const editCommentOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEditCommentInput(e.target.value);
-  };
+  // 댓글 수정 input
+  const updateCommentOnChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setUpdateCommentInput(e.target.value);
+    },
+    []
+  );
 
-  const editCancelHandle = () => {
-    setEditCommentId("");
-  };
+  // 댓글 수정 취소
+  const updateCancel = useCallback(() => {
+    setUpdateCommentId("");
+  }, []);
 
-  const editComment = async (commentId: string, menuId: string) => {
-    const body = {
-      content: editCommentInput,
-      writerId: user._id,
-      menuId,
-      commentId,
-    };
-
-    try {
-      const response = await axios.patch(`/api/v1/recipe/comment/update`, body);
-      if (response.data.success) {
-        setEditCommentId("");
-        setComments(response.data.comments);
+  // 댓글 수정
+  const onUpdateComment = useCallback(
+    async (commentId: string, menuId: string) => {
+      try {
+        const comments = await updateComment(
+          updateCommentInput,
+          user._id,
+          menuId,
+          commentId
+        );
+        setUpdateCommentId("");
+        setComments(comments);
+      } catch (e) {
+        alert("댓글 수정에 실패했습니다.");
       }
-    } catch (e) {
-      alert("댓글 수정에 실패했습니다.");
-    }
-  };
+    },
+    [updateCommentInput, user._id]
+  );
 
   useEffect(() => {
     const getData = async () => {
-      try {
-        const response = await axios.get(`/api/v1/recipe/comment/${menuId}`);
-        if (response.data.success) {
-          setComments(response.data.comments);
-          console.log(response.data);
-        }
-      } catch (e) {
-        console.log(e);
-      }
+      const comments = await getComments(menuId);
+      setComments(comments);
     };
     getData();
   }, [menuId]);
@@ -117,7 +115,7 @@ const Comment = () => {
             <TextareaAutosize
               placeholder="댓글 추가 ..."
               onChange={onChange}
-              value={comment.content}
+              value={comment}
             />
 
             <button type="submit">등록</button>
@@ -131,24 +129,26 @@ const Comment = () => {
                     <span>{comment.writer.name}</span>
                   </div>
 
-                  {editCommentId === comment._id ? (
+                  {updateCommentId === comment._id ? (
                     <div className="comment-edit">
                       <input
                         type="text"
                         className="comment-edit"
-                        onChange={editCommentOnChange}
-                        value={editCommentInput}
+                        onChange={updateCommentOnChange}
+                        value={updateCommentInput}
                       />
                       <button
                         className="save btn"
                         type="button"
-                        onClick={() => editComment(comment._id, comment.menu)}
+                        onClick={() =>
+                          onUpdateComment(comment._id, comment.menu)
+                        }
                       >
                         저장
                       </button>
                       <button
                         className="cancel btn"
-                        onClick={editCancelHandle}
+                        onClick={updateCancel}
                         type="button"
                       >
                         취소
@@ -160,11 +160,11 @@ const Comment = () => {
 
                   <div className="comment-btn">
                     {comment.writer._id === user._id && // 현재 로그인한 계정이랑 댓글 작성자랑 같고
-                    editCommentId !== comment._id ? ( // 현재 수정중인 댓글이 아닐경우 버튼을 보여준다 // 만약 수정중이면 버튼을 보여줄 필요가 없기떄문에
+                    updateCommentId !== comment._id ? ( // 현재 수정중인 댓글이 아닐경우 버튼을 보여준다 // 만약 수정중이면 버튼을 보여줄 필요가 없기떄문에
                       <>
                         <button
                           onClick={() =>
-                            editCommentHandle(comment._id, comment.content)
+                            activeUpdateComment(comment._id, comment.content)
                           }
                           className="edit btn"
                         >
@@ -174,7 +174,7 @@ const Comment = () => {
                         <button
                           className="delete btn"
                           onClick={() =>
-                            deleteComment(comment._id, comment.menu)
+                            onDeleteComment(comment._id, comment.menu)
                           }
                         >
                           <MdDelete size="20" />
