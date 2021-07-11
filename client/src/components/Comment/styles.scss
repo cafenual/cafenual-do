@@ -45,6 +45,32 @@
             color: $grayColor;
           }
         }
+
+        .comment-edit {
+          display: flex;
+          align-items: center;
+          input {
+            border: none;
+            border-bottom: 1px solid $grayColor;
+            width: 90%;
+            outline: none;
+            padding: 5px 10px;
+          }
+          .btn {
+            padding: 5px 10px;
+            margin-left: 5px;
+            border-radius: 7px;
+          }
+          .save {
+            border: none;
+            color: #fff;
+            background-color: $cafenualColor;
+          }
+          .cancel {
+            border: 1px solid $cafenualColor;
+            color: $cafenualColor;
+          }
+        }
         .comment-btn {
           float: right;
           display: flex;

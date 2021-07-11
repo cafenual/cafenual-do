@@ -59,6 +59,40 @@ const Comment = () => {
     }
   };
 
+  const [editCommentId, setEditCommentId] = useState("");
+  const [editCommentInput, setEditCommentInput] = useState("");
+  const editCommentHandle = (commentId: string, content: string) => {
+    setEditCommentInput(content);
+    setEditCommentId(commentId);
+  };
+
+  const editCommentOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEditCommentInput(e.target.value);
+  };
+
+  const editCancelHandle = () => {
+    setEditCommentId("");
+  };
+
+  const editComment = async (commentId: string, menuId: string) => {
+    const body = {
+      content: editCommentInput,
+      writerId: user._id,
+      menuId,
+      commentId,
+    };
+
+    try {
+      const response = await axios.patch(`/api/v1/recipe/comment/update`, body);
+      if (response.data.success) {
+        setEditCommentId("");
+        setComments(response.data.comments);
+      }
+    } catch (e) {
+      alert("댓글 수정에 실패했습니다.");
+    }
+  };
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -97,12 +131,43 @@ const Comment = () => {
                     <span>{comment.writer.name}</span>
                   </div>
 
-                  <span>{comment.content}</span>
+                  {editCommentId === comment._id ? (
+                    <div className="comment-edit">
+                      <input
+                        type="text"
+                        className="comment-edit"
+                        onChange={editCommentOnChange}
+                        value={editCommentInput}
+                      />
+                      <button
+                        className="save btn"
+                        type="button"
+                        onClick={() => editComment(comment._id, comment.menu)}
+                      >
+                        저장
+                      </button>
+                      <button
+                        className="cancel btn"
+                        onClick={editCancelHandle}
+                        type="button"
+                      >
+                        취소
+                      </button>
+                    </div>
+                  ) : (
+                    <span>{comment.content}</span>
+                  )}
 
                   <div className="comment-btn">
-                    {comment.writer._id === user._id ? (
+                    {comment.writer._id === user._id && // 현재 로그인한 계정이랑 댓글 작성자랑 같고
+                    editCommentId !== comment._id ? ( // 현재 수정중인 댓글이 아닐경우 버튼을 보여준다 // 만약 수정중이면 버튼을 보여줄 필요가 없기떄문에
                       <>
-                        <button className="edit btn">
+                        <button
+                          onClick={() =>
+                            editCommentHandle(comment._id, comment.content)
+                          }
+                          className="edit btn"
+                        >
                           <MdEdit size="20" />
                           <span>수정</span>
                         </button>
