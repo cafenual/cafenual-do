@@ -1,7 +1,68 @@
+@import "styles/main";
+
 .comment {
   margin-top: 50px;
   .inner-comment {
     width: 1050px;
     margin: 0 auto;
+    border-top: 1px solid $border;
+    .comment-len {
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      textarea {
+        border: none;
+        border-bottom: 1px solid $border;
+        width: 94%;
+        resize: none;
+        outline: none;
+        padding: 5px 10px;
+        &:focus {
+          border-bottom: 1px solid $cafenualColor;
+        }
+      }
+      button {
+        border: 1px solid $cafenualColor;
+        color: $cafenualColor;
+        padding: 5px 10px;
+        margin-left: 13px;
+        border-radius: 7px;
+      }
+    }
+
+    .comment-list {
+      li {
+        padding: 10px;
+        .comment-writer {
+          padding: 3px 0;
+          span {
+            font-family: auto;
+            font-size: 14px;
+            color: $grayColor;
+          }
+        }
+        .comment-btn {
+          float: right;
+          display: flex;
+          .btn {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            color: $grayColor;
+            font-size: 14px;
+            &:hover {
+              color: $cafenualColor;
+            }
+            span {
+              line-height: 0;
+            }
+          }
+        }
+      }
+    }
   }
 }

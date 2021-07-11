@@ -5,6 +5,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
 import "./styles.scss";
+import TextareaAutosize from "react-textarea-autosize";
+import { MdEdit, MdDelete } from "react-icons/md";
 
 interface MatchParams {
   menuId: string;
@@ -18,7 +20,7 @@ const Comment = () => {
   const user = useSelector((state: reduxStoreState) => state.user);
   const [comments, setComments] = useState([]);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     dispatch(SetComment({ content: e.target.value }));
   };
 
@@ -63,6 +65,7 @@ const Comment = () => {
         const response = await axios.get(`/api/v1/recipe/comment/${menuId}`);
         if (response.data.success) {
           setComments(response.data.comments);
+          console.log(response.data);
         }
       } catch (e) {
         console.log(e);
@@ -75,33 +78,48 @@ const Comment = () => {
     <>
       <div className="comment">
         <div className="inner-comment">
+          <div className="comment-len">댓글 {comments.length}개</div>
           <form onSubmit={onSubmit}>
-            <input
-              type="text"
+            <TextareaAutosize
+              placeholder="댓글 추가 ..."
               onChange={onChange}
-              placeholder="댓글을 작성해주세요"
               value={comment.content}
             />
+
             <button type="submit">등록</button>
           </form>
 
-          <ul>
+          <ul className="comment-list">
             {comments &&
               comments.map((comment: any, index) => (
                 <li key={index}>
-                  {comment.content}
-                  {comment.writer._id === user._id ? (
-                    <>
-                      <button>수정</button>
-                      <button
-                        onClick={() => deleteComment(comment._id, comment.menu)}
-                      >
-                        삭제
-                      </button>
-                    </>
-                  ) : (
-                    ""
-                  )}
+                  <div className="comment-writer">
+                    <span>{comment.writer.name}</span>
+                  </div>
+
+                  <span>{comment.content}</span>
+
+                  <div className="comment-btn">
+                    {comment.writer._id === user._id ? (
+                      <>
+                        <button className="edit btn">
+                          <MdEdit size="20" />
+                          <span>수정</span>
+                        </button>
+                        <button
+                          className="delete btn"
+                          onClick={() =>
+                            deleteComment(comment._id, comment.menu)
+                          }
+                        >
+                          <MdDelete size="20" />
+                          <span>삭제</span>
+                        </button>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </li>
               ))}
           </ul>

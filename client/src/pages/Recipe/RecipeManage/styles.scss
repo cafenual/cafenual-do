@@ -52,6 +52,7 @@
           }
         }
         .menu-recipe {
+          height: auto !important;
           .write-cont {
             .ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-rounded-corners {
               height: 50vh;

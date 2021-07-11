@@ -1,8 +1,10 @@
 #RecipeDetail {
+  min-height: auto;
   .page-inner {
     width: 100%;
     margin: 0 auto;
-    padding-top: 100px;
+    padding-top: 50px;
+    margin-bottom: 200px;
     min-width: 1050px;
     .inner-detail {
       overflow: hidden;
@@ -37,9 +39,8 @@
 
         .menu-recipe {
           border-top: 1px solid #f4f4f4;
-          border-bottom: 1px solid #f4f4f4;
           padding: 10px 0;
-          height: 50vh;
+          height: 40vh;
           overflow-y: scroll;
         }
       }

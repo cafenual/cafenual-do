@@ -5,6 +5,7 @@ import App from "./App";
 import store from "modules";
 import { SetUser } from "modules/users";
 import { BrowserRouter } from "react-router-dom";
+import "styles/main.scss";
 
 function loadUser() {
   try {
