@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+import { getCategories } from "lib/api/category";
 
 export interface categoryState {
   _id?: string;
@@ -15,11 +15,11 @@ const initialState: categoryState = {
   loading: false,
 };
 
-export const getCategories = createAsyncThunk(
+export const getCategoriesHandle = createAsyncThunk(
   "category/getCategories",
   async () => {
-    const response = await axios.get("/api/v1/recipe/category");
-    return response.data;
+    const categories = await getCategories();
+    return categories;
   }
 );
 
@@ -36,33 +36,26 @@ const category = createSlice({
       state.name = name;
     },
 
-    SetCategory: (
-      state: categoryState,
-      action: PayloadAction<categoryState>
-    ) => {
-      const { name } = action.payload;
-      state.name = name;
-    },
   },
   extraReducers: {
     // 호출 전
-    [getCategories.pending.type]: (state: categoryState, action) => {
+    [getCategoriesHandle.pending.type]: (state: categoryState, action) => {
       state.loading = true;
     },
 
     // 성공
-    [getCategories.fulfilled.type]: (state: categoryState, action) => {
-      state.categories = action.payload.categories;
+    [getCategoriesHandle.fulfilled.type]: (state: categoryState, action) => {
+      state.categories = action.payload;
       state.loading = false;
     },
 
     // 실패
-    [getCategories.rejected.type]: (state: categoryState, action) => {
+    [getCategoriesHandle.rejected.type]: (state: categoryState, action) => {
       state.categories = [];
       state.loading = false;
     },
   },
 });
 
-export const { EditCategory, SetCategory } = category.actions;
+export const { EditCategory } = category.actions;
 export default category;

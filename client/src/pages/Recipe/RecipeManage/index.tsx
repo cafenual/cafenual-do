@@ -8,11 +8,11 @@ import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { SetMenu } from "modules/menu";
 import { reduxStoreState } from "modules";
-import { getCategories } from "modules/category";
 import axios from "axios";
 import { SERVER_URL } from "config";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import UploadImg from "static/img-upload.png";
+import { getCategoriesHandle } from "modules/category";
 
 const RecipeManage = () => {
   const dispatch = useDispatch();
@@ -78,7 +78,7 @@ const RecipeManage = () => {
   };
 
   useEffect(() => {
-    dispatch(getCategories());
+    dispatch(getCategoriesHandle());
   }, [dispatch]);
 
   return (

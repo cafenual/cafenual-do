@@ -1,10 +1,9 @@
 import React from "react";
 import "./styles.scss";
-import coffee from "static/coffee.jpg";
 import { Link, useRouteMatch, withRouter } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterMenus, getMenus, menuState } from "modules/menu";
+import { filterMenusHandle, getMenusHandle, menuState } from "modules/menu";
 import { reduxStoreState } from "modules";
 import { SERVER_URL } from "config";
 
@@ -19,9 +18,9 @@ const RecipeList = () => {
   const menu = useSelector((state: reduxStoreState) => state.menu);
   useEffect(() => {
     if (!category) {
-      dispatch(getMenus());
+      dispatch(getMenusHandle());
     } else {
-      dispatch(filterMenus(category));
+      dispatch(filterMenusHandle(category));
     }
   }, [dispatch, category]);
 

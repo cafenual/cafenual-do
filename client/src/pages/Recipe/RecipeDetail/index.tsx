@@ -2,9 +2,8 @@ import Aside from "layouts/Aside";
 import Header from "layouts/Header";
 import React, { useEffect } from "react";
 import "./styles.scss";
-import coffee from "static/coffee.jpg";
 import Comment from "components/Comment";
-import { getMenuDetail } from "modules/menu";
+import { getMenuDetailHandle } from "modules/menu";
 import { useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { reduxStoreState } from "modules";
@@ -21,7 +20,7 @@ const RecipeDetail = () => {
   const menu = useSelector((state: reduxStoreState) => state.menu);
 
   useEffect(() => {
-    dispatch(getMenuDetail(menuId));
+    dispatch(getMenuDetailHandle(menuId));
   }, [dispatch, menuId]);
 
   return (

@@ -1,8 +1,6 @@
-import axios from "axios";
 import { reduxStoreState } from "modules";
-import { SetComment } from "modules/comment";
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
 import "./styles.scss";
 import TextareaAutosize from "react-textarea-autosize";

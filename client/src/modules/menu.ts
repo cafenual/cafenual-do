@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+import { getMenuDetail, getMenus } from "lib/api/menu";
 
 export interface menuState {
   _id?: string;
@@ -23,28 +23,27 @@ const initialState: menuState = {
   loading: false,
 };
 
-export const getMenus = createAsyncThunk("menu/getMenus", async () => {
-  const response = await axios.get("/api/v1/recipe/menu");
-  return response.data;
+export const getMenusHandle = createAsyncThunk("menu/getMenus", async () => {
+  const menus = await getMenus();
+  return menus;
 });
 
-export const filterMenus = createAsyncThunk(
+export const filterMenusHandle = createAsyncThunk(
   "menu/filterMenus",
   async (category: string) => {
-    const response = await axios.get("/api/v1/recipe/menu");
-    const result = response.data.menus.filter(
+    const menus = await getMenus();
+    const result = menus.filter(
       (menu: any) => menu.categoryId.name === category
     );
     return result;
   }
 );
 
-export const getMenuDetail = createAsyncThunk(
+export const getMenuDetailHandle = createAsyncThunk(
   "menu/getMenuDetail",
   async (menuId: string) => {
-    const response = await axios.get(`/api/v1/recipe/menu/${menuId}`);
-    console.log(response);
-    return response.data;
+    const menu = await getMenuDetail(menuId);
+    return menu;
   }
 );
 
@@ -59,46 +58,46 @@ const menu = createSlice({
   },
   extraReducers: {
     // 호출 전
-    [getMenus.pending.type]: (state: menuState, action) => {
+    [getMenusHandle.pending.type]: (state: menuState, action) => {
       state.loading = true;
     },
 
     // 성공
-    [getMenus.fulfilled.type]: (state: menuState, action) => {
-      state.menus = action.payload.menus;
-      state.loading = false;
-    },
-
-    // 실패
-    [getMenus.rejected.type]: (state: menuState, action) => {
-      state.menus = [];
-      state.loading = false;
-    },
-
-    // 호출 전
-    [filterMenus.pending.type]: (state: menuState, action) => {
-      state.loading = true;
-    },
-
-    // 성공
-    [filterMenus.fulfilled.type]: (state: menuState, action) => {
+    [getMenusHandle.fulfilled.type]: (state: menuState, action) => {
       state.menus = action.payload;
       state.loading = false;
     },
 
     // 실패
-    [filterMenus.rejected.type]: (state: menuState, action) => {
+    [getMenusHandle.rejected.type]: (state: menuState, action) => {
       state.menus = [];
       state.loading = false;
     },
 
     // 호출 전
-    [getMenuDetail.pending.type]: (state: menuState, action) => {
+    [filterMenusHandle.pending.type]: (state: menuState, action) => {
       state.loading = true;
     },
 
     // 성공
-    [getMenuDetail.fulfilled.type]: (state: menuState, action) => {
+    [filterMenusHandle.fulfilled.type]: (state: menuState, action) => {
+      state.menus = action.payload;
+      state.loading = false;
+    },
+
+    // 실패
+    [filterMenusHandle.rejected.type]: (state: menuState, action) => {
+      state.menus = [];
+      state.loading = false;
+    },
+
+    // 호출 전
+    [getMenuDetailHandle.pending.type]: (state: menuState, action) => {
+      state.loading = true;
+    },
+
+    // 성공
+    [getMenuDetailHandle.fulfilled.type]: (state: menuState, action) => {
       const { _id, name, description, image, recipe } = action.payload.menu;
       state._id = _id;
       state.name = name;
@@ -109,7 +108,7 @@ const menu = createSlice({
     },
 
     // 실패
-    [getMenuDetail.rejected.type]: (state: menuState, action) => {
+    [getMenuDetailHandle.rejected.type]: (state: menuState, action) => {
       state.loading = false;
     },
   },

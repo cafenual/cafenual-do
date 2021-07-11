@@ -1,5 +1,5 @@
 import { reduxStoreState } from "modules";
-import { categoryState, getCategories } from "modules/category";
+import { categoryState, getCategoriesHandle } from "modules/category";
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,10 +10,9 @@ const RecipeCategory = () => {
   const dispatch = useDispatch();
   const categories = useSelector(
     (state: reduxStoreState) => state.category.categories
-    
   );
   useEffect(() => {
-    dispatch(getCategories());
+    dispatch(getCategoriesHandle());
   }, [dispatch]);
 
   const activeStyle = {
