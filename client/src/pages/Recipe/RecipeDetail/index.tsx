@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import "./styles.scss";
 import Comment from "components/Recipe/Comment";
 import { getMenuDetailHandle } from "modules/menu";
-import { useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { reduxStoreState } from "modules";
 import { SERVER_URL } from "config";
@@ -48,7 +48,9 @@ const RecipeDetail = () => {
                 <button className="btn-type2" type="button" onClick={onDelete}>
                   삭제
                 </button>
-                <button className="btn-type1">수정</button>
+                <Link to={`/recipe/edit/${menuId}`} className="btn-type1">
+                  수정
+                </Link>
               </div>
               <div className="menu-name">
                 <span>{menu.name}</span>

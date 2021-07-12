@@ -9,7 +9,7 @@ export const getMenus = async () => {
 // 메뉴 상세보기
 export const getMenuDetail = async (menuId: string) => {
   const response = await axios.get(`/api/v1/recipe/menu/${menuId}`);
-  return response.data;
+  return response.data.menu;
 };
 
 // 메뉴 삭제

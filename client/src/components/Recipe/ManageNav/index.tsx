@@ -29,12 +29,12 @@ const ManageNav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink activeStyle={activeStyle} to={`/recipe/manage/recipe`}>
+              <NavLink activeStyle={activeStyle} to={`/recipe/manage/upload`}>
                 <div className="menu-tit">
                   <SiCmake size="20" />
                   <span>Recipe</span>
                 </div>
-                <span className="menu-des">레시피 관리(등록,수정,삭제)</span>
+                <span className="menu-des">레시피 등록</span>
               </NavLink>
             </li>
           </ul>

@@ -22,10 +22,17 @@
         float: right;
         width: 560px;
         .menu-btn {
-          button {
+          button,
+          a {
             float: right;
             width: 75px;
             height: 30px;
+          }
+          a {
+            text-align: center;
+            line-height: 19px;
+            font-size: 14px;
+            color: #fff;
           }
         }
         .menu-name {

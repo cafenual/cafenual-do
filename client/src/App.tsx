@@ -1,7 +1,6 @@
 import Join from "pages/Join";
 import Login from "pages/Login";
 import DashBoard from "pages/DashBoard";
-
 import { Route, Switch } from "react-router-dom";
 import NoticeList from "pages/Notice/NoticeList";
 import NoticeUpload from "pages/Notice/NoticeUpload";
@@ -9,10 +8,11 @@ import NoticeDetail from "pages/Notice/NoticeDetail";
 import NoticeEdit from "pages/Notice/NoticeEdit";
 import "./App.scss";
 import Recipe from "pages/Recipe";
-import RecipeManage from "components/Recipe/RecipeForm";
 import CategoryManage from "pages/Recipe/CategoryManage";
 import RecipeDetail from "pages/Recipe/RecipeDetail";
 import Transition from "pages/Transition";
+import RecipeUpload from "pages/Recipe/RecipeUpload";
+import RecipeEdit from "pages/Recipe/RecipeEdit";
 
 function App() {
   return (
@@ -28,7 +28,8 @@ function App() {
           <Route path="/notice/:id?" component={NoticeDetail} />
           <Route path="/recipe/:category?" exact component={Recipe} />
           <Route path="/recipe/menu/:menuId" exact component={RecipeDetail} />
-          <Route path="/recipe/manage/recipe" exact component={RecipeManage} />
+          <Route path="/recipe/manage/upload" exact component={RecipeUpload} />
+          <Route path="/recipe/edit/:menuId" exact component={RecipeEdit} />
           <Route
             path="/recipe/manage/category"
             exact

@@ -55,6 +55,17 @@ const menu = createSlice({
       const { key, value } = action.payload;
       state[key] = value;
     },
+    EditMenu: (state: menuState, action: PayloadAction<menuState>) => {
+      const { name, description, categoryId, recipe, image } = action.payload;
+      state.name = name;
+      state.description = description;
+      state.categoryId = categoryId;
+      state.recipe = recipe;
+      state.image = image;
+    },
+    SetImage: (state: menuState, action: PayloadAction<menuState>) => {
+      state.image = action.payload.image;
+    },
   },
   extraReducers: {
     // 호출 전
@@ -98,7 +109,7 @@ const menu = createSlice({
 
     // 성공
     [getMenuDetailHandle.fulfilled.type]: (state: menuState, action) => {
-      const { _id, name, description, image, recipe } = action.payload.menu;
+      const { _id, name, description, image, recipe } = action.payload;
       state._id = _id;
       state.name = name;
       state.description = description;
@@ -114,5 +125,5 @@ const menu = createSlice({
   },
 });
 
-export const { SetMenu } = menu.actions;
+export const { SetMenu, EditMenu, SetImage } = menu.actions;
 export default menu;
