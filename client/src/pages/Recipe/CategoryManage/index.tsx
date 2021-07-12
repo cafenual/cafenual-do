@@ -142,14 +142,14 @@ const CategoryManage = () => {
                           />
                           <button
                             type="button"
-                            className="save btn"
+                            className="btn-type1"
                             onClick={() => onUpdate(category._id)}
                           >
                             저장
                           </button>
                           <button
                             type="button"
-                            className="cancel btn"
+                            className="btn-type2"
                             onClick={onUpdateCancel}
                           >
                             취소

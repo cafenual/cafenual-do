@@ -136,7 +136,7 @@ const Comment = () => {
                         value={updateCommentInput}
                       />
                       <button
-                        className="save btn"
+                        className="btn-type1"
                         type="button"
                         onClick={() =>
                           onUpdateComment(comment._id, comment.menu)
@@ -145,7 +145,7 @@ const Comment = () => {
                         저장
                       </button>
                       <button
-                        className="cancel btn"
+                        className="btn-type2"
                         onClick={updateCancel}
                         type="button"
                       >

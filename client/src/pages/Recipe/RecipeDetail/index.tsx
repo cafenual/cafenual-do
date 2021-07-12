@@ -2,12 +2,13 @@ import Aside from "layouts/Aside";
 import Header from "layouts/Header";
 import React, { useEffect } from "react";
 import "./styles.scss";
-import Comment from "components/Comment";
+import Comment from "components/Recipe/Comment";
 import { getMenuDetailHandle } from "modules/menu";
 import { useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { reduxStoreState } from "modules";
 import { SERVER_URL } from "config";
+import { deleteMenu } from "lib/api/menu";
 
 interface MatchParams {
   menuId: string;
@@ -23,6 +24,15 @@ const RecipeDetail = () => {
     dispatch(getMenuDetailHandle(menuId));
   }, [dispatch, menuId]);
 
+  const onDelete = async () => {
+    try {
+      await deleteMenu(menuId);
+      window.location.replace("/recipe");
+    } catch (e) {
+      alert("메뉴 삭제에 실패했습니다.");
+    }
+  };
+
   return (
     <>
       <Header />
@@ -34,6 +44,12 @@ const RecipeDetail = () => {
               <img src={`${SERVER_URL}/${menu.image}`} alt="" />
             </div>
             <div className="menu-right">
+              <div className="menu-btn">
+                <button className="btn-type2" type="button" onClick={onDelete}>
+                  삭제
+                </button>
+                <button className="btn-type1">수정</button>
+              </div>
               <div className="menu-name">
                 <span>{menu.name}</span>
               </div>

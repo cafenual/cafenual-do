@@ -11,3 +11,9 @@ export const getMenuDetail = async (menuId: string) => {
   const response = await axios.get(`/api/v1/recipe/menu/${menuId}`);
   return response.data;
 };
+
+// 메뉴 삭제
+export const deleteMenu = async (menuId: string) => {
+  const response = await axios.delete(`/api/v1/recipe/menu/${menuId}`);
+  return response.data;
+};

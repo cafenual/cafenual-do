@@ -14,7 +14,7 @@ import { AiOutlineCloudUpload } from "react-icons/ai";
 import UploadImg from "static/img-upload.png";
 import { getCategoriesHandle } from "modules/category";
 
-const RecipeManage = () => {
+const RecipeForm = () => {
   const dispatch = useDispatch();
   const [menuImg, setMenuImg] = useState(null);
   const [imgUrl, setImgUrl] = useState("파일 선택");
@@ -174,4 +174,4 @@ const RecipeManage = () => {
   );
 };
 
-export default RecipeManage;
+export default RecipeForm;

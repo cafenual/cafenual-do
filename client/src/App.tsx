@@ -9,7 +9,7 @@ import NoticeDetail from "pages/Notice/NoticeDetail";
 import NoticeEdit from "pages/Notice/NoticeEdit";
 import "./App.scss";
 import Recipe from "pages/Recipe";
-import RecipeManage from "pages/Recipe/RecipeManage";
+import RecipeManage from "components/Recipe/RecipeForm";
 import CategoryManage from "pages/Recipe/CategoryManage";
 import RecipeDetail from "pages/Recipe/RecipeDetail";
 import Transition from "pages/Transition";

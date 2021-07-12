@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Sniglet&display=swap");
+@import "styles/main";
 
 body {
   font-family: "Noto Sans KR", sans-serif;
@@ -18,9 +19,6 @@ body {
 #container {
   position: relative;
   overflow: hidden;
-}
-
-#main {
 }
 
 ul {
@@ -52,8 +50,6 @@ table {
   color: rgb(175, 174, 174);
 }
 
-
-
 a:link,
 a:visited,
 a:active,
@@ -83,4 +79,21 @@ button {
 
 .ck-content {
   border: 1px solid #d9d5d5 !important;
+}
+
+.btn-type1 {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border-radius: 7px;
+  border: none;
+  color: #fff;
+  background-color: $cafenualColor;
+}
+
+.btn-type2 {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border-radius: 7px;
+  border: 1px solid $cafenualColor;
+  color: $cafenualColor;
 }
