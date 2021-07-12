@@ -15,3 +15,12 @@ export const deleteCategory = async (categoryId: string | undefined) => {
   const response = await axios.delete(`/api/v1/recipe/category/${categoryId}`);
   return response.data.categories;
 };
+
+export const updateCategory = async (categoryId: string, name: string) => {
+  const body = {
+    categoryId,
+    name,
+  };
+  const response = await axios.patch(`/api/v1/recipe/category/update`, body);
+  return response.data.categories;
+};

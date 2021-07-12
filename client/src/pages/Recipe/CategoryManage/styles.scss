@@ -1,3 +1,5 @@
+@import "styles/main";
+
 #CategoryManage {
   .manage-tit {
     margin-bottom: 2rem;
@@ -73,6 +75,30 @@
           td {
             padding: 30px 10px;
             text-align: center;
+          }
+          .category-edit {
+            input {
+              padding: 10px;
+              border: 1px solid #d3cece;
+              width: 240px;
+              border-radius: 7px;
+              height: 40px;
+              font-size: 16px;
+            }
+            .btn {
+              padding: 5px 10px;
+              margin-left: 5px;
+              border-radius: 7px;
+            }
+            .save {
+              border: none;
+              color: #fff;
+              background-color: $cafenualColor;
+            }
+            .cancel {
+              border: 1px solid $cafenualColor;
+              color: $cafenualColor;
+            }
           }
           .name {
             color: rgb(91, 78, 246);

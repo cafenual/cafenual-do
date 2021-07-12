@@ -13,12 +13,21 @@ import {
   createCategory,
   deleteCategory,
   getCategories,
+  updateCategory,
 } from "lib/api/category";
 
 const CategoryManage = () => {
   const dispatch = useDispatch();
   const [categoryInput, setCategoryInput] = useState("");
   const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const categories = await getCategories();
+      setCategories(categories);
+    };
+    getData();
+  }, [dispatch]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCategoryInput(e.target.value);
@@ -46,13 +55,36 @@ const CategoryManage = () => {
     }
   };
 
-  useEffect(() => {
-    const getData = async () => {
-      const categories = await getCategories();
+  const [updateCategoryId, setUpdateCategoryId] = useState("");
+  const [updateCategoryInput, setUpdateCategoryInput] = useState("");
+
+  // 카테고리 수정 활성화
+  const onUpdateActive = (categoryId: string, name: string) => {
+    setUpdateCategoryId(categoryId);
+    setUpdateCategoryInput(name);
+  };
+
+  // 카테고리 수정 input
+  const onChangeUpdateCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUpdateCategoryInput(e.target.value);
+  };
+
+  // 카테고리 수정 취소
+  const onUpdateCancel = () => {
+    setUpdateCategoryId("");
+  };
+
+  // 카테고리 수정
+  const onUpdate = async (categoryId: string) => {
+    try {
+      const categories = await updateCategory(categoryId, updateCategoryInput);
+      console.log(categories);
       setCategories(categories);
-    };
-    getData();
-  }, [dispatch]);
+      setUpdateCategoryId("");
+    } catch (e) {
+      alert("카테고리 수정에 실패했습니다.");
+    }
+  };
 
   return (
     <>
@@ -100,10 +132,41 @@ const CategoryManage = () => {
                   {categories?.map((category: categoryState, index) => (
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td className="name">{category.name}</td>
+
+                      {updateCategoryId === category._id ? (
+                        <td className="category-edit">
+                          <input
+                            value={updateCategoryInput}
+                            onChange={onChangeUpdateCategory}
+                            type="text"
+                          />
+                          <button
+                            type="button"
+                            className="save btn"
+                            onClick={() => onUpdate(category._id)}
+                          >
+                            저장
+                          </button>
+                          <button
+                            type="button"
+                            className="cancel btn"
+                            onClick={onUpdateCancel}
+                          >
+                            취소
+                          </button>
+                        </td>
+                      ) : (
+                        <td className="name">{category.name}</td>
+                      )}
+
                       <td>0</td>
                       <td className="ico">
-                        <button type="button">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            onUpdateActive(category._id, category.name)
+                          }
+                        >
                           <MdEdit size="26" />
                         </button>
                       </td>

@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getCategories } from "lib/api/category";
 
 export interface categoryState {
-  _id?: string;
-  name?: string;
+  _id: string ;
+  name: string;
   categories?: categoryState[];
   loading?: boolean;
 }
@@ -35,7 +35,6 @@ const category = createSlice({
       state._id = _id;
       state.name = name;
     },
-
   },
   extraReducers: {
     // 호출 전

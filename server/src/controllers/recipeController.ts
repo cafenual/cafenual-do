@@ -90,9 +90,10 @@ export const updateCategory = async (req: Request, res: Response) => {
         message: "해당 카테고리가 존재하지 않습니다",
       });
     }
-
+    const categories = await Category.find();
     res.status(200).json({
       success: true,
+      categories,
     });
   } catch (e) {
     res.status(500).json({
