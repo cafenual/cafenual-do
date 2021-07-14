@@ -35,8 +35,7 @@ const RecipeEdit = () => {
     getData();
   }, [menuId, dispatch]);
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = async () => {
     const { name, description, categoryId, recipe, image, _id } = menu;
     let body = {
       name,

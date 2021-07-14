@@ -1,4 +1,5 @@
 import axios from "axios";
+import ManageNav from "components/Recipe/ManageNav";
 import RecipeForm from "components/Recipe/RecipeForm";
 import { reduxStoreState } from "modules";
 import React from "react";
@@ -6,8 +7,7 @@ import { useSelector } from "react-redux";
 
 const RecipeUpload = () => {
   const menu = useSelector((state: reduxStoreState) => state.menu);
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = async () => {
     const { name, description, categoryId, recipe, image } = menu;
     let body = {
       name,
@@ -28,6 +28,7 @@ const RecipeUpload = () => {
   };
   return (
     <>
+      <ManageNav />
       <RecipeForm onSubmit={onSubmit} />
     </>
   );

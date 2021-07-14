@@ -44,7 +44,7 @@ const RecipeCategory = () => {
         </ul>
 
         <div className="recipe-manage">
-          <Link to={"/recipe/manage/category"}>레시피 관리</Link>
+          <a href={"/recipe/manage/category"}>레시피 관리</a>
         </div>
       </div>
     </div>

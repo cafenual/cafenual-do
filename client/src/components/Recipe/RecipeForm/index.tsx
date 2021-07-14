@@ -15,7 +15,7 @@ import UploadImg from "static/img-upload.png";
 import { getCategoriesHandle } from "modules/category";
 
 interface RecipeFormProps {
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  onSubmit: () => Promise<void>;
 }
 
 const RecipeForm = ({ onSubmit }: RecipeFormProps) => {
@@ -68,95 +68,93 @@ const RecipeForm = ({ onSubmit }: RecipeFormProps) => {
     <>
       <Header />
       <Aside />
-      <ManageNav />
+
       <div
         id="RecipeDetail"
         className="side-layout manage-layout recipe-manage"
       >
         <div className="page-inner">
-          <form onSubmit={onSubmit}>
-            <div className="inner-detail">
-              <div className="menu-left">
-                <div className="img-upload">
-                  <label htmlFor="img-upload">
-                    <span>{imgUrl}</span>
-                    <AiOutlineCloudUpload size="30" />
-                  </label>
-                  <input type="file" id="img-upload" onChange={imgUpload} />
-                </div>
-                <div className="img-preview">
-                  {!menuImg && <img src={UploadImg} alt="" />}
-                  {menuImg && <img src={`${SERVER_URL}/${menuImg}`} alt="" />}
-                </div>
+          <div className="inner-detail">
+            <div className="menu-left">
+              <div className="img-upload">
+                <label htmlFor="img-upload">
+                  <span>{imgUrl}</span>
+                  <AiOutlineCloudUpload size="30" />
+                </label>
+                <input type="file" id="img-upload" onChange={imgUpload} />
               </div>
-              <div className="menu-right">
-                <div className="menu-category">
-                  <select
-                    name="categoryId"
-                    value={categoryId}
-                    onChange={onChange}
-                  >
-                    <option value="">카테고리 선택</option>
-                    {categories?.map((category, index) => (
-                      <option key={index} value={category._id}>
-                        {category.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="menu-name">
-                  <input
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={onChange}
-                    placeholder="메뉴 이름"
-                  />
-                </div>
+              <div className="img-preview">
+                {!menuImg && <img src={UploadImg} alt="" />}
+                {menuImg && <img src={`${SERVER_URL}/${menuImg}`} alt="" />}
+              </div>
+            </div>
+            <div className="menu-right">
+              <div className="menu-category">
+                <select
+                  name="categoryId"
+                  value={categoryId}
+                  onChange={onChange}
+                >
+                  <option value="">카테고리 선택</option>
+                  {categories?.map((category, index) => (
+                    <option key={index} value={category._id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="menu-name">
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={onChange}
+                  placeholder="메뉴 이름"
+                />
+              </div>
 
-                <div className="menu-description">
-                  <input
-                    type="text"
-                    name="description"
-                    onChange={onChange}
-                    value={description}
-                    placeholder="메뉴 설명"
+              <div className="menu-description">
+                <input
+                  type="text"
+                  name="description"
+                  onChange={onChange}
+                  value={description}
+                  placeholder="메뉴 설명"
+                />
+              </div>
+              <div className="menu-recipe">
+                <div className="write-cont">
+                  <CKEditor
+                    onReady={(editor: any) => {
+                      console.log("Editor is ready to use!", editor);
+                      editor.ui
+                        .getEditableElement()
+                        .parentElement.insertBefore(
+                          editor.ui.view.toolbar.element,
+                          editor.ui.getEditableElement()
+                        );
+                    }}
+                    config={{ placeholder: "레시피를 입력해주세요" }}
+                    onChange={(event: any, editor: any) => {
+                      const data = editor.getData();
+                      let body = {
+                        key: "recipe",
+                        value: data,
+                      };
+                      dispatch(SetMenu(body));
+                    }}
+                    editor={DecoupledEditor}
+                    data={recipe}
                   />
-                </div>
-                <div className="menu-recipe">
-                  <div className="write-cont">
-                    <CKEditor
-                      onReady={(editor: any) => {
-                        console.log("Editor is ready to use!", editor);
-                        editor.ui
-                          .getEditableElement()
-                          .parentElement.insertBefore(
-                            editor.ui.view.toolbar.element,
-                            editor.ui.getEditableElement()
-                          );
-                      }}
-                      config={{ placeholder: "레시피를 입력해주세요" }}
-                      onChange={(event: any, editor: any) => {
-                        const data = editor.getData();
-                        let body = {
-                          key: "recipe",
-                          value: data,
-                        };
-                        dispatch(SetMenu(body));
-                      }}
-                      editor={DecoupledEditor}
-                      data={recipe}
-                    />
-                  </div>
                 </div>
               </div>
             </div>
-            <div className="submit-btn">
-              <button className="menu-submit" type="submit">
-                완료
-              </button>
-            </div>
-          </form>
+          </div>
+          <div className="submit-btn">
+            <button onClick={onSubmit} className="menu-submit" type="button">
+              완료
+            </button>
+          </div>
         </div>
       </div>
     </>
