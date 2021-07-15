@@ -48,4 +48,29 @@ export const readNormalNotice = async (req: Request, res: Response) => {
   }
 };
 
+// 공지 상세 보기
+export const readNoticeDetail = async (req: Request, res: Response) => {
+  const { noticeId } = req.params;
+  try {
+    const notice = await Notice.findById({
+      _id: noticeId,
+    });
 
+    if (!notice) {
+      res.status(400).json({
+        success: false,
+        message: "해당 공지사항이 존재하지 않습니다",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      notice,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};
