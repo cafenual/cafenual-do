@@ -19,4 +19,6 @@ router.delete(
   checkAdmin,
   noticeCtrl.deleteNotice
 ); // 공지 삭제
+
+router.patch("/update", checkLoggedIn, checkAdmin, noticeCtrl.updateNotice); // 공지 수정
 export default router;
