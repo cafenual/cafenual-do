@@ -74,3 +74,26 @@ export const readNoticeDetail = async (req: Request, res: Response) => {
     });
   }
 };
+
+// 공지 삭제
+export const deleteNotice = async (req: Request, res: Response) => {
+  const { noticeId } = req.params;
+
+  try {
+    const notice = await Notice.findByIdAndDelete({ _id: noticeId });
+    if (!notice) {
+      res.status(400).json({
+        success: false,
+        message: "해당 공지사항이 존재하지 않습니다",
+      });
+    }
+    return res.status(200).json({
+      success: true,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};

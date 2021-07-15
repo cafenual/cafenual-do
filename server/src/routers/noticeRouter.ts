@@ -13,4 +13,10 @@ router.get(
   checkLoggedIn,
   noticeCtrl.readNoticeDetail
 ); // 공지 상세보기
+router.delete(
+  "/delete/:noticeId",
+  checkLoggedIn,
+  checkAdmin,
+  noticeCtrl.deleteNotice
+); // 공지 삭제
 export default router;
