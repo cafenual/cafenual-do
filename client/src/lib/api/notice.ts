@@ -1,4 +1,4 @@
-import axios from "axios";
+import client from "./client";
 
 // 공지 작성
 export const createNotice = async (
@@ -11,19 +11,19 @@ export const createNotice = async (
     content,
     important,
   };
-  const response = await axios.post("/api/v1/notice/create", body);
+  const response = await client.post("/notice/create", body);
   return response;
 };
 
 // 공지 리스트
 export const getNormalNotices = async () => {
-  const response = await axios.get("/api/v1/notice/read");
+  const response = await client.get("/notice/read");
   return response.data.notices;
 };
 
 // 공지 상세보기
 export const getNoticeDetail = async (noticeId: string) => {
-  const response = await axios.get(`/api/v1/notice/read/detail/${noticeId}`);
+  const response = await client.get(`/notice/read/detail/${noticeId}`);
   return response.data.notice;
 };
 
@@ -40,6 +40,6 @@ export const updateNotice = async (
     content,
     important,
   };
-  const response = await axios.patch(`/api/v1/notice/update`, body);
+  const response = await client.patch(`/notice/update`, body);
   return response;
 };

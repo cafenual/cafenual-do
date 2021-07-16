@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
-import user, { SetUser } from "modules/users";
+import { SetUser } from "modules/users";
 import { useEffect } from "react";
 import { reduxStoreState } from "modules";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { BsLightningFill } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 
@@ -137,7 +137,7 @@ const Join = () => {
 
         <div className="accounts-link">
           <span className="link-des">이미 회원이신가요??</span>
-          <a href="">로그인</a>
+          <Link to="/login">로그인</Link>
         </div>
 
         <div className="cafenual">©2021 cafenual</div>

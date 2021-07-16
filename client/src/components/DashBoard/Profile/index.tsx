@@ -3,6 +3,7 @@ import "./styles.css";
 import { BsChevronRight, BsPerson } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { reduxStoreState } from "modules";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const user = useSelector((state: reduxStoreState) => state.user);
@@ -11,10 +12,10 @@ const Profile = () => {
     <div id="Profile">
       <div className="dashboard-box-tit">
         <span>계정정보</span>
-        <a href="">
+        <Link to="/">
           <span>더보기</span>
           <BsChevronRight />
-        </a>
+        </Link>
       </div>
 
       <div className="profile-box">

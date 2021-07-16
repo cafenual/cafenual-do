@@ -11,13 +11,18 @@ import cors from "cors";
 const app = express();
 const PORT = process.env.PORT;
 
+app.use(
+  cors({
+    credentials: true,
+    origin: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // middleware
 app.use(userAuth);
-app.use(cors());
 // router
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/recipe", recipeRouter);

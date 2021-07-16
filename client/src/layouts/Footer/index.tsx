@@ -1,5 +1,5 @@
 import React from "react";
-import { AiFillClockCircle, AiFillHome } from "react-icons/ai";
+import { AiFillHome } from "react-icons/ai";
 import { BsCalendarFill, BsFillPersonLinesFill } from "react-icons/bs";
 import { BiDollar } from "react-icons/bi";
 import { NavLink } from "react-router-dom";

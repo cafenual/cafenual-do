@@ -26,9 +26,9 @@ const NoticeDetail = () => {
             <a href={`/notice/edit/${noticeId}`} className="btn-list">
               수정
             </a>
-            <a href="" className="btn-list">
+            <button type="button" className="btn-list">
               삭제
-            </a>
+            </button>
           </div>
         </div>
       </div>

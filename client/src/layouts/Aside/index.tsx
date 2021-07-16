@@ -155,7 +155,13 @@ const Aside = () => {
 
         <div className="develop-info">
           <BsInfoCircleFill />
-          <a href="">개발자 소개</a>
+          <a
+            href="https://github.com/ksmfou98"
+            target="_blank"
+            rel="noreferrer"
+          >
+            개발자 소개
+          </a>
         </div>
       </div>
     </div>

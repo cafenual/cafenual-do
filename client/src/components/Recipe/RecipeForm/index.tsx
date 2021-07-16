@@ -1,4 +1,3 @@
-import ManageNav from "components/Recipe/ManageNav";
 import Aside from "layouts/Aside";
 import Header from "layouts/Header";
 import React, { useState, useEffect } from "react";
@@ -8,11 +7,11 @@ import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { SetImage, SetMenu } from "modules/menu";
 import { reduxStoreState } from "modules";
-import axios from "axios";
 import { SERVER_URL } from "config";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import UploadImg from "static/img-upload.png";
 import { getCategoriesHandle } from "modules/category";
+import { createImage } from "lib/api/menu";
 
 interface RecipeFormProps {
   onSubmit: () => Promise<void>;
@@ -47,16 +46,13 @@ const RecipeForm = ({ onSubmit }: RecipeFormProps) => {
       //FormData에 key, value 추가하기
       fd.append("menu_img", e.target.files[0]);
       // axios 사용해서 백엔드에게 파일 보내기
-      axios
-        .post(`/api/v1/recipe/uploadImg`, fd)
-        .then((response) => {
-          setMenuImg(response.data.image);
-          dispatch(SetImage({ image: response.data.image }));
-        })
-        //에러가 날 경우 처리
-        .catch((error) => {
-          console.log(error.response);
-        });
+      try {
+        const image = await createImage(fd);
+        setMenuImg(image);
+        dispatch(SetImage({ image }));
+      } catch (e) {
+        alert("이미지 업로드에 실패했습니다.");
+      }
     }
   };
 
@@ -68,7 +64,6 @@ const RecipeForm = ({ onSubmit }: RecipeFormProps) => {
     <>
       <Header />
       <Aside />
-
       <div
         id="RecipeDetail"
         className="side-layout manage-layout recipe-manage"

@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  MdCheckBox,
-  MdCheckBoxOutlineBlank,
-  MdDelete,
-  MdAdd,
-} from "react-icons/md";
+import React from "react";
+import { MdAdd } from "react-icons/md";
 import "./styles.scss";
 
 interface TransitionListProps {

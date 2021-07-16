@@ -1,12 +1,12 @@
-import axios from "axios";
 import { reduxStoreState } from "modules";
 import { SetUser } from "modules/users";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { BsLightningFill } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import "./styles.scss";
+import { login } from "lib/api/user";
 
 const Login = () => {
   const history = useHistory();
@@ -28,27 +28,14 @@ const Login = () => {
 
   const { email, password } = form;
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    let body = {
-      email,
-      password,
-    };
-
-    axios
-      .post("/api/v1/user/login", body)
-      .then((response) => {
-        console.log(response);
-        let userBody = response.data.user;
-        dispatch(SetUser(userBody));
-      })
-      .catch(function (error) {
-        // status 코드가 200이 아닌경우 처리
-        if (error) {
-          alert("로그인에 실패하였습니다.");
-        }
-      });
+    try {
+      const user = await login(email, password);
+      dispatch(SetUser(user));
+    } catch (e) {
+      alert("로그인에 실패했습니다.");
+    }
   };
 
   useEffect(() => {
@@ -108,7 +95,9 @@ const Login = () => {
             className="login-input"
           />
 
-          <a href="" className="search-pw">비밀번호를 잊어버리셨나요?</a>
+          <Link to="/" className="search-pw">
+            비밀번호를 잊어버리셨나요?
+          </Link>
 
           <button type="submit" className="login-btn">
             로그인
@@ -116,7 +105,7 @@ const Login = () => {
         </form>
         <div className="accounts-link">
           <span className="link-des">아직 회원이 아니신가요??</span>
-          <a href="">회원가입</a>
+          <Link to="/join">회원가입</Link>
         </div>
 
         <div className="cafenual">©2021 cafenual</div>

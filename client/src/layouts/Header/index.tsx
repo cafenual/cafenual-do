@@ -1,24 +1,18 @@
 import React from "react";
 import "./styles.scss";
-
-import { BsPieChartFill } from "react-icons/bs";
-import { AiOutlineMenu } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
 import { SetUser, userState } from "modules/users";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { reduxStoreState } from "modules";
+import { logout } from "lib/api/user";
 
 const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state: reduxStoreState) => state.user);
 
-  const [headerMenuState, setHeaderMenuState] = useState(false);
-
-  const logoutHandler = () => {
+  const onLogout = async () => {
     let UserBody: userState = {
       _id: "",
       email: "",
@@ -28,29 +22,17 @@ const Header = () => {
       token: "",
       wage: 0,
     };
-
-    axios
-      .post("/api/v1/user/logout")
-      .then((response) => {
-        console.log(response);
-        if (response.data.success) {
-          sessionStorage.removeItem("user"); // sessionStorage에서 user를 제거
-          dispatch(SetUser(UserBody));
-        }
-      })
-      .catch(function (error) {
-        // status 코드가 200이 아닌경우
-        if (error) {
-          alert("로그아웃에 실패했습니다.");
-        }
-      });
+    try {
+      await logout();
+      sessionStorage.removeItem("user");
+      dispatch(SetUser(UserBody));
+    } catch (e) {
+      alert("로그아웃에 실패했습니다.");
+    }
   };
 
   useEffect(() => {
-    if (user.email) {
-      console.log("로그인 한 상태 입니다.");
-    } else {
-      console.log("로그 아웃 상태입니다.");
+    if (!user.email) {
       history.push("/login");
     }
   }, [user, history]);
@@ -62,7 +44,7 @@ const Header = () => {
         <div className="header-calender">
           <span>2021-06-29</span>
         </div>
-        <button onClick={logoutHandler}>로그아웃</button>
+        <button onClick={onLogout}>로그아웃</button>
       </div>
     </div>
   );
