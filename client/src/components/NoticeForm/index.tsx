@@ -14,6 +14,8 @@ const NoticeForm = ({ onSubmit }: NoticeFormProps) => {
   const dispatch = useDispatch();
   const notice = useSelector((state: reduxStoreState) => state.notice);
   const { title, content, important } = notice;
+
+  
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     let body = {

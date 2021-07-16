@@ -2,39 +2,29 @@ import NoticeForm from "components/NoticeForm";
 import Aside from "layouts/Aside";
 import Header from "layouts/Header";
 import React from "react";
-import { useRouteMatch } from "react-router-dom";
 import useNoticeForm from "hooks/useNoticeForm";
 import { useEffect } from "react";
-import { getNoticeDetail } from "lib/api/notice";
 import { useDispatch } from "react-redux";
 import { SetNoticeData } from "modules/notice";
-
-interface MatchProps {
-  noticeId: string;
-}
+import useNoticeDetailEffect from "hooks/useNoticeDetailEffect";
 
 const NoticeEdit = () => {
-  const match = useRouteMatch<MatchProps>();
-  const noticeId = match.params.noticeId;
   const { edit } = useNoticeForm();
   const dispatch = useDispatch();
+  const { title, content, important, noticeId } = useNoticeDetailEffect();
 
   const onSubmit = async () => {
     await edit(noticeId);
   };
 
   useEffect(() => {
-    const getData = async () => {
-      const notice = await getNoticeDetail(noticeId);
-      const body = {
-        title: notice.title,
-        content: notice.content,
-        important: notice.important,
-      };
-      dispatch(SetNoticeData(body));
+    const body = {
+      title,
+      content,
+      important,
     };
-    getData();
-  }, [dispatch, noticeId]);
+    dispatch(SetNoticeData(body));
+  }, [title, content, important, dispatch]);
 
   return (
     <>

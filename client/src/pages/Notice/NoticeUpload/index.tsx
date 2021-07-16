@@ -6,6 +6,7 @@ import React from "react";
 
 const NoticeUpload = () => {
   const { upload } = useNoticeForm();
+  
   const onSubmit = async () => {
     await upload();
   };
