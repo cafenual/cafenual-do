@@ -1,41 +1,9 @@
-#Notice,
-.page-layout {
-  width: 1160px;
+#Notice {
   padding-bottom: 200px;
   overflow: hidden;
-
-  .tit {
-    float: left;
-    width: 300px;
-    .tit-corp {
-      display: block;
-      padding: 76px 40px 0 0;
-      font-size: 18px;
-      line-height: 30px;
-      color: #1e1e1e;
-    }
-    .upload {
-      overflow: hidden;
-      padding: 19px 40px 0 0;
-      a,
-      button {
-        float: left;
-        width: 70px;
-        height: 40px;
-        font-size: 13px;
-        line-height: 40px;
-        color: #fff;
-        background-color: #4d4d4d;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-      }
-    }
-  }
   .cont {
-    float: right;
-    width: 860px;
-
+    width: 1050px;
+    margin: 0 auto;
     .search-comm {
       width: 500px;
       margin: 0 auto;
@@ -64,9 +32,18 @@
       }
     }
 
+    .upload-comm {
+      overflow: hidden;
+      margin: 10px 20px;
+      a {
+        float: right;
+        padding: 8px 16px;
+        font-size: 16px;
+      }
+    }
+
     .table-comm {
       overflow: hidden;
-      margin-top: 50px;
       border-top: 2px solid #4d4d4d;
       word-break: normal;
       .table {
@@ -120,6 +97,11 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 word-break: break-all;
+              }
+              .important {
+                color: #ff4e59;
+                font-weight: bold;
+                font-family: Arial, Helvetica, sans-serif;
               }
             }
           }

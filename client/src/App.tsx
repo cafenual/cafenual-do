@@ -3,7 +3,6 @@ import Login from "pages/Login";
 import DashBoard from "pages/DashBoard";
 import { Route, Switch } from "react-router-dom";
 import NoticeList from "pages/Notice/NoticeList";
-import NoticeUpload from "pages/Notice/NoticeUpload";
 import NoticeDetail from "pages/Notice/NoticeDetail";
 import NoticeEdit from "pages/Notice/NoticeEdit";
 import "./App.scss";
@@ -13,6 +12,7 @@ import RecipeDetail from "pages/Recipe/RecipeDetail";
 import Transition from "pages/Transition";
 import RecipeUpload from "pages/Recipe/RecipeUpload";
 import RecipeEdit from "pages/Recipe/RecipeEdit";
+import NoticeUpload from "pages/Notice/NoticeUpload";
 
 function App() {
   return (

@@ -1,83 +1,21 @@
-import React, { useState } from "react";
-import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
-import "./styles.scss";
-import axios from "axios";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
+import NoticeForm from "components/NoticeForm";
+import useNoticeForm from "hooks/useNoticeForm";
+import Aside from "layouts/Aside";
+import Header from "layouts/Header";
+import React from "react";
 
 const NoticeUpload = () => {
-  const [noticeContent, setNoticeContent] = useState({
-    title: "",
-    content: "",
-  });
-
-  const { title, content } = noticeContent;
-
-  const titleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const nextForm = {
-      ...noticeContent,
-      title: e.target.value,
-    };
-    setNoticeContent(nextForm);
-  };
-
-  const noticeOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    let body = {
-      title,
-      body: content,
-    };
-
-    axios
-      .post("https://jsonplaceholder.typicode.com/posts", body)
-      .then((response) => {
-        console.log("백앤드에 전송된 데이터");
-        console.log(`title : ${response.data.title}`);
-        console.log(`content: ${response.data.body}`);
-      });
+  const { upload } = useNoticeForm();
+  const onSubmit = async () => {
+    await upload();
   };
 
   return (
-    <div id="NoticeUpload">
-      <div className="upload-form">
-        <form action="" onSubmit={noticeOnSubmit}>
-          <input
-            type="text"
-            value={title}
-            onChange={titleOnChange}
-            placeholder="제목을 입력하세요"
-          />
-          <div className="write-cont">
-            <CKEditor
-              onReady={(editor: any) => {
-                console.log("Editor is ready to use!", editor);
-                editor.ui
-                  .getEditableElement()
-                  .parentElement.insertBefore(
-                    editor.ui.view.toolbar.element,
-                    editor.ui.getEditableElement()
-                  );
-
-                editor = editor;
-              }}
-              onChange={(event: any, editor: any) => {
-                const data = editor.getData();
-                // console.log({ event, editor, data });
-                const nextForm = {
-                  ...noticeContent,
-                  content: data,
-                };
-                setNoticeContent(nextForm);
-              }}
-              editor={DecoupledEditor}
-              data=""
-            />
-          </div>
-
-          <button type="submit">등록하기</button>
-        </form>
-      </div>
-    </div>
+    <>
+      <Header />
+      <Aside />
+      <NoticeForm onSubmit={onSubmit} />
+    </>
   );
 };
 

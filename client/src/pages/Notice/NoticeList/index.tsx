@@ -7,6 +7,7 @@ import { paginate } from "lib/Paginate";
 import Header from "layouts/Header";
 import Footer from "layouts/Footer";
 import Aside from "layouts/Aside";
+import { getNormalNotices } from "lib/api/notice";
 
 const NoticeList = () => {
   const [getNotices, setGetNotices] = useState([]);
@@ -20,15 +21,18 @@ const NoticeList = () => {
   // utils 함수에 있는 paginate로 화면에 보여줘야할 컨텐츠 개수의 배열을 가져옴
   const pagedNotices = paginate(getNotices, currentPage, pageSize);
 
-  // https://jsonplaceholder.typicode.com/ fake 데이터 사용
   useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
-      console.log(response.data);
-      setGetNotices(response.data);
-    });
+    const getData = async () => {
+      try {
+        const notices = await getNormalNotices();
+        setGetNotices(notices);
+      } catch (e) {
+        alert("공지사항을 불러오지 못했습니다.");
+      }
+    };
+    getData();
   }, []);
 
-  localStorage.setItem("noticeLength", JSON.stringify(getNotices.length)); // 게시물 길이 로컬에 저장
   const pageCount = Math.ceil(getNotices.length / pageSize); // 몇 페이지가 필요한지 계산
   const handlePageChange = (page: number): void => {
     if (page >= pageCount) {
@@ -47,13 +51,7 @@ const NoticeList = () => {
     <>
       <Header />
       <Aside />
-      <div id="Notice" className="page-layout">
-        <div className="tit">
-          <h4 className="tit-corp">공지사항</h4>
-          <div className="upload">
-            <a href="/notice/upload">작성</a>
-          </div>
-        </div>
+      <div id="Notice" className="side-layout">
         <div className="cont">
           <div className="search-comm">
             <form action="">
@@ -68,6 +66,11 @@ const NoticeList = () => {
                 </button>
               </fieldset>
             </form>
+          </div>
+          <div className="upload-comm">
+            <a className="btn-type1" href="/notice/upload">
+              글쓰기
+            </a>
           </div>
 
           <div className="table-comm">
@@ -88,12 +91,21 @@ const NoticeList = () => {
                     <td className="td-left">
                       <div className="inner-cont">
                         <span className="inner-text">
-                          <a
-                            href={`/notice/${notice.id}`}
-                            className="link-text"
-                          >
-                            {notice.title}
-                          </a>
+                          {notice.important === true ? (
+                            <a
+                              href={`/notice/${notice.id}`}
+                              className="link-text important"
+                            >
+                              [필독] {notice.title}
+                            </a>
+                          ) : (
+                            <a
+                              href={`/notice/${notice.id}`}
+                              className="link-text"
+                            >
+                              {notice.title}
+                            </a>
+                          )}
                         </span>
                       </div>
                     </td>

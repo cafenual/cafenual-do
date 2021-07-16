@@ -126,7 +126,6 @@ const RecipeForm = ({ onSubmit }: RecipeFormProps) => {
                 <div className="write-cont">
                   <CKEditor
                     onReady={(editor: any) => {
-                      console.log("Editor is ready to use!", editor);
                       editor.ui
                         .getEditableElement()
                         .parentElement.insertBefore(

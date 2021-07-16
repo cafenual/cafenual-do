@@ -1,4 +1,6 @@
 import axios from "axios";
+import Aside from "layouts/Aside";
+import Header from "layouts/Header";
 import React, { useEffect, useState } from "react";
 import "./styles.scss";
 
@@ -25,13 +27,10 @@ const NoticeDetail = ({ match }: any) => {
   }, []);
   return (
     <>
-      <div id="NoticeDetail" className="page-layout">
-        <div className="tit">
-          <h4 className="tit-corp">
-            <a href="/notice">공지사항</a>
-          </h4>
-        </div>
-        <div className="notice-cont">
+      <Header />
+      <Aside />
+      <div id="Notice" className="side-layout">
+        <div className="cont">
           <div className="content-tit">
             {title}
             <div className="tit-date">2021-05-19</div>

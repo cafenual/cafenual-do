@@ -18,25 +18,14 @@ export const createNotice = async (req: Request, res: Response) => {
   }
 };
 
-// 중요 공지 조회
-export const readImportantNotice = async (req: Request, res: Response) => {
+// 공지 조회
+export const readNotice = async (req: Request, res: Response) => {
   try {
-    const notices = await Notice.find({ important: true });
-    return res.status(200).json({
-      notices,
-    });
-  } catch (e) {
-    return res.status(500).json({
-      success: false,
-      e,
-    });
-  }
-};
-
-// 일반 공지 조회
-export const readNormalNotice = async (req: Request, res: Response) => {
-  try {
-    const notices = await Notice.find({ important: false });
+    let importantNotices = await Notice.find({ important: true });
+    importantNotices = [...importantNotices.reverse()];
+    let normalNotices = await Notice.find({ important: false });
+    normalNotices = [...normalNotices.reverse()];
+    const notices = importantNotices.concat(normalNotices);
     return res.status(200).json({
       notices,
     });

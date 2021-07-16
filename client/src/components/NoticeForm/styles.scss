@@ -1,20 +1,21 @@
-#NoticeUpload,
-#NoticeEdit {
+#NoticeForm {
   .upload-form {
     width: 870px;
     margin: 0 auto;
     padding: 60px 0;
-    input {
-      display: block;
-      padding: 18px;
-      font-size: 2.75rem;
-      width: 100%;
-      margin-bottom: 20px;
-      line-height: 1.5;
-      outline: none;
-      border: none;
-      font-weight: bold;
-      color: rgb(33, 37, 41);
+    .form-title {
+      input {
+        display: block;
+        padding: 18px;
+        font-size: 2.75rem;
+        width: 100%;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        outline: none;
+        border: none;
+        font-weight: bold;
+        color: rgb(33, 37, 41);
+      }
     }
     .write-cont {
       height: 600px;
@@ -29,15 +30,13 @@
         box-shadow: none;
       }
     }
-    button[type="submit"] {
+    .submit {
       display: block;
       margin: 0 auto;
       width: 100px;
       height: 40px;
       font-size: 14px;
-      line-height: 40px;
-      color: #fff;
-      background-color: #4d4d4d;
+      font-weight: 700;
     }
   }
 }
