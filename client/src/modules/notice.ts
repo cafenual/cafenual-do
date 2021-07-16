@@ -20,8 +20,15 @@ const notice = createSlice({
       const { key, value } = action.payload;
       state[key] = value;
     },
+
+    SetNoticeData: (state: noticeState, action: PayloadAction<noticeState>) => {
+      const { title, content, important } = action.payload;
+      state.title = title;
+      state.content = content;
+      state.important = important;
+    },
   },
 });
 
-export const { SetNotice } = notice.actions;
+export const { SetNotice, SetNoticeData } = notice.actions;
 export default notice;

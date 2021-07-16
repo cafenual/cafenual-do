@@ -26,3 +26,20 @@ export const getNoticeDetail = async (noticeId: string) => {
   const response = await axios.get(`/api/v1/notice/read/detail/${noticeId}`);
   return response.data.notice;
 };
+
+// 공지 수정
+export const updateNotice = async (
+  noticeId: string,
+  title: string,
+  content: string,
+  important: boolean
+) => {
+  const body = {
+    noticeId,
+    title,
+    content,
+    important,
+  };
+  const response = await axios.patch(`/api/v1/notice/update`, body);
+  return response;
+};

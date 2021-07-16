@@ -1,4 +1,4 @@
-import { createNotice } from "lib/api/notice";
+import { createNotice, updateNotice } from "lib/api/notice";
 import { reduxStoreState } from "modules";
 import { useSelector } from "react-redux";
 
@@ -15,7 +15,17 @@ export default function useNoticeForm() {
     }
   };
 
+  const edit = async (noticeId: string) => {
+    try {
+      await updateNotice(noticeId, title, content, important);
+      window.location.replace(`/notice/${noticeId}`);
+    } catch (e) {
+      alert("공지 수정에 실패했습니다.");
+    }
+  };
+
   return {
     upload,
+    edit,
   };
 }

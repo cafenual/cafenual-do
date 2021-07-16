@@ -1,104 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
-import axios from "axios";
+import NoticeForm from "components/NoticeForm";
+import Aside from "layouts/Aside";
+import Header from "layouts/Header";
+import React from "react";
+import { useRouteMatch } from "react-router-dom";
+import useNoticeForm from "hooks/useNoticeForm";
+import { useEffect } from "react";
+import { getNoticeDetail } from "lib/api/notice";
+import { useDispatch } from "react-redux";
+import { SetNoticeData } from "modules/notice";
 
-const NoticeEdit = ({ match }: any) => {
-  const noticeId = Number(match.params.id);
+interface MatchProps {
+  noticeId: string;
+}
 
-  const [noticeContent, setNoticeContent] = useState({
-    title: "",
-    content: "",
-  });
+const NoticeEdit = () => {
+  const match = useRouteMatch<MatchProps>();
+  const noticeId = match.params.noticeId;
+  const { edit } = useNoticeForm();
+  const dispatch = useDispatch();
 
-  const { title, content } = noticeContent;
+  const onSubmit = async () => {
+    await edit(noticeId);
+  };
 
   useEffect(() => {
-    axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${noticeId}`)
-      .then((response) => {
-        console.log(response.data);
-        setNoticeContent({
-          ...noticeContent,
-          title: response.data.title,
-          content: response.data.body,
-        });
-      });
-  }, []);
-
-  const titleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const nextForm = {
-      ...noticeContent,
-      title: e.target.value,
+    const getData = async () => {
+      const notice = await getNoticeDetail(noticeId);
+      const body = {
+        title: notice.title,
+        content: notice.content,
+        important: notice.important,
+      };
+      dispatch(SetNoticeData(body));
     };
-    setNoticeContent(nextForm);
-  };
-
-  const noticeOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    let body = {
-      title,
-      body: content,
-    };
-    axios
-      .post("https://jsonplaceholder.typicode.com/posts", body)
-      .then((response) => {
-        console.log("백앤드에 전송된 데이터");
-        console.log(`title : ${response.data.title}`);
-        console.log(`content: ${response.data.body}`);
-      });
-  };
+    getData();
+  }, [dispatch, noticeId]);
 
   return (
     <>
-      <div id="NoticeEdit">
-        {title && content /** title과 content가 불러와진 후에 랜더링  */ && (
-          <div className="upload-form">
-            <form action="" onSubmit={noticeOnSubmit}>
-              <input
-                type="text"
-                value={title}
-                onChange={titleOnChange}
-                placeholder="제목을 입력하세요"
-              />
-              <div className="write-cont">
-                <CKEditor
-                  onReady={(editor: any) => {
-                    console.log("Editor is ready to use!", editor);
-                    editor.ui
-                      .getEditableElement()
-                      .parentElement.insertBefore(
-                        editor.ui.view.toolbar.element,
-                        editor.ui.getEditableElement()
-                      );
-
-                    editor = editor;
-                  }}
-                  //   onError={({ willEditorRestart }) => {
-                  //     if (willEditorRestart) {
-                  //       this.editor.ui.view.toolbar.element.remove();
-                  //     }
-                  //   }}
-                  onChange={(event: any, editor: any) => {
-                    const data = editor.getData();
-                    // console.log({ event, editor, data });
-                    const nextForm = {
-                      ...noticeContent,
-                      content: data,
-                    };
-                    setNoticeContent(nextForm);
-                  }}
-                  editor={DecoupledEditor}
-                  data={content}
-                />
-              </div>
-
-              <button type="submit">수정완료</button>
-            </form>
-          </div>
-        )}
-      </div>
+      <Header />
+      <Aside />
+      <NoticeForm onSubmit={onSubmit} />
     </>
   );
 };

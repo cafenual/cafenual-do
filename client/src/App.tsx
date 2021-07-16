@@ -24,7 +24,7 @@ function App() {
           <Route path="/join" component={Join} />
           <Route path="/notice" exact component={NoticeList} />
           <Route path="/notice/upload" exact component={NoticeUpload} />
-          <Route path="/notice/edit/:id?" component={NoticeEdit} />
+          <Route path="/notice/edit/:noticeId?" component={NoticeEdit} />
           <Route path="/notice/:noticeId?" component={NoticeDetail} />
           <Route path="/recipe/:category?" exact component={Recipe} />
           <Route path="/recipe/menu/:menuId" exact component={RecipeDetail} />
