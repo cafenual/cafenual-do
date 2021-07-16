@@ -8,6 +8,7 @@ import Header from "layouts/Header";
 import Footer from "layouts/Footer";
 import Aside from "layouts/Aside";
 import { getNormalNotices } from "lib/api/notice";
+import { Link } from "react-router-dom";
 
 const NoticeList = () => {
   const [getNotices, setGetNotices] = useState([]);
@@ -92,19 +93,19 @@ const NoticeList = () => {
                       <div className="inner-cont">
                         <span className="inner-text">
                           {notice.important === true ? (
-                            <a
-                              href={`/notice/${notice.id}`}
+                            <Link
+                              to={`/notice/${notice._id}`}
                               className="link-text important"
                             >
                               [필독] {notice.title}
-                            </a>
+                            </Link>
                           ) : (
-                            <a
-                              href={`/notice/${notice.id}`}
+                            <Link
+                              to={`/notice/${notice._id}`}
                               className="link-text"
                             >
                               {notice.title}
-                            </a>
+                            </Link>
                           )}
                         </span>
                       </div>

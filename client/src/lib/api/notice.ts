@@ -21,3 +21,8 @@ export const getNormalNotices = async () => {
   return response.data.notices;
 };
 
+// 공지 상세보기
+export const getNoticeDetail = async (noticeId: string) => {
+  const response = await axios.get(`/api/v1/notice/read/detail/${noticeId}`);
+  return response.data.notice;
+};

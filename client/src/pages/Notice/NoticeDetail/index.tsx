@@ -1,29 +1,33 @@
-import axios from "axios";
 import Aside from "layouts/Aside";
 import Header from "layouts/Header";
+import { getNoticeDetail } from "lib/api/notice";
 import React, { useEffect, useState } from "react";
+import { useRouteMatch } from "react-router-dom";
 import "./styles.scss";
 
-const NoticeDetail = ({ match }: any) => {
-  const noticeId = Number(match.params.id);
-  const [noticeInfo, setNoticeInfo] = useState({
-    title: "",
-    body: "",
-  });
+interface MatchParams {
+  noticeId: string;
+}
 
-  const { title, body } = noticeInfo;
-  const noticeLength = Number(localStorage.getItem("noticeLength")); // 게시물 길이
+const NoticeDetail = () => {
+  const match = useRouteMatch<MatchParams>();
+  const noticeId = match.params.noticeId;
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [date, setDate] = useState("");
+
   useEffect(() => {
-    axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${noticeId}`)
-      .then((response) => {
-        console.log(response.data);
-        setNoticeInfo({
-          ...noticeInfo,
-          title: response.data.title,
-          body: response.data.body,
-        });
-      });
+    const getData = async () => {
+      try {
+        const notice = await getNoticeDetail(noticeId);
+        setTitle(notice.title);
+        setContent(notice.content);
+        setDate(notice.createdAt);
+      } catch (e) {
+        alert("공지를 불러오는데 실패했습니다.");
+      }
+    };
+    getData();
   }, []);
   return (
     <>
@@ -33,26 +37,13 @@ const NoticeDetail = ({ match }: any) => {
         <div className="cont">
           <div className="content-tit">
             {title}
-            <div className="tit-date">2021-05-19</div>
+            <div className="tit-date">{date.slice(0, 10)}</div>
           </div>
-          <div className="content-cont">{body}</div>
+          <div
+            className="content-cont"
+            dangerouslySetInnerHTML={{ __html: content }}
+          ></div>
           <div className="content-btn">
-            {noticeId > 1 ? (
-              <a href={`/notice/${noticeId - 1}`} className="btn-move">
-                이전
-              </a>
-            ) : (
-              ""
-            )}
-
-            {noticeId < noticeLength ? (
-              <a href={`/notice/${noticeId + 1}`} className="btn-move">
-                다음
-              </a>
-            ) : (
-              ""
-            )}
-
             <a href={`/notice`} className="btn-list">
               목록
             </a>
