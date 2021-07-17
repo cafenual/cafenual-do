@@ -1,12 +1,12 @@
 import NoticeForm from "components/NoticeForm";
-import Aside from "layouts/Aside";
-import Header from "layouts/Header";
+import Aside from "components/Aside";
+import Header from "components/Header";
 import React from "react";
-import useNoticeForm from "hooks/useNoticeForm";
+import useNoticeForm from "hooks/notice/useNoticeForm";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { SetNoticeData } from "modules/notice";
-import useNoticeDetailEffect from "hooks/useNoticeDetailEffect";
+import useNoticeDetailEffect from "hooks/notice/useNoticeDetailEffect";
 
 const NoticeEdit = () => {
   const { edit } = useNoticeForm();

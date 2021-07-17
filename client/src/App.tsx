@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import NoticeList from "pages/Notice/NoticeList";
 import NoticeDetail from "pages/Notice/NoticeDetail";
 import NoticeEdit from "pages/Notice/NoticeEdit";
-import "./App.scss";
+import "styles/App.scss";
 import Recipe from "pages/Recipe";
 import CategoryManage from "pages/Recipe/CategoryManage";
 import RecipeDetail from "pages/Recipe/RecipeDetail";

@@ -3,9 +3,9 @@ import "./styles.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import Pagination from "components/Pagination";
 import { paginate } from "lib/Paginate";
-import Header from "layouts/Header";
-import Footer from "layouts/Footer";
-import Aside from "layouts/Aside";
+import Header from "components/Header";
+import Footer from "components/Footer";
+import Aside from "components/Aside";
 import { getNormalNotices } from "lib/api/notice";
 import { Link } from "react-router-dom";
 

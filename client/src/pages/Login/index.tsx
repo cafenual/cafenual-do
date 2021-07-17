@@ -1,32 +1,20 @@
 import { reduxStoreState } from "modules";
 import { SetUser } from "modules/users";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { BsLightningFill } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import "./styles.scss";
 import { login } from "lib/api/user";
+import useInput from "hooks/common/useInput";
 
 const Login = () => {
   const history = useHistory();
   const user = useSelector((state: reduxStoreState) => state.user);
   const dispatch = useDispatch();
-
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const nextForm = {
-      ...form,
-      [e.target.name]: e.target.value,
-    };
-    setForm(nextForm);
-  };
-
-  const { email, password } = form;
+  const [email, onChangeEmail] = useInput("");
+  const [password, onChangePassword] = useInput("");
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,15 +28,12 @@ const Login = () => {
 
   useEffect(() => {
     if (user.email) {
-      console.log("유저가 있습니다.");
       history.push("/");
       try {
         sessionStorage.setItem("user", JSON.stringify(user));
       } catch (e) {
         console.log("로컬 스토리지 저장에 실패했습니다");
       }
-    } else {
-      console.log("유저가 없습니다.");
     }
   }, [user, history]);
 
@@ -82,7 +67,7 @@ const Login = () => {
             name="email"
             placeholder="이메일을 입력해주세요"
             value={email}
-            onChange={onChange}
+            onChange={onChangeEmail}
             className="login-input"
           />
           <label>비밀번호</label>
@@ -91,7 +76,7 @@ const Login = () => {
             name="password"
             placeholder="비밀번호를 입력해주세요"
             value={password}
-            onChange={onChange}
+            onChange={onChangePassword}
             className="login-input"
           />
 

@@ -1,6 +1,6 @@
 import TransitionList from "components/TransitionList";
-import Aside from "layouts/Aside";
-import Header from "layouts/Header";
+import Aside from "components/Aside";
+import Header from "components/Header";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";

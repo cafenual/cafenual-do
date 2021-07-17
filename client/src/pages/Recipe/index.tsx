@@ -1,7 +1,7 @@
 import RecipeCategory from "components/Recipe/RecipeCategory";
 import RecipeList from "components/Recipe/RecipeList";
-import Aside from "layouts/Aside";
-import Header from "layouts/Header";
+import Aside from "components/Aside";
+import Header from "components/Header";
 import React from "react";
 import "./styles.scss";
 
