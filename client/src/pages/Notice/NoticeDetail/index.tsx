@@ -7,8 +7,6 @@ const NoticeDetail = () => {
   const { title, content, date, noticeId } = useNoticeDetailEffect();
   return (
     <>
-      <Header />
-      <Aside />
       <div id="Notice" className="side-layout">
         <div className="cont">
           <div className="content-tit">

@@ -16,8 +16,6 @@ const Transition = () => {
   };
   return (
     <>
-      <Header />
-      <Aside />
       <div id="Transition" className="side-layout">
         <div className="content">
           <div className="cont-box">

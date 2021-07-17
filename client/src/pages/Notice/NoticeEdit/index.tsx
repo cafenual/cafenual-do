@@ -28,8 +28,6 @@ const NoticeEdit = () => {
 
   return (
     <>
-      <Header />
-      <Aside />
       <NoticeForm onSubmit={onSubmit} />
     </>
   );

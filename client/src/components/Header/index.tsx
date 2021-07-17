@@ -8,6 +8,7 @@ import { reduxStoreState } from "modules";
 import { logout } from "lib/api/user";
 
 const Header = () => {
+  console.log("헤더리랜더링")
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state: reduxStoreState) => state.user);
@@ -26,6 +27,7 @@ const Header = () => {
       await logout();
       sessionStorage.removeItem("user");
       dispatch(SetUser(UserBody));
+      window.location.replace("/login");
     } catch (e) {
       alert("로그아웃에 실패했습니다.");
     }
@@ -36,6 +38,8 @@ const Header = () => {
       history.push("/login");
     }
   }, [user, history]);
+  
+
 
   return (
     <div id="Header">

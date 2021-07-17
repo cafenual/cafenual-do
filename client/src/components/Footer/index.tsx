@@ -9,6 +9,8 @@ const Footer = () => {
   const activeStyle = {
     color: "#000",
   };
+  if (window.location.pathname === "/login") return null;
+  if (window.location.pathname === "/join") return null;
   return (
     <div id="Footer">
       <ul>

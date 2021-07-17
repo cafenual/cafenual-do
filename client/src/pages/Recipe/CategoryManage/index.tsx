@@ -88,8 +88,6 @@ const CategoryManage = () => {
 
   return (
     <>
-      <Header />
-      <Aside />
       <ManageNav />
 
       <div id="CategoryManage" className="side-layout manage-layout">

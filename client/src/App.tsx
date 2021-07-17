@@ -13,30 +13,46 @@ import Transition from "pages/Transition";
 import RecipeUpload from "pages/Recipe/RecipeUpload";
 import RecipeEdit from "pages/Recipe/RecipeEdit";
 import NoticeUpload from "pages/Notice/NoticeUpload";
+import Header from "components/Header";
+import Aside from "components/Aside";
+import Footer from "components/Footer";
 
 function App() {
   return (
     <div id="container">
       <div id="main">
         <Switch>
-          <Route path="/" exact component={DashBoard} />
           <Route path="/login" component={Login} />
           <Route path="/join" component={Join} />
-          <Route path="/notice" exact component={NoticeList} />
-          <Route path="/notice/upload" exact component={NoticeUpload} />
-          <Route path="/notice/edit/:noticeId?" component={NoticeEdit} />
-          <Route path="/notice/:noticeId?" component={NoticeDetail} />
-          <Route path="/recipe/:category?" exact component={Recipe} />
-          <Route path="/recipe/menu/:menuId" exact component={RecipeDetail} />
-          <Route path="/recipe/manage/upload" exact component={RecipeUpload} />
-          <Route path="/recipe/edit/:menuId" exact component={RecipeEdit} />
-          <Route
-            path="/recipe/manage/category"
-            exact
-            component={CategoryManage}
-          />
-          <Route path="/transition" exact component={Transition} />
+          <>
+            <Header />
+            <Aside />
+            <Route path="/" exact component={DashBoard} />
+            <Route path="/notice" exact component={NoticeList} />
+            <Route path="/notice/upload" exact component={NoticeUpload} />
+            <Route
+              path="/notice/edit/:noticeId?"
+              exact
+              component={NoticeEdit}
+            />
+            <Route path="/notice/:noticeId" exact component={NoticeDetail} />
+            <Route path="/recipe/:category?" exact component={Recipe} />
+            <Route path="/recipe/menu/:menuId" exact component={RecipeDetail} />
+            <Route
+              path="/recipe/manage/upload"
+              exact
+              component={RecipeUpload}
+            />
+            <Route path="/recipe/edit/:menuId" exact component={RecipeEdit} />
+            <Route
+              path="/recipe/manage/category"
+              exact
+              component={CategoryManage}
+            />
+            <Route path="/transition" exact component={Transition} />
+          </>
         </Switch>
+        <Footer />
       </div>
     </div>
   );

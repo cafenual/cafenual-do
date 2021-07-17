@@ -27,7 +27,7 @@ const NoticeList = () => {
         const notices = await getNormalNotices();
         setGetNotices(notices);
       } catch (e) {
-        alert("공지사항을 불러오지 못했습니다.");
+        alert("공지사항을 불러오지 못했습니다ss.");
       }
     };
     getData();
@@ -49,8 +49,6 @@ const NoticeList = () => {
 
   return (
     <>
-      <Header />
-      <Aside />
       <div id="Notice" className="side-layout">
         <div className="cont">
           <div className="search-comm">

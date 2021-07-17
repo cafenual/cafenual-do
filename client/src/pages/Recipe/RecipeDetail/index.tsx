@@ -35,8 +35,6 @@ const RecipeDetail = () => {
 
   return (
     <>
-      <Header />
-      <Aside />
       <div id="RecipeDetail" className="side-layout">
         <div className="page-inner">
           <div className="inner-detail">

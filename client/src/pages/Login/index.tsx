@@ -1,41 +1,23 @@
-import { reduxStoreState } from "modules";
-import { SetUser } from "modules/users";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { BsLightningFill } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import "./styles.scss";
-import { login } from "lib/api/user";
 import useInput from "hooks/common/useInput";
+import useLogin from "hooks/user/useLogin";
+import useCheckUserEffect from "hooks/user/useCheckUserEffect";
 
 const Login = () => {
-  const history = useHistory();
-  const user = useSelector((state: reduxStoreState) => state.user);
-  const dispatch = useDispatch();
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
+  const { onLogin } = useLogin();
+
+  useCheckUserEffect();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const user = await login(email, password);
-      dispatch(SetUser(user));
-    } catch (e) {
-      alert("로그인에 실패했습니다.");
-    }
+    await onLogin(email, password);
   };
-
-  useEffect(() => {
-    if (user.email) {
-      history.push("/");
-      try {
-        sessionStorage.setItem("user", JSON.stringify(user));
-      } catch (e) {
-        console.log("로컬 스토리지 저장에 실패했습니다");
-      }
-    }
-  }, [user, history]);
 
   return (
     <div id="Login">

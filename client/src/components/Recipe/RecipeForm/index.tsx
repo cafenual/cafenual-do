@@ -62,8 +62,6 @@ const RecipeForm = ({ onSubmit }: RecipeFormProps) => {
 
   return (
     <>
-      <Header />
-      <Aside />
       <div
         id="RecipeDetail"
         className="side-layout manage-layout recipe-manage"

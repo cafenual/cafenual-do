@@ -1,15 +1,11 @@
 import Profile from "components/DashBoard/Profile";
-import Footer from "components/Footer";
-import Header from "components/Header";
-import StaffSideNav from "components/Aside";
 import React from "react";
 import "./styles.scss";
 
 const DashBoard = () => {
   return (
     <>
-      <Header />
-      <StaffSideNav />
+
       <div id="DashBoard" className="side-layout">
         <div className="tit">
           <span>DashBoard</span>
@@ -27,7 +23,6 @@ const DashBoard = () => {
         </div>
       </div>
 
-      <Footer />
     </>
   );
 };

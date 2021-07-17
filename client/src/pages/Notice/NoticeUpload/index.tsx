@@ -13,8 +13,6 @@ const NoticeUpload = () => {
 
   return (
     <>
-      <Header />
-      <Aside />
       <NoticeForm onSubmit={onSubmit} />
     </>
   );

@@ -23,6 +23,8 @@ const Aside = () => {
     FontWeight: "700",
   };
 
+
+
   return (
     <div id="Aside">
       <div className="inner-side nav">
