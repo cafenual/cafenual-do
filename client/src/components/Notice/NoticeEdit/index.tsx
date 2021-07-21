@@ -1,6 +1,4 @@
 import NoticeForm from "components/Notice/NoticeForm";
-import Aside from "components/Aside";
-import Header from "components/Header";
 import React from "react";
 import useNoticeForm from "hooks/notice/useNoticeForm";
 import { useEffect } from "react";
@@ -9,13 +7,9 @@ import { SetNoticeData } from "modules/notice";
 import useNoticeDetailEffect from "hooks/notice/useNoticeDetailEffect";
 
 const NoticeEdit = () => {
-  const { edit } = useNoticeForm();
+  const { onEdit } = useNoticeForm();
   const dispatch = useDispatch();
-  const { title, content, important, noticeId } = useNoticeDetailEffect();
-
-  const onSubmit = async () => {
-    await edit(noticeId);
-  };
+  const { title, content, important } = useNoticeDetailEffect();
 
   useEffect(() => {
     const body = {
@@ -28,7 +22,7 @@ const NoticeEdit = () => {
 
   return (
     <>
-      <NoticeForm onSubmit={onSubmit} />
+      <NoticeForm onSubmit={onEdit} />
     </>
   );
 };

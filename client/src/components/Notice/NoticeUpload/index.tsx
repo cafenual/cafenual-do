@@ -3,15 +3,11 @@ import useNoticeForm from "hooks/notice/useNoticeForm";
 import React from "react";
 
 const NoticeUpload = () => {
-  const { upload } = useNoticeForm();
-  
-  const onSubmit = async () => {
-    await upload();
-  };
+  const { onUpload } = useNoticeForm();
 
   return (
     <>
-      <NoticeForm onSubmit={onSubmit} />
+      <NoticeForm onSubmit={onUpload} />
     </>
   );
 };
