@@ -1,9 +1,9 @@
 import NoticeForm from "components/Notice/NoticeForm";
-import useNoticeForm from "hooks/notice/useNoticeForm";
+import useHandleNotice from "hooks/notice/useHandleNotice";
 import React from "react";
 
 const NoticeUpload = () => {
-  const { onUpload } = useNoticeForm();
+  const { onUpload } = useHandleNotice();
 
   return (
     <>

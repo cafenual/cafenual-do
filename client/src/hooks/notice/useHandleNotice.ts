@@ -7,7 +7,7 @@ interface matchProps {
   noticeId: string;
 }
 
-export default function useNoticeForm() {
+export default function useHandleNotice() {
   const notice = useSelector((state: reduxStoreState) => state.notice);
   const { title, content, important } = notice;
   const match = useRouteMatch<matchProps>();
