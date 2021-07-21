@@ -1,15 +1,15 @@
-import NoticeList from "components/Notice/NoticeList";
 import React from "react";
 import { Route } from "react-router-dom";
 import NoticeDetailPage from "./NoticeDetailPage";
 import NoticeEditPage from "./NoticeEditPage";
+import NoticeMainPage from "./NoticeMainPage";
 import NoticeUploadPage from "./NoticeUploadPage";
 
 const NoticePage = () => {
   return (
     <>
       <div>
-        <Route path="/notice" exact component={NoticeList} />
+        <Route path="/notice" exact component={NoticeMainPage} />
         <Route
           path="/notice/detail/:noticeId"
           exact
