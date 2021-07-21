@@ -1,6 +1,4 @@
 import useNoticeDetailEffect from "hooks/notice/useNoticeDetailEffect";
-import Aside from "components/Aside";
-import Header from "components/Header";
 import "./styles.scss";
 
 const NoticeDetail = () => {

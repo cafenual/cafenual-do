@@ -1,7 +1,5 @@
-import NoticeForm from "components/NoticeForm";
+import NoticeForm from "components/Notice/NoticeForm";
 import useNoticeForm from "hooks/notice/useNoticeForm";
-import Aside from "components/Aside";
-import Header from "components/Header";
 import React from "react";
 
 const NoticeUpload = () => {

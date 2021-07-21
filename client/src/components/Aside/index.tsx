@@ -23,8 +23,6 @@ const Aside = () => {
     FontWeight: "700",
   };
 
-
-
   return (
     <div id="Aside">
       <div className="inner-side nav">
@@ -72,16 +70,6 @@ const Aside = () => {
               <ul>
                 <li>
                   <NavLink
-                    to={"/staff/accountinfo"}
-                    exact
-                    activeStyle={activeStyle}
-                  >
-                    <BsFillPersonLinesFill />
-                    <span>계정정보</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
                     to={"/staff/scheduler"}
                     exact
                     activeStyle={activeStyle}
@@ -100,16 +88,6 @@ const Aside = () => {
                     <span>급여내역</span>
                   </NavLink>
                 </li>
-              </ul>
-            </>
-          )}
-
-          {user.role === "admin" && (
-            <>
-              <div className="nav-title">
-                <span>Admin</span>
-              </div>
-              <ul>
                 <li>
                   <NavLink
                     to={"/staff/accountinfo"}
@@ -120,6 +98,16 @@ const Aside = () => {
                     <span>계정정보</span>
                   </NavLink>
                 </li>
+              </ul>
+            </>
+          )}
+
+          {user.role === "admin" && (
+            <>
+              <div className="nav-title">
+                <span>Admin</span>
+              </div>
+              <ul>
                 <li>
                   <NavLink
                     to={"/staff/scheduler"}
@@ -148,6 +136,16 @@ const Aside = () => {
                   >
                     <BiDollar />
                     <span>급여관리</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to={"/staff/accountinfo"}
+                    exact
+                    activeStyle={activeStyle}
+                  >
+                    <BsFillPersonLinesFill />
+                    <span>계정정보</span>
                   </NavLink>
                 </li>
               </ul>

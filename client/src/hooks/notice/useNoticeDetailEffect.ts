@@ -8,6 +8,7 @@ interface MatchParams {
 
 export default function useNoticeDetailEffect() {
   const match = useRouteMatch<MatchParams>();
+  console.log(match);
   const noticeId = match.params.noticeId;
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

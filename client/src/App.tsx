@@ -1,10 +1,7 @@
-import Join from "pages/Join";
-import Login from "pages/Login";
-import DashBoard from "pages/DashBoard";
+import Join from "pages/AuthPage/RegisterPage";
+import Login from "pages/AuthPage/LoginPage";
+import DashBoard from "pages/AdminPage/AdminDashboardPage";
 import { Route, Switch } from "react-router-dom";
-import NoticeList from "pages/Notice/NoticeList";
-import NoticeDetail from "pages/Notice/NoticeDetail";
-import NoticeEdit from "pages/Notice/NoticeEdit";
 import "styles/App.scss";
 import Recipe from "pages/Recipe";
 import CategoryManage from "pages/Recipe/CategoryManage";
@@ -12,10 +9,10 @@ import RecipeDetail from "pages/Recipe/RecipeDetail";
 import Transition from "pages/Transition";
 import RecipeUpload from "pages/Recipe/RecipeUpload";
 import RecipeEdit from "pages/Recipe/RecipeEdit";
-import NoticeUpload from "pages/Notice/NoticeUpload";
 import Header from "components/Header";
 import Aside from "components/Aside";
 import Footer from "components/Footer";
+import NoticePage from "pages/NoticePage/NoticePage";
 
 function App() {
   return (
@@ -28,14 +25,7 @@ function App() {
             <Header />
             <Aside />
             <Route path="/" exact component={DashBoard} />
-            <Route path="/notice" exact component={NoticeList} />
-            <Route path="/notice/upload" exact component={NoticeUpload} />
-            <Route
-              path="/notice/edit/:noticeId?"
-              exact
-              component={NoticeEdit}
-            />
-            <Route path="/notice/:noticeId" exact component={NoticeDetail} />
+            <Route path="/notice" component={NoticePage} />
             <Route path="/recipe/:category?" exact component={Recipe} />
             <Route path="/recipe/menu/:menuId" exact component={RecipeDetail} />
             <Route

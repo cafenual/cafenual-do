@@ -3,9 +3,7 @@ import "./styles.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import Pagination from "components/Pagination";
 import { paginate } from "lib/Paginate";
-import Header from "components/Header";
 import Footer from "components/Footer";
-import Aside from "components/Aside";
 import { getNormalNotices } from "lib/api/notice";
 import { Link } from "react-router-dom";
 
@@ -91,14 +89,14 @@ const NoticeList = () => {
                         <span className="inner-text">
                           {notice.important === true ? (
                             <Link
-                              to={`/notice/${notice._id}`}
+                              to={`/notice/detail/${notice._id}`}
                               className="link-text important"
                             >
                               [필독] {notice.title}
                             </Link>
                           ) : (
                             <Link
-                              to={`/notice/${notice._id}`}
+                              to={`/notice/detail/${notice._id}`}
                               className="link-text"
                             >
                               {notice.title}

@@ -5,7 +5,6 @@ import "./styles.scss";
 const DashBoard = () => {
   return (
     <>
-
       <div id="DashBoard" className="side-layout">
         <div className="tit">
           <span>DashBoard</span>
@@ -22,7 +21,6 @@ const DashBoard = () => {
           <div className="dashboard-box">메모사항</div>
         </div>
       </div>
-
     </>
   );
 };
