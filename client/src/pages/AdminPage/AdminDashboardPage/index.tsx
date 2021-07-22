@@ -1,4 +1,4 @@
-import Profile from "components/DashBoard/Profile";
+import Profile from "components/Profile";
 import React from "react";
 import "./styles.scss";
 

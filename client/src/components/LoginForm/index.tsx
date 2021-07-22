@@ -7,7 +7,7 @@ import useInput from "hooks/common/useInput";
 import useLogin from "hooks/user/useLogin";
 import useLoginEffect from "hooks/user/useLoginEffect";
 
-const Login = () => {
+const LoginForm = () => {
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
   const { onLogin } = useLogin();
@@ -20,7 +20,7 @@ const Login = () => {
   };
 
   return (
-    <div id="Login">
+    <div id="LoginForm">
       <div className="accounts-form">
         <div className="accounts-ico">
           <BsLightningFill size="30" />
@@ -72,7 +72,7 @@ const Login = () => {
         </form>
         <div className="accounts-link">
           <span className="link-des">아직 회원이 아니신가요??</span>
-          <Link to="/join">회원가입</Link>
+          <Link to="/register">회원가입</Link>
         </div>
 
         <div className="cafenual">©2021 cafenual</div>
@@ -81,4 +81,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;

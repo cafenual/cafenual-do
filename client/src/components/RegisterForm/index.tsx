@@ -6,14 +6,14 @@ import { FcGoogle } from "react-icons/fc";
 import useLoginEffect from "hooks/user/useLoginEffect";
 import useRegister from "hooks/user/useRegister";
 
-const Join = () => {
+const RegisterForm = () => {
   const { onChange, onSubmit, email, name, password, passwordCheck } =
     useRegister();
 
   useLoginEffect();
 
   return (
-    <div id="Join">
+    <div id="RegisterForm">
       <div className="accounts-form">
         <div className="accounts-ico">
           <BsLightningFill size="30" />
@@ -98,4 +98,4 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default RegisterForm;

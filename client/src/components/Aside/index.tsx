@@ -88,11 +88,7 @@ const Aside = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    to={"/staff/accountinfo"}
-                    exact
-                    activeStyle={activeStyle}
-                  >
+                  <NavLink to={"/accountinfo"} exact activeStyle={activeStyle}>
                     <BsFillPersonLinesFill />
                     <span>계정정보</span>
                   </NavLink>
@@ -138,11 +134,7 @@ const Aside = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    to={"/staff/accountinfo"}
-                    exact
-                    activeStyle={activeStyle}
-                  >
+                  <NavLink to={"/accountinfo"} exact activeStyle={activeStyle}>
                     <BsFillPersonLinesFill />
                     <span>계정정보</span>
                   </NavLink>
