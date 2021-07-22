@@ -35,9 +35,10 @@ const user = createSlice({
       state.wage = wage;
       state._id = _id;
     },
+    UserStateEmpty: () => initialState,
   },
 });
 
-export const { SetUser } = user.actions;
+export const { SetUser, UserStateEmpty } = user.actions;
 
 export default user;

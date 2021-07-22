@@ -5,11 +5,7 @@ import React from "react";
 const NoticeUpload = () => {
   const { onUpload } = useHandleNotice();
 
-  return (
-    <>
-      <NoticeForm onSubmit={onUpload} />
-    </>
-  );
+  return <NoticeForm onSubmit={onUpload} />;
 };
 
 export default NoticeUpload;

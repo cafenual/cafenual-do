@@ -5,14 +5,14 @@ import { FcGoogle } from "react-icons/fc";
 import "./styles.scss";
 import useInput from "hooks/common/useInput";
 import useLogin from "hooks/user/useLogin";
-import useCheckUserEffect from "hooks/user/useCheckUserEffect";
+import useLoginEffect from "hooks/user/useLoginEffect";
 
 const Login = () => {
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
   const { onLogin } = useLogin();
 
-  useCheckUserEffect();
+  useLoginEffect();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

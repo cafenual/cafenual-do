@@ -1,45 +1,13 @@
 import React from "react";
 import "./styles.scss";
-import { useHistory } from "react-router-dom";
-import { SetUser, userState } from "modules/users";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { reduxStoreState } from "modules";
-import { logout } from "lib/api/user";
+import useLogout from "hooks/user/useLogout";
+import useCheckLoggedIn from "hooks/user/useCheckLoggedIn";
 
 const Header = () => {
-  console.log("헤더리랜더링")
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const user = useSelector((state: reduxStoreState) => state.user);
+  console.log("헤더리랜더링");
+  const { onLogout } = useLogout();
 
-  const onLogout = async () => {
-    let UserBody: userState = {
-      _id: "",
-      email: "",
-      name: "",
-      role: "",
-      status: "",
-      token: "",
-      wage: 0,
-    };
-    try {
-      await logout();
-      sessionStorage.removeItem("user");
-      dispatch(SetUser(UserBody));
-      window.location.replace("/login");
-    } catch (e) {
-      alert("로그아웃에 실패했습니다.");
-    }
-  };
-
-  useEffect(() => {
-    if (!user.email) {
-      history.push("/login");
-    }
-  }, [user, history]);
-  
-
+  useCheckLoggedIn();
 
   return (
     <div id="Header">
