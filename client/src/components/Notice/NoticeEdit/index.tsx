@@ -1,30 +1,13 @@
 import NoticeForm from "components/Notice/NoticeForm";
 import React from "react";
 import useHandleNotice from "hooks/notice/useHandleNotice";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { SetNoticeData } from "modules/notice";
-import useNoticeDetailEffect from "hooks/notice/useNoticeDetailEffect";
+import useNoticeEditEffect from "hooks/notice/useNoticeEditEffect";
 
 const NoticeEdit = () => {
   const { onEdit } = useHandleNotice();
-  const dispatch = useDispatch();
-  const { title, content, important } = useNoticeDetailEffect();
+  useNoticeEditEffect();
 
-  useEffect(() => {
-    const body = {
-      title,
-      content,
-      important,
-    };
-    dispatch(SetNoticeData(body));
-  }, [title, content, important, dispatch]);
-
-  return (
-    <>
-      <NoticeForm onSubmit={onEdit} />
-    </>
-  );
+  return <NoticeForm onSubmit={onEdit} />;
 };
 
 export default NoticeEdit;

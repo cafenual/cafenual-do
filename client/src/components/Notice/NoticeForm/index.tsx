@@ -2,9 +2,9 @@ import React from "react";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import "./styles.scss";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { SetNotice } from "modules/notice";
-import { reduxStoreState } from "modules";
+import useHandleNotice from "hooks/notice/useHandleNotice";
 
 interface NoticeFormProps {
   onSubmit: () => Promise<void>;
@@ -12,26 +12,10 @@ interface NoticeFormProps {
 
 const NoticeForm = ({ onSubmit }: NoticeFormProps) => {
   const dispatch = useDispatch();
-  const notice = useSelector((state: reduxStoreState) => state.notice);
-  const { title, content, important } = notice;
 
-  
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    let body = {
-      key: name,
-      value,
-    };
-    dispatch(SetNotice(body));
-  };
+  const { onChange, onChangeCheckBox, title, content, important } =
+    useHandleNotice();
 
-  const onChangeCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let body = {
-      key: "important",
-      value: !important,
-    };
-    dispatch(SetNotice(body));
-  };
   return (
     <div id="NoticeForm" className="side-layout">
       <div className="upload-form">

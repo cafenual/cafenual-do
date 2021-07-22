@@ -4,7 +4,6 @@ import useLogout from "hooks/user/useLogout";
 import useCheckLoggedIn from "hooks/user/useCheckLoggedIn";
 
 const Header = () => {
-  console.log("헤더리랜더링");
   const { onLogout } = useLogout();
 
   useCheckLoggedIn();

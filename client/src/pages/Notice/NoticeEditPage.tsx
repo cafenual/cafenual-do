@@ -2,11 +2,7 @@ import NoticeEdit from "components/Notice/NoticeEdit";
 import React from "react";
 
 const NoticeEditPage = () => {
-  return (
-    <>
-      <NoticeEdit />
-    </>
-  );
+  return <NoticeEdit />;
 };
 
 export default NoticeEditPage;
