@@ -1,218 +1,113 @@
-#Notice {
-  padding-bottom: 200px;
+.table-comm {
   overflow: hidden;
-
- 
-
-  .upload-comm {
-    overflow: hidden;
-    margin: 10px 20px;
-    a {
-      float: right;
-      padding: 8px 16px;
-      font-size: 16px;
-    }
-  }
-
-  .table-comm {
-    overflow: hidden;
-    border-top: 2px solid #4d4d4d;
-    word-break: normal;
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-      border-spacing: 0;
-      table-layout: fixed;
-      colgroup {
-        .left {
-          width: 81%;
-        }
-        .right {
-          width: 19%;
-        }
-      }
-      th {
-        padding: 15px 20px;
-        color: #1e1e1e;
-        border-left: 0 none;
-        text-align: center;
-        border-bottom: 1px solid #e6e6e6;
-        font-weight: normal;
-        font-size: 14px;
-      }
-      td {
-        border-bottom: 1px solid #e6e6e6;
-        font-size: 14px;
-        line-height: 26px;
-        text-align: center;
-      }
-      .td-left {
-        text-align: left;
-        border-left: 0 none;
-        border-bottom: 1px solid #e6e6e6;
-        font-size: 14px;
-        line-height: 26px;
-        color: #666;
-        .inner-cont {
-          padding: 15px 60px 14px 20px;
-          .inner-text {
-            position: relative;
-            display: inline-block;
-            max-width: 100%;
-            padding-right: 17px;
-            vertical-align: top;
-            .link-text {
-              color: #1e1e1e;
-              line-height: 24px;
-              display: block;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              word-break: break-all;
-            }
-            .important {
-              color: #ff4e59;
-              font-weight: bold;
-              font-family: Arial, Helvetica, sans-serif;
-            }
-          }
-        }
-      }
-      .inner-cont {
-        padding: 15px 20px 14px;
-      }
-    }
-  }
-
-  .paging-comm {
-    overflow: hidden;
-    position: relative;
+  border-top: 2px solid #4d4d4d;
+  word-break: normal;
+  .table {
     width: 100%;
-    padding-top: 30px;
-    text-align: center;
-
-    .inner-paging {
-      display: flex;
-      justify-content: center;
-      a {
-        cursor: pointer;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    colgroup {
+      .left {
+        width: 81%;
       }
-      .paging-btn {
-        display: block;
-        float: left;
-        width: 28px;
-        height: 28px;
-        margin: 0 3px;
-        border: 1px solid #e6e6e6;
-        text-align: center;
-        svg {
-          margin: 5px 0 auto;
+      .right {
+        width: 19%;
+      }
+    }
+    th {
+      padding: 15px 20px;
+      color: #1e1e1e;
+      border-left: 0 none;
+      text-align: center;
+      border-bottom: 1px solid #e6e6e6;
+      font-weight: normal;
+      font-size: 14px;
+    }
+    td {
+      border-bottom: 1px solid #e6e6e6;
+      font-size: 14px;
+      line-height: 26px;
+      text-align: center;
+    }
+    .td-left {
+      text-align: left;
+      border-left: 0 none;
+      border-bottom: 1px solid #e6e6e6;
+      font-size: 14px;
+      line-height: 26px;
+      color: #666;
+      .inner-cont {
+        padding: 15px 60px 14px 20px;
+        .inner-text {
+          position: relative;
+          display: inline-block;
+          max-width: 100%;
+          padding-right: 17px;
+          vertical-align: top;
+          .link-text {
+            color: #1e1e1e;
+            line-height: 24px;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            word-break: break-all;
+          }
+          .important {
+            color: #ff4e59;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+          }
         }
       }
-      .active {
-        font-weight: bold;
-        line-height: 27px;
-        color: #1e1e1e;
-        text-decoration: underline;
-      }
-      .paging-link {
-        float: left;
-        margin-left: 25px;
-        font-size: 14px;
-        line-height: 28px;
-        color: #666;
-      }
-      .paging-next {
-        margin-left: 30px;
-      }
+    }
+    .inner-cont {
+      padding: 15px 20px 14px;
     }
   }
 }
 
-@media screen and (max-width: 1510px) {
-  body {
-    #Notice,
-    .page-layout {
-      margin-left: 1px;
-      margin: 0 auto;
-    }
-  }
-}
+.paging-comm {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top: 30px;
+  text-align: center;
 
-@media screen and (max-width: 1240px) {
-  body {
-    #Notice {
-      .tit {
-        float: none;
-        display: flex;
-        margin: 0 auto;
-        justify-content: center;
-        align-items: center;
-        padding-top: 60px;
-        .tit-corp {
-          padding: 0;
-          text-align: center;
-        }
-        .upload {
-          padding: 0;
-          margin-left: 20px;
-        }
+  .inner-paging {
+    display: flex;
+    justify-content: center;
+    a {
+      cursor: pointer;
+    }
+    .paging-btn {
+      display: block;
+      float: left;
+      width: 28px;
+      height: 28px;
+      margin: 0 3px;
+      border: 1px solid #e6e6e6;
+      text-align: center;
+      svg {
+        margin: 5px 0 auto;
       }
     }
-  }
-}
-
-@media screen and (max-width: 1175px) {
-  body {
-    #Notice {
-      width: 100% !important;
-      .middle-cont {
-        width: 600px;
-      }
+    .active {
+      font-weight: bold;
+      line-height: 27px;
+      color: #1e1e1e;
+      text-decoration: underline;
     }
-  }
-}
-
-@media screen and (max-width: 680px) {
-  body {
-    #Notice {
-      .tit {
-        padding-top: 0;
-      }
-      .middle-cont {
-        width: 100%;
-        .search-comm {
-          width: 100%;
-          padding-top: 20px;
-          .search-input {
-            width: 88% !important ;
-          }
-        }
-        .table-comm {
-          colgroup {
-            .left {
-              width: 68% !important;
-            }
-            .right {
-              width: 32% !important;
-            }
-          }
-          th {
-            padding-left: 0 !important;
-          }
-          .td-left {
-            .inner-cont {
-              padding: 15px 0 14px 20px !important;
-              .link-text {
-                white-space: pre-line !important;
-              }
-            }
-          }
-          .inner-date {
-            padding-left: 0px !important;
-          }
-        }
-      }
+    .paging-link {
+      float: left;
+      margin-left: 25px;
+      font-size: 14px;
+      line-height: 28px;
+      color: #666;
+    }
+    .paging-next {
+      margin-left: 30px;
     }
   }
 }

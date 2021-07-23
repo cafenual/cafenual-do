@@ -1,6 +1,4 @@
 import ManageNav from "components/Recipe/ManageNav";
-import Aside from "components/Aside";
-import Header from "components/Header";
 import React, { useState } from "react";
 import "./styles.scss";
 import { MdEdit } from "react-icons/md";
