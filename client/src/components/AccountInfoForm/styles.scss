@@ -1,50 +1,36 @@
 @import "styles/main";
 
-#AccountInfoForm {
-  .middle-cont {
-    padding: 40px;
-    .inner-cont {
-      width: 600px;
-
-      .tit {
-        font-size: 25px;
-        padding: 20px 0;
-        text-align: center;
-      }
-      .form {
-        padding: 20px 0;
-        .info-form {
-          display: flex;
-          align-items: center;
-          margin: 15px 0;
-          label {
-            width: 130px;
-            display: inline-block;
-          }
-          input {
-            height: 44px;
-            padding: 0 14px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-            color: #000;
-            line-height: 20px;
-            border-radius: 3px;
-            background: #fff;
-            outline: none;
-            vertical-align: top;
-            width: 400px;
-          }
-        }
-        .form-btn {
-          display: flex;
-          justify-content: center;
-          padding: 20px 0;
-          button {
-            padding: 10px 20px;
-            font-size: 15px;
-          }
-        }
-      }
+.form {
+  padding: 20px 0;
+  .info-form {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    label {
+      width: 130px;
+      display: inline-block;
+    }
+    input {
+      height: 44px;
+      padding: 0 14px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      color: #000;
+      line-height: 20px;
+      border-radius: 3px;
+      background: #fff;
+      outline: none;
+      vertical-align: top;
+      width: 400px;
+    }
+  }
+  .form-btn {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    button {
+      padding: 10px 20px;
+      font-size: 15px;
     }
   }
 }
