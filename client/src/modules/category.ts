@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getCategories } from "lib/api/category";
+import { getCategoriesAPI } from "lib/api/category";
 
 export interface categoryState {
   _id: string ;
@@ -18,7 +18,7 @@ const initialState: categoryState = {
 export const getCategoriesHandle = createAsyncThunk(
   "category/getCategories",
   async () => {
-    const categories = await getCategories();
+    const categories = await getCategoriesAPI();
     return categories;
   }
 );

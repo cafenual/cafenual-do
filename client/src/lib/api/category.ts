@@ -1,22 +1,22 @@
 import client from "./client";
 
-export const getCategories = async () => {
+export const getCategoriesAPI = async () => {
   const response = await client.get("/recipe/category");
   return response.data.categories;
 };
 
-export const createCategory = async (name: string) => {
+export const createCategoryAPI = async (name: string) => {
   const body = { name };
   const response = await client.post("/recipe/category/create", body);
   return response.data.categories;
 };
 
-export const deleteCategory = async (categoryId: string | undefined) => {
+export const deleteCategoryAPI = async (categoryId: string | undefined) => {
   const response = await client.delete(`/recipe/category/${categoryId}`);
   return response.data.categories;
 };
 
-export const updateCategory = async (categoryId: string, name: string) => {
+export const updateCategoryAPI = async (categoryId: string, name: string) => {
   const body = {
     categoryId,
     name,

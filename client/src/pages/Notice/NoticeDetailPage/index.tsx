@@ -12,3 +12,4 @@ const NoticeDetailPage = () => {
 };
 
 export default NoticeDetailPage;
+ 

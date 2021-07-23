@@ -1,88 +1,26 @@
 import ManageNav from "components/Recipe/ManageNav";
-import React, { useState } from "react";
+import React from "react";
 import "./styles.scss";
 import { MdEdit } from "react-icons/md";
 import { HiMinusCircle } from "react-icons/hi";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { categoryState } from "modules/category";
-import {
-  createCategory,
-  deleteCategory,
-  getCategories,
-  updateCategory,
-} from "lib/api/category";
+import useCategoryManageEffect from "hooks/recipe/useCategoryManageEffect";
 
 const CategoryManage = () => {
-  const dispatch = useDispatch();
-  const [categoryInput, setCategoryInput] = useState("");
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const categories = await getCategories();
-      setCategories(categories);
-    };
-    getData();
-  }, [dispatch]);
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCategoryInput(e.target.value);
-  };
-
-  // 카테고리 추가
-  const onAddCategory = async (e: React.FocusEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const categories = await createCategory(categoryInput);
-      setCategories(categories);
-      setCategoryInput("");
-    } catch (e) {
-      alert("카테고리 생성에 실패했습니다.");
-    }
-  };
-
-  // 카테고리 삭제
-  const onDeleteCategory = async (id: string | undefined) => {
-    try {
-      const categories = await deleteCategory(id);
-      setCategories(categories);
-    } catch (e) {
-      alert("카테고리 삭제에 실패했습니다.");
-    }
-  };
-
-  const [updateCategoryId, setUpdateCategoryId] = useState("");
-  const [updateCategoryInput, setUpdateCategoryInput] = useState("");
-
-  // 카테고리 수정 활성화
-  const onUpdateActive = (categoryId: string, name: string) => {
-    setUpdateCategoryId(categoryId);
-    setUpdateCategoryInput(name);
-  };
-
-  // 카테고리 수정 input
-  const onChangeUpdateCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUpdateCategoryInput(e.target.value);
-  };
-
-  // 카테고리 수정 취소
-  const onUpdateCancel = () => {
-    setUpdateCategoryId("");
-  };
-
-  // 카테고리 수정
-  const onUpdate = async (categoryId: string) => {
-    try {
-      const categories = await updateCategory(categoryId, updateCategoryInput);
-      console.log(categories);
-      setCategories(categories);
-      setUpdateCategoryId("");
-    } catch (e) {
-      alert("카테고리 수정에 실패했습니다.");
-    }
-  };
+  const {
+    categories,
+    onChangeForAdd,
+    createCategoryInput,
+    onCreate,
+    onDelete,
+    updateCategoryId,
+    updateCategoryInput,
+    onUpdateActive,
+    onChangeForUpdate,
+    onUpdateCancel,
+    onUpdate,
+  } = useCategoryManageEffect();
 
   return (
     <>
@@ -92,12 +30,12 @@ const CategoryManage = () => {
         <div className="inner-manage">
           <div className="manage-tit">
             <span>Category</span>
-            <form onSubmit={onAddCategory}>
+            <form onSubmit={onCreate}>
               <input
                 type="text"
                 name="addCategoryInput"
-                onChange={onChange}
-                value={categoryInput}
+                onChange={onChangeForAdd}
+                value={createCategoryInput}
                 placeholder="카테고리 입력"
               />
               <button type="submit">카테고리 등록</button>
@@ -133,7 +71,7 @@ const CategoryManage = () => {
                         <td className="category-edit">
                           <input
                             value={updateCategoryInput}
-                            onChange={onChangeUpdateCategory}
+                            onChange={onChangeForUpdate}
                             type="text"
                           />
                           <button
@@ -169,7 +107,7 @@ const CategoryManage = () => {
                       <td className="ico">
                         <button
                           type="button"
-                          onClick={() => onDeleteCategory(category._id)}
+                          onClick={() => onDelete(category._id)}
                         >
                           <HiMinusCircle size="26" />
                         </button>
