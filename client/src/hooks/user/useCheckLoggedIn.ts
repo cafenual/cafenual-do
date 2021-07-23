@@ -11,4 +11,7 @@ export default function useCheckLoggedIn() {
       history.push("/login");
     }
   }, [history, user]);
+  return {
+    user,
+  };
 }

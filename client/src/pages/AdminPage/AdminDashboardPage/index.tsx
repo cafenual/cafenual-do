@@ -14,7 +14,7 @@ const DashBoard = () => {
             <Profile />
           </div>
           <div className="dashboard-box schedule">스케줄</div>
-          <div className="dashboard-box payroll">급여내역</div>
+          <div className="dashboard-box payroll">메뉴 레시피</div>
         </div>
         <div className="bottom-block">
           <div className="dashboard-box">공지사항</div>

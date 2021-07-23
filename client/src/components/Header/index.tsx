@@ -5,14 +5,16 @@ import useCheckLoggedIn from "hooks/user/useCheckLoggedIn";
 
 const Header = () => {
   const { onLogout } = useLogout();
-
-  useCheckLoggedIn();
+  const { user } = useCheckLoggedIn();
 
   return (
     <div id="Header">
       <div className="header-inner">
         <div></div>
-        <button onClick={onLogout}>로그아웃</button>
+        <div className="header-right">
+          <span>{user.name}님 안녕하세요</span>
+          <button onClick={onLogout}>로그아웃</button>
+        </div>
       </div>
     </div>
   );

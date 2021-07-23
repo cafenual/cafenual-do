@@ -79,7 +79,7 @@ const Aside = () => {
                 </li>
                 <li>
                   <NavLink
-                    to={"/staff/workingtime"}
+                    to={"/staff/payroll"}
                     exact
                     activeStyle={activeStyle}
                   >
@@ -105,7 +105,7 @@ const Aside = () => {
               <ul>
                 <li>
                   <NavLink
-                    to={"/staff/scheduler"}
+                    to={"/admin/schedulemanage"}
                     exact
                     activeStyle={activeStyle}
                   >
@@ -115,7 +115,7 @@ const Aside = () => {
                 </li>
                 <li>
                   <NavLink
-                    to={"/staff/workingtime"}
+                    to={"/admin/staffmanage"}
                     exact
                     activeStyle={activeStyle}
                   >
@@ -125,7 +125,7 @@ const Aside = () => {
                 </li>
                 <li>
                   <NavLink
-                    to={"/staff/workingtime"}
+                    to={"/admin/payrollmanage"}
                     exact
                     activeStyle={activeStyle}
                   >
