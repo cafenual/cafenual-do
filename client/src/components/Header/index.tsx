@@ -12,9 +12,6 @@ const Header = () => {
     <div id="Header">
       <div className="header-inner">
         <div></div>
-        <div className="header-calender">
-          <span>2021-06-29</span>
-        </div>
         <button onClick={onLogout}>로그아웃</button>
       </div>
     </div>

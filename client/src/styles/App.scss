@@ -9,7 +9,7 @@ body {
 
 .side-layout {
   min-height: 100vh;
-  padding: 20px 60px 0 300px;
+  padding: 20px 60px 0 270px;
 }
 
 .manage-layout {
@@ -96,4 +96,14 @@ button {
   border-radius: 7px;
   border: 1px solid $cafenualColor;
   color: $cafenualColor;
+}
+
+.large-cont {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.middle-cont {
+  width: 1050px;
+  margin: 0 auto;
 }

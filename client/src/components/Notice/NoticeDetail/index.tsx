@@ -6,7 +6,7 @@ const NoticeDetail = () => {
   return (
     <>
       <div id="Notice" className="side-layout">
-        <div className="cont">
+        <div className="middle-cont">
           <div className="content-tit">
             {title}
             <div className="tit-date">{date.slice(0, 10)}</div>
