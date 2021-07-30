@@ -37,8 +37,8 @@ const StaffList = () => {
                     </div>
 
                     <div className="box-info">
-                      <div className="info-tit">재직상태</div>
-                      <div className="info-cont">재직자</div>
+                      <div className="info-tit">시급</div>
+                      <div className="info-cont">8720</div>
                     </div>
                   </div>
                   <div className="box-bottom">
@@ -69,8 +69,8 @@ const StaffList = () => {
                     </div>
 
                     <div className="box-info">
-                      <div className="info-tit">재직상태</div>
-                      <div className="info-cont">재직자</div>
+                      <div className="info-tit">시급</div>
+                      <div className="info-cont">8720</div>
                     </div>
                   </div>
                   <div className="box-bottom">
@@ -101,8 +101,8 @@ const StaffList = () => {
                     </div>
 
                     <div className="box-info">
-                      <div className="info-tit">재직상태</div>
-                      <div className="info-cont">재직자</div>
+                      <div className="info-tit">시급</div>
+                      <div className="info-cont">8720</div>
                     </div>
                   </div>
                   <div className="box-bottom">
