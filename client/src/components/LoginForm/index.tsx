@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsLightningFill } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
 import "./styles.scss";
 import useInput from "hooks/common/useInput";
 import useLogin from "hooks/user/useLogin";

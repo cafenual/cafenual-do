@@ -1,5 +1,3 @@
-import Aside from "components/Aside";
-import Header from "components/Header";
 import React, { useState, useEffect } from "react";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import { CKEditor } from "@ckeditor/ckeditor5-react";

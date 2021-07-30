@@ -18,6 +18,7 @@ function App() {
         <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
+          
           <>
             <Header />
             <Aside />

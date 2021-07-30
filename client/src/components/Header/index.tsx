@@ -7,6 +7,9 @@ const Header = () => {
   const { onLogout } = useLogout();
   const { user } = useCheckLoggedIn();
 
+  console.log("리랜더링");
+
+
   return (
     <div id="Header">
       <div className="header-inner">

@@ -1,5 +1,3 @@
-import Aside from "components/Aside";
-import Header from "components/Header";
 import React, { useEffect } from "react";
 import "./styles.scss";
 import Comment from "components/Recipe/Comment";
