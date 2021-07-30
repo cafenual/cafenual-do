@@ -69,8 +69,8 @@ const UserSchema: Schema<IUserMethod> = new Schema(
 
     role: {
       type: String,
-      enum: ["admin", "parttime"],
-      default: "parttime",
+      enum: ["admin", "staff"],
+      default: "staff",
     },
     token: {
       type: String,

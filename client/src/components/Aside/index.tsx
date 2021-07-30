@@ -61,10 +61,10 @@ const Aside = () => {
             </li>
           </ul>
 
-          {user.role === "parttime" && (
+          {user.role === "staff" && (
             <>
               <div className="nav-title">
-                <span>Parttime</span>
+                <span>Staff</span>
               </div>
               <ul>
                 <li>

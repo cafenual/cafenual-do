@@ -38,7 +38,7 @@ const StaffSearchBar = () => {
           </li>
         </ul>
         <button className="search-all">전체보기</button>
-        <div className="staff-num">총 2명</div>
+        <div className="staff-num">총 3명</div>
       </div>
     </div>
   );
