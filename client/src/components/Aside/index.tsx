@@ -56,7 +56,7 @@ const Aside = () => {
             <li>
               <NavLink to={"/transition"} exact activeStyle={activeStyle}>
                 <BiMessageDots />
-                <span>인수인계</span>
+                <span>전달사항</span>
               </NavLink>
             </li>
           </ul>

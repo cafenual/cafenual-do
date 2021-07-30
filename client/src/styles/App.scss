@@ -77,6 +77,11 @@ button {
   cursor: pointer;
 }
 
+select,
+option {
+  outline: none;
+}
+
 .ck-content {
   border: 1px solid #d9d5d5 !important;
 }

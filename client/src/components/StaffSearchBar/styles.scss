@@ -1,0 +1,73 @@
+@import "styles/main";
+#StaffSearchBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .inner-searchbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .search-list {
+      box-sizing: border-box;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      font: 0.9rem Noto Sans KR;
+      letter-spacing: 2px;
+      width: 80%;
+      height: 45px;
+      justify-content: space-evenly;
+      background-color: #fff;
+      box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.15%);
+      .title {
+        color: #555;
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+      }
+      .spa {
+        width: 1px;
+        height: 25px;
+        background: #ccc;
+      }
+      li {
+        color: #aaa;
+      }
+      select {
+        border-color: rgba(0, 0, 0, 0.08);
+        color: #656565;
+        background-color: #fff;
+        padding: 8px 7px;
+        width: 12.4em;
+      }
+      .search-direct {
+        border-color: $border;
+        padding: 8px 7px;
+        width: 22.4em;
+        border-radius: 5px;
+      }
+    }
+
+    .search-all {
+      font: 0.9rem Noto Sans KR;
+      letter-spacing: 2px;
+      box-sizing: border-box;
+      height: 45px;
+      width: 10%;
+      text-align: center;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #fff;
+      box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.15%);
+    }
+    .staff-num {
+      display: flex;
+      width: 6%;
+      letter-spacing: 2px;
+      margin-right: -2px;
+    }
+  }
+}

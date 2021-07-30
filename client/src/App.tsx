@@ -1,4 +1,4 @@
-import DashBoard from "pages/AdminPage/AdminDashboardPage";
+import DashBoard from "pages/DashboardPage";
 import { Route, Switch } from "react-router-dom";
 import "styles/App.scss";
 import Transition from "pages/Transition";
@@ -7,9 +7,10 @@ import Aside from "components/Aside";
 import Footer from "components/Footer";
 import NoticePage from "pages/Notice";
 import RecipePage from "pages/Recipe";
-import LoginPage from "pages/AuthPage/LoginPage";
-import RegisterPage from "pages/AuthPage/RegisterPage";
-import AccountInfoPage from "pages/AuthPage/AccountInfoPage";
+import LoginPage from "pages/Auth/LoginPage";
+import RegisterPage from "pages/Auth/RegisterPage";
+import AccountInfoPage from "pages/Auth/AccountInfoPage";
+import AdminPage from "pages/Admin";
 
 function App() {
   return (
@@ -18,7 +19,6 @@ function App() {
         <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
-          
           <>
             <Header />
             <Aside />
@@ -27,6 +27,7 @@ function App() {
             <Route path="/recipe/:category?" component={RecipePage} />
             <Route path="/transition" exact component={Transition} />
             <Route path="/accountinfo" exact component={AccountInfoPage} />
+            <Route path="/admin" component={AdminPage} />
           </>
         </Switch>
         <Footer />

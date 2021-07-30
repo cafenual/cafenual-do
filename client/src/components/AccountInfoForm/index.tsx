@@ -9,7 +9,7 @@ const AccountInfoForm = () => {
     <div className="form">
       <div className="info-form">
         <label>이메일</label>
-        <input type="email" readOnly value={user.email} />
+        <input type="email" readOnly defaultValue={user.email} />
       </div>
       <div className="info-form">
         <label>현재 비밀번호</label>
