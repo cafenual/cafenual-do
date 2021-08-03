@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 import { ImPieChart } from "react-icons/im";
 import { useSelector } from "react-redux";
 import { reduxStoreState } from "modules";
+import { MdWork } from "react-icons/md";
 
 const Aside = () => {
   const user = useSelector((state: reduxStoreState) => state.user);
@@ -121,6 +122,17 @@ const Aside = () => {
                   >
                     <BsFillPeopleFill />
                     <span>직원관리</span>
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink
+                    to={"/admin/workmanage"}
+                    exact
+                    activeStyle={activeStyle}
+                  >
+                    <MdWork />
+                    <span>업무관리</span>
                   </NavLink>
                 </li>
                 <li>

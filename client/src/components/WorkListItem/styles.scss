@@ -1,0 +1,13 @@
+@import "styles/main";
+
+#WorkListItem {
+  padding: 15px 0;
+  .item {
+    padding: 8px;
+    border: 1px solid $border;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}

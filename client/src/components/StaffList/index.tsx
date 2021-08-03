@@ -32,13 +32,13 @@ const StaffList = () => {
                     </div>
 
                     <div className="box-info">
-                      <div className="info-tit">파트타임</div>
-                      <div className="info-cont">오픈</div>
+                      <div className="info-tit">시급</div>
+                      <div className="info-cont">870</div>
                     </div>
 
                     <div className="box-info">
-                      <div className="info-tit">시급</div>
-                      <div className="info-cont">8720</div>
+                      <div className="info-tit">재직상태</div>
+                      <div className="info-cont">재직자</div>
                     </div>
                   </div>
                   <div className="box-bottom">
@@ -64,13 +64,13 @@ const StaffList = () => {
                     </div>
 
                     <div className="box-info">
-                      <div className="info-tit">파트타임</div>
-                      <div className="info-cont">오픈</div>
+                      <div className="info-tit">시급</div>
+                      <div className="info-cont">870</div>
                     </div>
 
                     <div className="box-info">
-                      <div className="info-tit">시급</div>
-                      <div className="info-cont">8720</div>
+                      <div className="info-tit">재직상태</div>
+                      <div className="info-cont">재직자</div>
                     </div>
                   </div>
                   <div className="box-bottom">
@@ -96,13 +96,13 @@ const StaffList = () => {
                     </div>
 
                     <div className="box-info">
-                      <div className="info-tit">파트타임</div>
-                      <div className="info-cont">오픈</div>
+                      <div className="info-tit">시급</div>
+                      <div className="info-cont">870</div>
                     </div>
 
                     <div className="box-info">
-                      <div className="info-tit">시급</div>
-                      <div className="info-cont">8720</div>
+                      <div className="info-tit">재직상태</div>
+                      <div className="info-cont">재직자</div>
                     </div>
                   </div>
                   <div className="box-bottom">

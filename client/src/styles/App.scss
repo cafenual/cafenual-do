@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Sniglet&display=swap");
 @import "styles/main";
 
 body {
   font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
   /* background-color: rgb(244 249 254); */
 }
 
