@@ -1,0 +1,42 @@
+@import "styles/main";
+#WorkList {
+  .inner-worklist {
+    display: flex;
+    flex-wrap: wrap;
+    .list {
+      width: 350px;
+      padding: 10px;
+      margin-right: 10px;
+      margin-bottom: 20px;
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .txt {
+          .txt-tit {
+            margin-right: 5px;
+          }
+          .txt-len {
+            color: #999;
+            font-size: 12px;
+            font-weight: 400;
+          }
+        }
+        svg {
+          color: $cafenualColor;
+        }
+      }
+      .add-task-btn {
+        display: flex;
+        align-items: center;
+        color: #999;
+        font-weight: 500;
+        font-size: 14px;
+        svg {
+          color: $cafenualColor;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

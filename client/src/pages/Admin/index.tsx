@@ -2,13 +2,13 @@ import React from "react";
 import { Route } from "react-router-dom";
 import StaffManagePage from "./StaffManagePage";
 import "./styles.scss";
+import WorkManagePage from "./WorkManagePage";
 
 const AdminPage = () => {
   return (
     <>
-      <div>
-        <Route path="/admin/staffmanage" exact component={StaffManagePage} />
-      </div>
+      <Route path="/admin/staffmanage" exact component={StaffManagePage} />
+      <Route path="/admin/workmanage" exact component={WorkManagePage} />
     </>
   );
 };

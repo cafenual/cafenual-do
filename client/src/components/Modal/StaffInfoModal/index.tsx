@@ -35,16 +35,6 @@ const StaffInfoModal = ({ onToggle }: any) => {
             </div>
 
             <div className="inner-form">
-              <label>파트타임</label>
-              <select>
-                <option value="">풀타임</option>
-                <option value="">오픈</option>
-                <option value="">미드</option>
-                <option value="">마감</option>
-              </select>
-            </div>
-
-            <div className="inner-form">
               <label>재직 상태</label>
               <select name="" id="">
                 <option value="">재직자</option>
