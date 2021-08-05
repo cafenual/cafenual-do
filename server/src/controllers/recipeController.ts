@@ -142,7 +142,7 @@ export const createMenu = async (req: Request, res: Response) => {
       message: "해당 카테고리가 존재하지 않습니다",
     });
   }
-
+  console.log("dd");
   try {
     const menu = new Menu(req.body);
     await menu.save();
