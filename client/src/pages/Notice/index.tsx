@@ -2,10 +2,10 @@ import React from "react";
 import { Route } from "react-router-dom";
 import NoticeDetailPage from "./NoticeDetailPage";
 import NoticeEditPage from "./NoticeEditPage";
-import NoticeMainPage from "./NoticeMainPage";
+import NoticeMainPage from "./NoticePage";
 import NoticeUploadPage from "./NoticeUploadPage";
 
-const NoticePage = () => {
+const Notice = () => {
   return (
     <>
       <div>
@@ -22,4 +22,4 @@ const NoticePage = () => {
   );
 };
 
-export default NoticePage;
+export default Notice;

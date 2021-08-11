@@ -60,6 +60,12 @@ const Aside = () => {
                 <span>전달사항</span>
               </NavLink>
             </li>
+            <li>
+              <NavLink to={"/scheduler"} exact activeStyle={activeStyle}>
+                <BsCalendarFill />
+                <span>스케줄러</span>
+              </NavLink>
+            </li>
           </ul>
 
           {user.role === "staff" && (
@@ -68,16 +74,6 @@ const Aside = () => {
                 <span>Staff</span>
               </div>
               <ul>
-                <li>
-                  <NavLink
-                    to={"/staff/scheduler"}
-                    exact
-                    activeStyle={activeStyle}
-                  >
-                    <BsCalendarFill />
-                    <span>스케줄러</span>
-                  </NavLink>
-                </li>
                 <li>
                   <NavLink
                     to={"/staff/payroll"}
@@ -104,16 +100,6 @@ const Aside = () => {
                 <span>Admin</span>
               </div>
               <ul>
-                <li>
-                  <NavLink
-                    to={"/admin/schedulemanage"}
-                    exact
-                    activeStyle={activeStyle}
-                  >
-                    <BsCalendarFill />
-                    <span>스케줄관리</span>
-                  </NavLink>
-                </li>
                 <li>
                   <NavLink
                     to={"/admin/staffmanage"}

@@ -3,7 +3,7 @@ import NoticeSearchForm from "components/Notice/NoticeSearchForm";
 import React from "react";
 import "./styles.scss";
 
-const NoticeMainPage = () => {
+const NoticePage = () => {
   return (
     <>
       <div id="Notice" className="side-layout">
@@ -21,4 +21,4 @@ const NoticeMainPage = () => {
   );
 };
 
-export default NoticeMainPage;
+export default NoticePage;
