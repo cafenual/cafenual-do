@@ -31,7 +31,11 @@ const StaffInfoModal = ({ onToggle }: any) => {
 
             <div className="inner-form">
               <label>시급</label>
-              <input type="text" value="8720" />
+              <input
+                type="text"
+                value="8720"
+                onChange={() => console.log("test")}
+              />
             </div>
 
             <div className="inner-form">

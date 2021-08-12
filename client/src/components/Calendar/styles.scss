@@ -1,1 +1,20 @@
-@import "react-big-calendar/lib/sass/styles";
+@import "styles/main";
+
+#Calendar {
+  width: 1050px;
+  margin: 0 auto;
+  .fc {
+    .fc-day-today {
+      background-color: rgb(243, 243, 250);
+    }
+    .fc-daygrid-day {
+      .fc-daygrid-day-frame {
+        .fc-daygrid-day-events {
+          .fc-daygrid-event {
+            background-color: $cafenualColor;
+          }
+        }
+      }
+    }
+  }
+}
