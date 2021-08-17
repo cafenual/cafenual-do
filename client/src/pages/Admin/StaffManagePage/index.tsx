@@ -1,5 +1,5 @@
-import StaffList from "components/StaffList";
-import StaffSearchBar from "components/StaffSearchBar";
+import StaffList from "components/staffManage/StaffList";
+import StaffSearchBar from "components/staffManage/StaffSearchBar";
 import React from "react";
 import "./styles.scss";
 

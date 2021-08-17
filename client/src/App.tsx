@@ -11,7 +11,7 @@ import LoginPage from "pages/Auth/LoginPage";
 import RegisterPage from "pages/Auth/RegisterPage";
 import AccountInfoPage from "pages/Auth/AccountInfoPage";
 import AdminPage from "pages/Admin";
-import Scheduler from "pages/Scheduler";
+import SchedulerPage from "pages/SchedulerPage";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
             <Route path="/transition" exact component={Transition} />
             <Route path="/accountinfo" exact component={AccountInfoPage} />
             <Route path="/admin" component={AdminPage} />
-            <Route path="/scheduler" component={Scheduler} />
+            <Route path="/scheduler" exact component={SchedulerPage} />
           </>
         </Switch>
         <Footer />
